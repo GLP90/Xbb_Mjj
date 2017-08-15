@@ -1,0 +1,157 @@
+#-*-Perl-*-
+
+[Analysis]
+tag: 13TeV
+
+[Directories]
+plotpath: ../limits/plots/
+
+[Plot_general]
+lumi = 10000.
+#how and which groups in the plot
+setup: ZH,ggZH,DY2b,DY1b,DYlight,TT,VV
+setupLog: VV,DY2b,DY2b,DY1b,DYlight,TT,ZH,ggZH
+
+#colors
+colorDict: {'DYlight':401,'DYc':41,'DY2b':5,'DY1b':41,'Wlight':814,'W1b':816,'W2b':820,'TT':596,'ST':840,'VV':920,'VVlight':922,'WH':2,'ZH':2,'VH':2,'DYlc':401,'QCD':616,'ggZH':46}
+
+typLegendDict: {'DYlight':'Z+udscg','DYc':'Z + c#bar{c}','DYlc':'Z+udscg','DY2b':'Z + b#bar{b}','DY1b':'Z + b','Wlight':'W+udscg','W1b':'W + b','W2b':'W + b#bar{b}','TT':'t#bar{t}','ST':'Single top','VV':'VV','VVlight':'VV(udscg)','VVb':'VZ(b#bar{b})','ZH':'VH(b#bar{b}) 125 GeV','WH':'VH(b#bar{b}) 125 GeV','VH':'VH','QCD':'QCD','Overlay':'VH(b#bar{b}) 125 GeV', 'ggZH':'ggVH(b#bar{b})'}
+
+addOverFlow = True
+
+[LimitGeneral]
+
+Dict = {'ZH':'ZH','WH':'WH','DYlight':'DYlight','DY1b':'DY1b','DY2b':'DY2b','Wlight':'Wj0b','W1b':'Wj1b','W2b':'Wj2b','TT':'TT','ST':'s_Top','VVb':'VVHF','VVlight':'VVLF','VV':'VV','Data':'data_obs','ZH125':'H125','QCD':'QCD', 'ggZH':'ggZH'}
+
+[Plot:bdt_Zuu_high_Zpt]
+Datas    : Zvv
+Normalize: False
+Signal   : ZH125
+log      : True
+blind    : False
+
+[Plot:bdt_Zuu_low_Zpt]
+Datas    : Zvv
+Normalize: False
+Signal   : ZH125
+log      : True
+blind    : False
+
+[Plot:bdt_Zee_high_Zpt]
+Datas    : Zvv
+Normalize: False
+Signal   : ZH125
+log      : True
+blind    : False
+
+[Plot:bdt_Zee_low_Zpt]
+Datas    : Zvv
+Normalize: False
+Signal   : ZH125
+log      : True
+blind    : False
+
+
+[plotDef:ZH125_Zuu_lowZpt]
+relPath: ZH125_Zuu_lowZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+[plotDef:ZH125_Zuu_highZpt]
+relPath: ZH125_Zuu_highZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+[plotDef:ZH125_Zee_lowZpt]
+relPath: ZH125_Zee_lowZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+[plotDef:ZH125_Zee_highZpt]
+relPath: ZH125_Zee_highZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+
+[plotDef:gg_plus_ZH125_Zuu_lowZpt]
+relPath: gg_plus_ZH125_Zuu_lowZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_Zuu_highZpt]
+relPath: gg_plus_ZH125_Zuu_highZpt
+xAxis  : BDT output
+nBins  : 15
+min    : -1
+max    : 1
+
+
+
+
+
+
+# ===============================
+
+[plotDef:BDT_Wtn]
+relPath = BDT
+xAxis = BDT output
+nBins = 15
+min = -1
+max = 1
+
+[plotDef:BDT_Wln]
+relPath = CMS_vhbb_BDT_Wln_8TeV
+xAxis = BDT output
+nBins = 48
+min = -1
+max = 1
+
+[plotDef:BDT_Wln_Last]
+relPath = CMS_vhbb_BDT_Wln_8TeV
+xAxis = BDT output
+nBins = 12
+min = 0.5
+max = 1
+
+[plotDef:BDT_Znn_HighPt]
+relPath = CMS_vhbb_BDT_ZnunuHighPt_8TeV
+#relPath = CMS_vhbb_BDT_ZnunuHighPt_8TeV
+xAxis = BDT output
+nBins = 40
+min = -1.
+max = 1.
+
+[plotDef:BDT_Znn_HighPt_Last]
+relPath = CMS_vhbb_BDT_ZnunuHighPt_8TeV
+#relPath = CMS_vhbb_BDT_ZnunuHighPt_8TeV
+xAxis = BDT output
+nBins = 10
+min = 0.5
+max = 1.
+
+[plotDef:BDT_Znn_LowPt]
+relPath = CMS_vhbb_BDT_ZnunuLowPt_8TeV
+#relPath = ZnunuLowPt_8TeV
+xAxis = BDT output
+nBins = 24
+min = -1
+max = 1.
+
+[plotDef:BDT_Znn_MedPt]
+relPath = CMS_vhbb_BDT_ZnunuMedPt_8TeV
+#relPath = ZnunuMedPt_8TeV
+xAxis = BDT output
+nBins = 32
+min = -1.
+max = 1.
+

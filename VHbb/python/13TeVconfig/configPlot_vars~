@@ -1,0 +1,751 @@
+#-*-Perl-*-
+
+[Analysis]
+tag: 13TeV
+
+[General]
+BDTbins = 15
+
+CSVbins = 15
+
+[plotDef:HT]
+xAxis   : HT
+relPath : lheHT
+nBins   : 40
+min     : 0
+max     : 800
+
+[plotDef:nPVs]
+relPath: nPVs
+xAxis  : {\#} PVs 
+nBins  : 30
+min    : 0
+max    : 30
+
+[plotDef:met_pt]
+relPath: met_pt
+xAxis  : MET p_{t} [GeV]
+nBins  : 15
+min    : 0
+max    : 150
+
+[plotDef:deltaR_jj]
+relPath: HCSV_dR_reg
+xAxis  : Delta R(jj)
+nBins  : 15
+min    : 0
+max    : 3
+
+[plotDef:Sum]
+relPath: Sum$(Jet_pt>20.&abs(Jet_eta<2.4)&Jet_puId>=4)
+xAxis  : Jet Multiplicity(Jet_pt>20 & Jet_eta<2.4 & Jet_puId>=4)
+nBins  : 6
+min    : 0
+max    : 6
+
+[plotDef:aJets]
+relPath: naJidx
+xAxis  : Additional Jet Multiplicity 
+nBins  : 6
+min    : 0
+max    : 6
+
+[plotDef:HVdPhi]
+relPath: HVdPhi
+xAxis  : HVdPhi [rad]
+nBins  : 30
+min    : -3.2
+max    : 3.2
+
+[plotDef:HVdPhi_reg]
+relPath: HVdPhi_reg
+xAxis  : HVdPhi(regressed) [rad]
+nBins  : 30
+min    : -3.2
+max    : 3.2
+
+[plotDef:HCSV_mass]
+relPath: HCSV_mass
+xAxis  : m(jj) [GeV]
+nBins  : 15
+min    : 0
+max    : 400
+
+[plotDef:HCSV_reg_mass]
+relPath: HCSV_reg_mass
+xAxis  : Regressed m(jj) [GeV]
+nBins  : 15
+min    : 0
+max    : 400
+
+[plotDef:Hmass]
+relPath: H_mass
+xAxis  : m(jj) [GeV]
+nBins  : 20
+min    : 0
+max    : 400
+
+[plotDef:Hmass_NoReg]
+relPath: HNoReg_mass
+xAxis  : m(jj) [GeV]
+nBins  : 20
+min    : 0
+max    : 200
+
+[plotDef:Hpt]
+relPath: H_pt
+xAxis  : p_{T} (jj) [GeV]
+nBins  : 40
+min    : 0
+max    : 400
+
+[plotDef:HCSV_pt]
+relPath: HCSV_pt
+xAxis  : p_{T} (jj) [GeV]
+nBins  : 40
+min    : 0
+max    : 400
+
+[plotDef:HCSV_reg_pt]
+relPath: HCSV_reg_pt
+xAxis  : Regressed p_{T} (jj) [GeV]
+nBins  : 40
+min    : 0
+max    : 400
+
+
+
+[plotDef:HptWmn]
+relPath: H_pt
+xAxis  : p_{T} (jj) [GeV]
+nBins  : 10
+min    : 50
+max    : 450
+
+[plotDef:Vpt]
+relPath: V_pt
+xAxis  : p_{T} (V) [GeV]
+nBins  : 40
+min    : 0
+max    : 400
+
+[plotDef:HVdPhi]
+relPath:  HVdPhi
+xAxis  : Delta phi(V,H)
+nBins  : 20
+min    : 0
+max    : 3.5
+
+[plotDef:Vmass]
+relPath: V_mass
+xAxis  : m_{l^{+}l^{-}} [GeV]
+nBins  : 20
+min    : 75
+max    : 105
+
+[plotDef:Vmass_ttbar]
+relPath: V_mass
+xAxis  : m_{l^{+}l^{-}} [GeV]
+nBins  : 20
+min    : 0
+max    : 150
+
+[plotDef:minCSV]
+relPath: min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+xAxis  : min CSV
+nBins  : 15
+min    : 0
+max    : 1
+
+[plotDef:maxCSV]
+relPath: max(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+xAxis  : max CSV
+nBins  : 15
+min    : 0
+max    : 1
+
+[plotDef:hJet0pt_reg]
+#relPath: hJet_pt_reg[0]
+relPath: Jet_pt_reg[hJCidx[0]]
+xAxis  : leading jet p_{T} Regressed [GeV]
+nBins  : 25
+min    : 0
+max    : 400
+
+[plotDef:hJet0pt]
+relPath: Jet_pt[hJCidx[0]]
+xAxis  : leading jet p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 400
+
+[plotDef:hJet1pt_reg]
+relPath: Jet_pt_reg[hJCidx[1]]
+xAxis  : second jet p_{T} Regressed [GeV]
+nBins  : 25
+min    : 0
+max    : 400
+
+[plotDef:hJet1pt]
+relPath: Jet_pt[hJCidx[1]]
+xAxis  : second jet p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 400
+
+[plotDef:hJet0pt_CMVA]
+relPath: Jet_pt[hJCidx[0]]
+xAxis  : leading jet p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 400
+
+[plotDef:hJet1pt_CMVA]
+relPath: Jet_pt[hJCidx[1]]
+xAxis  : second jet p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 250
+
+
+[plotDef:ptBalance]
+relPath : HCSV_reg_pt/V_pt
+#relPath : H.pt/V_pt
+xAxis   : p_{T} balance after regression
+nBins   : 15
+min     : 0.
+max     : 2.
+
+[plotDef:ptBalance_noReg]
+relPath : HCSV_pt/V_pt
+#relPath : HNoReg.pt/V_pt
+xAxis   : p_{T} balance before regression
+nBins   : 15
+min     : 0.
+max     : 2.
+
+[plotDef:ptBalance_FSR]
+relPath : HCSV_reg_pt_FSR/V_pt
+xAxis   : p_{T} balance after regression + FSR
+nBins   : 15
+min     : 0.
+max     : 2.
+
+[plotDef:softActJets]
+relPath : softActivityVH_njets5
+xAxis   : p_{T} balance after regression + FSR
+nBins   : 15
+min     : 0.
+max     : 2.
+
+
+
+
+# ==== BDT Output Variables ====
+
+[plotDef:gg_plus_ZH125_highZpt]
+relPath: gg_plus_ZH125_highZpt.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_tightHmass]
+relPath: gg_plus_ZH125_tightHmass.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_low_Zpt]
+relPath: gg_plus_ZH125_lowZpt.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_med_Zpt]
+relPath: gg_plus_ZH125_medZpt.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_high_Zpt]
+relPath: gg_plus_ZH125_highZpt.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+# SemiLepton
+[plotDef:gg_plus_ZH125_semiLepton]
+relPath: gg_plus_ZH125_semiLepton.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_NOsemiLepton]
+relPath: gg_plus_ZH125_NOsemiLepton.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:gg_plus_ZH125_1semiLepton]
+relPath: gg_plus_ZH125_1semiLepton.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:VV_bdt]
+relPath: VV_bdt.nominal
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:VV_bdt_lowZpt]
+relPath: VV_bdt.VV_bdt_lowZpt
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+[plotDef:VV_bdt_highZpt]
+relPath: VV_bdt.VV_bdt_highZpt
+xAxis  : BDT Output
+nBins  : <!General|BDTbins!>
+min    : -1
+max    : 1
+
+# ================================
+# Regression Variables
+[plotDef:Jet0_mcPt]
+relPath: Jet_mcPt[hJCidx[0]]
+xAxis  : Leading jet MC p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 200
+
+[plotDef:Jet1_mcPt]
+relPath: Jet_mcPt[hJCidx[1]]
+xAxis  : Second jet MC p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 200
+
+[plotDef:Jet0_rawPt]
+relPath: Jet_rawPt[hJCidx[0]]
+xAxis  : Leading jet Raw p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 200
+
+[plotDef:Jet1_rawPt]
+relPath: Jet_rawPt[hJCidx[1]]
+xAxis  : Second jet Raw p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 200
+
+[plotDef:Jet0_corr]
+relPath: Jet_corr[hJCidx[0]]
+xAxis  : Leading jet Correction Factor
+nBins  : 25
+min    : 0.5
+max    : 1.5
+
+[plotDef:Jet1_corr]
+relPath: Jet_corr[hJCidx[1]]
+xAxis  : Second jet Correction Factor
+nBins  : 25
+min    : 0.5
+max    : 1.5
+
+
+
+[plotDef:Jet0_eta]
+relPath: Jet_eta[hJCidx[0]]
+xAxis  : Leading jet #eta
+nBins  : 25
+min    : -4
+max    : 4
+
+[plotDef:Jet1_eta]
+relPath: Jet_eta[hJCidx[1]]
+xAxis  : Second jet #eta
+nBins  : 25
+min    : -4
+max    : 4
+
+[plotDef:jet_dEta]
+relPath: abs(Jet_eta[hJCidx[0]]-Jet_eta[hJCidx[1]])
+xAxis  : Jet #delta #eta
+nBins  : 25
+min    : -1
+max    : 1
+
+[plotDef:rho]
+relPath : rho
+xAxis   : #rho
+nBins   : 25
+min     : -0.5
+max     : 24.5
+
+[plotDef:Jet0_leadTrackPt]
+relPath: Jet_leadTrackPt[hJCidx[0]]
+xAxis  : Leading jet Track p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 150
+
+[plotDef:Jet1_leadTrackPt]
+relPath: Jet_leadTrackPt[hJCidx[1]]
+xAxis  : Second jet Track p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 150
+
+[plotDef:Jet0_leptonPtRel]
+relPath: Max$(0.,Jet_leptonPtRel[hJCidx[0]])
+xAxis  : Leading jet lepton relative p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 15
+
+[plotDef:Jet1_leptonPtRel]
+relPath: Max$(0.,Jet_leptonPtRel[hJCidx[1]])
+xAxis  : Second jet lepton relative p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 15
+
+[plotDef:Jet0_leptonPt]
+relPath: Max$(0.,Jet_leptonPt[hJCidx[0]])
+xAxis  : Leading jet lepton p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 150
+
+[plotDef:Jet1_leptonPt]
+relPath: Max$(0.,Jet_leptonPt[hJCidx[1]])
+xAxis  : Second jet lepton p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 150
+
+
+[plotDef:Jet0_leptonDeltaR]
+relPath: Max$(0.,Jet_leptonDeltaR[hJCidx[0]])
+xAxis  : Leading jet lepton DeltaR 
+nBins  : 25
+min    : 0
+max    : 0.7
+
+[plotDef:Jet1_leptonDeltaR]
+relPath: Max$(0.,Jet_leptonDeltaR[hJCidx[1]])
+xAxis  : Second jet lepton DeltaR
+nBins  : 25
+min    : 0
+max    : 0.7
+
+[plotDef:Jet0_chEmEF]
+relPath: Jet_chEmEF[hJCidx[0]]
+xAxis  : Leading jet charged EmEF
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet1_chEmEF]
+relPath: Jet_chEmEF[hJCidx[1]]
+xAxis  : Second jet charged EmEF
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet0_chHEF]
+relPath: Jet_chHEF[hJCidx[0]]
+xAxis  : Leading jet charged HEF 
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet1_chHEF]
+relPath: Jet_chHEF[hJCidx[1]]
+xAxis  : Second jet charged HEF
+nBins = 15
+min = 0
+max = 150
+
+[plotDef:Jet0_neHEF]
+relPath: Jet_neHEF[hJCidx[0]]
+xAxis  : Leading jet neutral HEF 
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet1_neHEF]
+relPath: Jet_neHEF[hJCidx[1]]
+xAxis  : Second jet neutral HEF
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet0_neEmEF]
+relPath: Jet_neEmEF[hJCidx[0]]
+xAxis  : Leading jet neutral EmEF
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet1_neEmEF]
+relPath: Jet_neEmEF[hJCidx[1]]
+xAxis  : Second jet neutral EmEF
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet0_vtxPt]
+relPath: Jet_vtxPt[hJCidx[0]]
+xAxis  : Leading jet vertex p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 50
+
+[plotDef:Jet1_vtxPt]
+relPath: Jet_vtxPt[hJCidx[1]]
+xAxis  : Second jet vertex p_{T} [GeV]
+nBins  : 25
+min    : 0
+max    : 50
+
+[plotDef:Jet0_vtxMass]
+relPath: Jet_vtxMass[hJCidx[0]]
+xAxis  : Leading jet vertex Mass [GeV]
+nBins  : 25
+min    : 0
+max    : 5
+
+[plotDef:Jet1_vtxMass]
+relPath: Jet_vtxMass[hJCidx[1]]
+xAxis  : Second jet vertex Mass [GeV]
+nBins  : 25
+min    : 0
+max    : 5
+
+[plotDef:Jet0_shift]
+relPath: Jet_pt_reg[hJCidx[0]]/Jet_pt[hJCidx[0]]
+xAxis  : Leading Jet p_{T} Shift (p_{T} Reg/p_{T} Nom) [GeV]
+nBins  : 25
+min    : 0.5
+max    : 1.5
+
+[plotDef:Jet1_shift]
+relPath: Jet_pt_reg[hJCidx[1]]/Jet_pt[hJCidx[1]]
+    xAxis  : Second Jet p_{T} Shift (p_{T} Reg/p_{T} Nom) [GeV]
+nBins  : 25
+min    : 0.5
+max    : 1.5
+
+[plotDef:Jet_vtx3dL]
+relPath: Jet_vtx3DVal
+xAxis  : Jet_vtx3DVal
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet_vtx3deL]
+relPath: Jet_vtx3DSig
+xAxis  : Jet_vtx3DSig
+nBins  : 25
+min    : 0
+max    : 1
+
+[plotDef:Jet_vtxNtrk]
+relPath: Jet_vtxNtracks
+xAxis  : Jet_vtxNtracks
+nBins  : 25
+min    : 0
+max    : 10
+
+[plotDef:met_pt]
+relPath: met_pt
+xAxis  : met_pt
+nBins  : 25
+min    : 0
+max    : 50
+
+[plotDef:Jet_corr]
+relPath: Jet_corr
+xAxis  : Jet_corr
+nBins  : 25
+min    : 0
+max    : 1
+
+# ==============================
+# Lepton Variables
+
+[plotDef:vLeptons_ptMax]
+relPath = max(vLeptons_pt[0],vLeptons_pt[1])
+xAxis = Leading lepton P_{t}
+nBins = 15
+min = 0
+max = 150
+
+[plotDef:vLeptons_ptMin]
+relPath = min(vLeptons_pt[0],vLeptons_pt[1])
+xAxis = Leading lepton P_{t}
+nBins = 20
+min = 0
+max = 150
+
+[plotDef:vLeptons_etaMax]
+relPath = max(abs(vLeptons_eta[0]),abs(vLeptons_eta[1]))
+xAxis = Most forward lepton #eta
+nBins = 25
+min = 0
+max = 5
+
+[plotDef:vLeptons_etaMin]
+relPath = min(abs(vLeptons_eta[0]),abs(vLeptons_eta[1]))
+xAxis = more central lepton #eta
+nBins = 25
+min = 0
+max = 5
+
+[plotDef:vLeptons_pfRelIso04Max]
+relPath = max(vLeptons_pfRelIso04[0],vLeptons_pfRelIso04[1])
+xAxis = max lepton pfRelIso04
+nBins = 50
+min = 0
+max = 1
+
+[plotDef:vLeptons_pfRelIso04Min]
+relPath = min(vLeptons_pfRelIso04[0],vLeptons_pfRelIso04[1])
+xAxis = min lepton pfRelIso04
+nBins = 50
+min = 0
+max = 1
+
+[plotDef:vLeptons0_pt]
+relPath = vLeptons_pt[0]
+xAxis = leading Lepton p_T
+nBins = 20
+min = 0
+max = 150
+
+[plotDef:vLeptons1_pt]
+relPath = vLeptons_pt[1]
+xAxis = second Lepton p_T
+nBins = 20
+min = 0
+max = 150
+
+[plotDef:vLeptons0_eta]
+relPath = vLeptons_eta[0]
+xAxis = leading Lepton #eta
+nBins = 25
+min = -2.5
+max = 2.5
+
+[plotDef:vLeptons1_eta]
+relPath = vLeptons_eta[1]
+xAxis = second Lepton #eta
+nBins = 25
+min = -2.5
+max = 2.5
+
+[plotDef:vLeptons0_phi]
+relPath = vLeptons_phi[0]
+xAxis = leading Lepton #phi
+nBins = 25
+min = -3.14
+max = 3.14
+
+[plotDef:vLeptons1_phi]
+relPath = vLeptons_phi[1]
+xAxis = second Lepton #phi
+nBins = 25
+min = -3.14
+max = 3.14
+
+
+
+[plotDef:vLeptons0_RelIso04]
+relPath = vLeptons_relIso04[0]
+xAxis = leading lepton RelIso04
+nBins = 30
+min = 0
+max = 0.30
+
+[plotDef:vLeptons1_RelIso04]
+relPath = vLeptons_relIso04[1]
+xAxis = second lepton RelIso04
+nBins = 30
+min = 0
+max = 0.30
+
+
+[plotDef:vLeptons0_RelIso03]
+relPath = vLeptons_relIso03[0]
+xAxis = leading lepton RelIso03
+nBins = 30
+min = 0
+max = 0.25
+
+[plotDef:vLeptons1_RelIso03]
+relPath = vLeptons_relIso03[1]
+xAxis = second lepton RelIso03
+nBins = 50
+min = 0
+max = 0.5
+
+
+# =============================
+
+[plotDef:csv0]
+relPath = hJets_csv[0]
+xAxis = jet 0 csv
+nBins = 20
+min = 0
+max = 1
+
+[plotDef:csv1]
+relPath = hJets_csv[1]
+xAxis = jet 1 csv
+nBins = 20
+min = 0
+max = 1
+
+[plotDef:csvivf0]
+relPath = hJets_csvivf[0]
+xAxis = jet 0 csv ivf
+nBins = 20
+min = 0
+max = 1
+
+[plotDef:csvivf1]
+relPath = hJets_csvivf[1]
+xAxis = jet 1 csv ivf
+nBins = 20
+min = 0
+max = 1
+
+[plotDef:cmva0]
+relPath = hJets_cmva[0]
+xAxis = jet 0 cmva
+nBins = 20
+min = 0
+max = 1
+
+[plotDef:cmva1]
+relPath = hJets_cmva[1]
+xAxis = jet 1 cmva
+nBins = 20
+min = 0
+max = 1
+
+

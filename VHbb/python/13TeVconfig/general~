@@ -1,0 +1,308 @@
+#-*-Perl-*-
+
+# -------------------------
+# GENERAL CONFIGURATION
+# -------------------------
+
+[Analysis]
+tag: 13TeV
+
+# If this Flag is used then 50% of MC samples will go in training and the rest will be scaled up by a factor of 2.
+# if you train on 50% but then set it to 'False' while writing DC, then you get your biased training samples in the limit!!!
+# be sure to have this right !!!
+
+TrainFlag: True
+#Mjj-> False
+
+# -------------------------
+# REGRESSION
+# -------------------------
+
+[Regression]
+
+#regWeight: weights/MVA_BDT_REG_<!TrainRegression|name!>.weights.xml
+
+writeNewVariables = {}
+
+    
+#writeNewVariables = {#
+
+#    'CSV3':'Max$(Jet_btagCSV[aJCidx])',\
+#	'naddGoodLeptons5':'Sum$(aLeptons_pt>5 && (aLeptons_jetBTagCSV<0.25 || aLeptons_relIso03<0.4 || aLeptons_looseIdSusy!=0 ||  aLeptons_jetDR>0.3 ))+Sum$(vLeptons_pt>5 && (vLeptons_jetBTagCSV<0.25 || vLeptons_relIso03<0.4 || vLeptons_looseIdSusy!=0 ||  vLeptons_jetDR>0.3 ))',\
+#	'naddGoodLeptons7':'Sum$(aLeptons_pt>7 && (aLeptons_jetBTagCSV<0.25 || aLeptons_relIso03<0.4 || aLeptons_looseIdSusy!=0 ||  aLeptons_jetDR>0.3 ))+Sum$(vLeptons_pt>7 && (vLeptons_jetBTagCSV<0.25 || vLeptons_relIso03<0.4 || vLeptons_looseIdSusy!=0 ||  vLeptons_jetDR>0.3 ))',\
+#	'naddGoodLeptons10':'Sum$(aLeptons_pt>10 && (aLeptons_jetBTagCSV<0.25 || aLeptons_relIso03<0.4 || aLeptons_looseIdSusy!=0 ||  aLeptons_jetDR>0.3 ))+Sum$(vLeptons_pt>10 && (vLeptons_jetBTagCSV<0.25 || vLeptons_relIso03<0.4 || vLeptons_looseIdSusy!=0 ||  vLeptons_jetDR>0.3 ))',\
+#	'naddGoodLeptons15':'Sum$(aLeptons_pt>15 && (aLeptons_jetBTagCSV<0.25 || aLeptons_relIso03<0.4 || aLeptons_looseIdSusy!=0 ||  aLeptons_jetDR>0.3 ))+Sum$(vLeptons_pt>15 && (vLeptons_jetBTagCSV<0.25 || vLeptons_relIso03<0.4 || vLeptons_looseIdSusy!=0 ||  vLeptons_jetDR>0.3 ))',\
+#	'naddGoodLeptons20':'Sum$(aLeptons_pt>20 && (aLeptons_jetBTagCSV<0.25 || aLeptons_relIso03<0.4 || aLeptons_looseIdSusy!=0 ||  aLeptons_jetDR>0.3 ))+Sum$(vLeptons_pt>20 && (vLeptons_jetBTagCSV<0.25 || vLeptons_relIso03<0.4 || vLeptons_looseIdSusy!=0 ||  vLeptons_jetDR>0.3 ))',\
+#	'addLepton5':'Sum$(aLeptons_pt>5&&abs(aLeptons_eta)<2.5)+Sum$(vLeptons_pt>5&&abs(vLeptons_eta)<2.5)',\
+#	'addLepton10':'Sum$(aLeptons_pt>10&&abs(aLeptons_eta)<2.5)+Sum$(vLeptons_pt>10&&abs(vLeptons_eta)<2.5)',\
+#	'addLepton20':'Sum$(aLeptons_pt>20&&abs(aLeptons_eta)<2.5)+Sum$(vLeptons_pt>20&&abs(vLeptons_eta)<2.5)',\
+#	'addLepton30':'Sum$(aLeptons_pt>30&&abs(aLeptons_eta)<2.5)+Sum$(vLeptons_pt>30&&abs(vLeptons_eta)<2.5)',\
+#	'addJet20':'Sum$(Jet_pt[aJCidx]>20. && abs(Jet_eta[aJCidx])<2.5)',\
+#	'addJetNoPU20':'Sum$(Jet_pt[aJCidx]>20. && abs(Jet_eta[aJCidx])<2.5 && Jet_puId[aJCidx]>0)',\
+#	'addCenJet20':'Sum$(Jet_pt[aJCidx]>20. && abs(Jet_eta[aJCidx])<2.4)',\
+#	'addCenJetNoPU20':'Sum$(Jet_pt[aJCidx]>20. && abs(Jet_eta[aJCidx])<2.4 && Jet_puId[aJCidx]>0)',\
+#	'addJet30':'Sum$(Jet_pt[aJCidx]>30.)',\
+#	'addJetNoPU30':'Sum$(Jet_pt[aJCidx]>30. && Jet_puId[aJCidx]>0)',\
+#	'addCenJet30':'Sum$(Jet_pt[aJCidx]>30. && abs(Jet_eta[aJCidx])<2.4)',\
+#	'addCenJetNoPU30':'Sum$(Jet_pt[aJCidx]>30. && abs(Jet_eta[aJCidx])<2.4 && Jet_puId[aJCidx]>0)',\
+#	'addJet40':'Sum$(Jet_pt[aJCidx]>40.)',\
+#	'addJetNoPU40':'Sum$(Jet_pt[aJCidx]>40. && Jet_puId[aJCidx]>0)',\
+#	'addCenJet40':'Sum$(Jet_pt[aJCidx]>40. && abs(Jet_eta[aJCidx])<2.4)',\
+#	'addCenJetNoPU40':'Sum$(Jet_pt[aJCidx]>40. && abs(Jet_eta[aJCidx])<2.4 && Jet_puId[aJCidx]>0)',\
+#	'pt_1':'max(Jet_pt[hJCidx[0]],Jet_pt[hJCidx[1]])',\
+#	'pt_2':'min(Jet_pt[hJCidx[0]],Jet_pt[hJCidx[1]])',\
+#	'addJet40':'Sum$(Jet_pt[aJCidx]>40.)',\
+#	'minDeltaPhiJet1Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Iteration$<1)',\
+#	'minDeltaPhiJet2Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Iteration$<2)',\
+#	'minDeltaPhiJet3Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Iteration$<3)',\
+#	'minDeltaPhiJet4Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Iteration$<4)',\
+#	'minDeltaPhiCenJetNoPU20Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>20 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU30Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>30 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU30Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>30 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU30Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>30 && Jet_eta<2.5 )',\
+#	'minDeltaPhiCenJetNoPU30Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>30 )',\
+#	'minDeltaPhiCenJetNoPU40Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>40 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU50Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>50 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU60Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>60 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU70Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>70 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiCenJetNoPU80Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>80 && Jet_eta<2.5 && Jet_puId)',\
+#	'minDeltaPhiJetNoPU80Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>80 && Jet_puId)',\
+#	'minDeltaPhiCenJet80Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>80 && Jet_eta<2.5 )',\
+#	'minDeltaPhiJet80Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>80 )',\
+#	'minDeltaPhiJet90Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>90 )',\
+#	'minDeltaPhiJet100Met':'MinIf$(abs(TVector2::Phi_mpi_pi(Jet_phi-met_phi)),Jet_pt>100)',\
+#	'metmetType1p2_sig':'metType1p2_pt/sqrt(met_sumEt)',\
+#	'metPuppi_sig':'metPuppi_pt/sqrt(met_sumEt)',\
+#	'met_sig':'met_pt/sqrt(met_sumEt)',\
+#	'met_sig':'met_pt/sqrt(met_sumEt)',\
+#	'DeltaPhiJet1Jet2':'abs(TVector2::Phi_mpi_pi(Jet_phi[0]-Jet_phi[1]))',\
+#	'DeltaPhiHMET':'abs(TVector2::Phi_mpi_pi(H_phi-met_phi))',\
+#        'DeltaPhiHCSVMET':'abs(TVector2::Phi_mpi_pi(HCSV_phi-met_phi))'
+
+#}
+
+
+#!! --------------------------
+#!! Libraries
+#!! --------------------------
+[BTagReshaping]
+
+library: <!Directories|vhbbpath!>/interface/BTagReshaping_h.so
+
+[VHbbNameSpace]
+
+library: <!Directories|vhbbpath!>/interface/VHbbNameSpace_h.so
+
+#!! for the likelihood
+[AngularLike]
+
+backgrounds: ['Zbb','Zudsg','ttbar','ZZ']
+yields: {'Zbb':584.8,'Zudsg':881.61,'ttbar':135.7,'ZZ':44.04,'Sig':5.13}
+
+#!! --------------------------
+#!! SYSTEMATICS
+#!! --------------------------
+[systematics]
+#systematics: Nominal JER_up JER_down JEC_up JEC_down 
+systematics: Nominal JER_up JER_down JEC_up JEC_down JER_up_high JER_down_high JER_up_low JER_down_low JER_up_central JER_down_central JER_up_forward JER_down_forward JEC_up_high JEC_down_high JEC_up_low JEC_down_low JEC_up_central JEC_down_central JEC_up_forward JEC_down_forward  
+
+# --------------------------------------------------
+# Varibles definition for trainging and evaluation
+# --------------------------------------------------
+
+[ZllBDTVars]
+
+#Nominal: HCSV_reg_mass HCSV_reg_pt HVdPhi met_pt HCSV_dEta hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#JER_up:  HCSV_reg_mass_JER_up  HCSV_reg_pt_JER_up HVdPhi met_pt H.dEta hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 H.dR max(hJet_pt_JER_up[0],hJet_pt_JER_up[1]) min(hJet_pt_JER_up[0],hJet_pt_JER_up[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#JER_down:  HCSV_reg_mass_JER_down HCSV_reg_pt_JER_down HVdPhi met_pt H.dEta hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 H.dR  max(hJet_pt_JER_down[0],hJet_pt_JER_down[1]) min(hJet_pt_JER_down[0],hJet_pt_JER_down[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#JES_up:  HCSV_reg_corrJECUp_mass HCSV_reg_corrJERUp_pt HVdPhi met_pt H.dEta hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 H.dR max(hJet_pt_JES_up[0],hJet_pt_JES_up[1]) min(hJet_pt_JES_up[0],hJet_pt_JES_up[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#JES_down:  HCSV_reg_mass_JES_down HCSV_reg_pt_JER_down HVdPhi met_pt H.dEta hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 H.dR max(hJet_pt_JES_down[0],hJet_pt_JES_down[1]) min(hJet_pt_JES_down[0],hJet_pt_JES_down[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#beff_up: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVUp[0] hJet_btagCSVUp[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#beff_down: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVDown[0] hJet_btagCSVDown[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#bmis_up: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVFUp[0] hJet_btagCSVFUp[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#bmis_down: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVFDown[0] hJet_btagCSVFDown[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+##FIXME###  beff1 is identical to bmis
+#beff1_up: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVFUp[0] hJet_btagCSVFUp[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+#beff1_down: H_JES.mass_down H_JES.pt_down HVdPhi metPuppi_pt H.dEta hJet_btagCSVFDown[0] hJet_btagCSVFDown[1] addCenJetNoPU30 H.dR max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) naddGoodLeptons5 Max$(Jet_btagCSV[aJCidx])
+
+
+
+###########################################################################################
+# other things:
+
+[Samples]
+
+DYudsg_nolhe: 'Zudsg','Zudsg5070','Zudsg70100','Zudsg100ext'
+DYc_nolhe:    'Zcc',  'Zcc5070',  'Zcc70100',  'Zcc100ext'  
+DY1b_nolhe:   'Z1b',  'Z1b5070',  'Z1b70100',  'Z1b100ext'  
+DY2b_nolhe:   'Z2b',  'Z2b5070',  'Z2b70100',  'Z2b100ext'  
+
+#DYudsg: 'Zudsg','Zudsg1J','Zudsg2J','Zudsg3J','Zudsg4J','ZudsgHT100to200','ZudsgHT200to400','ZudsgHT400to600', 'ZudsgHT600toInf','Zudsg5070','Zudsg70100','Zudsg100','Zudsg180','Zudsg100ext'
+
+DYudsg: 'Zudsg','ZudsgHT100to200', 'ZudsgHT200to400','ZudsgHT400to600','ZudsgHT600toInf', 'Zudsg_Bjets', 'Zudsg_BgenFilter', 'Zudsg5to50', 'Zudsg5to50_100to200', 'Zudsg5to50_200to400', 'Zudsg5to50_400to600', 'Zudsg5to50_600toInf', 'Zudsg_nlo','ZudsgVpt100to250','ZudsgVpt250to400','ZudsgVpt400to650','ZudsgVpt650toInf'
+
+DYc: 'Zcc','ZccHT100to200','ZccHT200to400','ZccHT400to600','ZccHT600toInf', 'Zcc_Bjets', 'Zcc_BgenFilter', 'Zcc5to50', 'Zcc5to50_100to200', 'Zcc5to50_200to400', 'Zcc5to50_400to600', 'Zcc5to50_600toInf','Zcc_nlo','ZccVpt100to250','ZccVpt250to400','ZccVpt400to650','ZccVpt650toInf'  
+
+DY1b: 'Z1b','Z1bHT100to200','Z1bHT200to400','Z1bHT400to600','Z1bHT600toInf', 'Z1b_Bjets', 'Z1b_BgenFilter', 'Z1b5to50', 'Z1b5to50_100to200', 'Z1b5to50_200to400', 'Z1b5to50_400to600', 'Z1b5to50_600toInf','Z1b_nlo','Z1bVpt100to250','Z1bVpt250to400','Z1bVpt400to650','Z1bVpt650toInf'  
+
+DY2b: 'Z2b','Z2bHT100to200','Z2bHT200to400','Z2bHT400to600','Z2bHT600toInf', 'Z2b_Bjets', 'Z2b_BgenFilter', 'Z2b5to50', 'Z2b5to50_100to200', 'Z2b5to50_200to400', 'Z2b5to50_400to600', 'Z2b5to50_600toInf','Z2b_nlo','Z2bVpt100to250','Z2bVpt250to400','Z2bVpt400to650','Z2bVpt650toInf'  
+
+
+DY_inclusive: 'Zudsg','Zcc','Z1b','Z2b'
+
+DY_inclusive_nlo: 'Zudsg_nlo','Zcc_nlo','Z1b_nlo','Z2b_nlo'
+
+#Diboson: 'ZZb','WZb', 'ZZlight', 'WZlight'
+Diboson: 'WZb','WZlight','ZZb_2L2Q','ZZlight_2L2Q'
+
+Top: 'ttbar' 
+
+s_Top:  'ST_t', 'ST_s', 'ST_tW_antitop', 'ST_tW_top'
+
+gJets: 'gJets', 'gJets_100to200' 
+#'gJets_200to400', 'gJets_400to600', 'gJets_600toInf'
+
+qcd: 'qcd_100to200'
+#, 'qcd_250to500', 'qcd_500to1000', 'qcd_1000toInf'
+
+Zll: 'Zll' 
+
+Zll_regr: 'Zll_regr'
+
+DrellYan: <!Samples|DYudsg!>,<!Samples|DYc!>,<!Samples|DY1b!>,<!Samples|DY2b!>
+
+DrellYan_nolhe: <!Samples|DYudsg_nolhe!>,<!Samples|DYc_nolhe!>,<!Samples|DY1b_nolhe!>,<!Samples|DY2b_nolhe!>
+
+DrellYan_noHT: 'Zudsg', 'Zcc', 'Z1b', 'Z2b'    
+
+
+# === BDT Regions ====
+
+#allSIG: 'ZH110','ZH115','ZH120','ZH125','ZH130','ZH135'
+    
+allSIG: 'ZH125','ggZH125'
+    
+allSIG_BDT: 'ZH125','ggZH125'
+
+allBKG: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|Diboson!>,<!Samples|s_Top!>
+#,<!Samples|qcd!>
+
+allBKG_BDT: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|Diboson!>
+
+#VV_SIG: 'WZb', 'WZlight', 'ZZb_2L2Q', 'ZZlight_2L2Q'
+VV_SIG: 'ZZb_2L2Q'
+
+VV_BKG: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|s_Top!>,<!Samples|allSIG!>,'ZZlight_2L2Q'
+
+allBKG_regr: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|gJets!>,<!Samples|qcd!>,<!Samples|Zll_regr!>
+
+allBKG_nolhe: <!Samples|DrellYan_nolhe!>,<!Samples|Diboson!>,<!Samples|Top!>,<!Samples|s_Top!>
+
+forRegression: <!Samples|allSIG!>,<!Samples|DrellYan!>,<!Samples|Top!>
+
+
+# for synchronization
+allBKG_sync: 'DY_sync'    
+
+BKG_VV_training: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|s_Top!>,'WW','WZ'
+
+Group: {'ZH110':'ZH','ZH115':'ZH','ZH120':'ZH','ZH125':'ZH','ZH130':'ZH','ZH135':'ZH','ZH140':'ZH','ZH145':'ZH','ZH150':'ZH',\
+	#'ggZH125': 'ggZH', \    
+        'ggZH125': 'ZH', \
+	'Zudsg':'DYlight', 'ZudsgHT100to200':'DYlight', 'ZudsgHT200to400':'DYlight', 'ZudsgHT400to600':'DYlight', 'ZudsgHT600toInf':'DYlight', 'Zudsg_Bjets':'DYlight', \
+	'Zudsg_BgenFilter':'DYlight', 'Zudsg5to50':'DYlight', 'Zudsg5to50_100to200':'DYlight', 'Zudsg5to50_200to400':'DYlight','Zudsg5to50_400to600':'DYlight',\
+	'Zudsg5to50_600toInf':'DYlight',
+        #'Zcc':'DYc', 'ZccHT100to200':'DYc', 'ZccHT200to400':'DYc', 'ZccHT400to600':'DYc', 'ZccHT600toInf':'DYc', \
+	'Zcc':'DYlight', 'ZccHT100to200':'DYlight', 'ZccHT200to400':'DYlight', 'ZccHT400to600':'DYlight', 'ZccHT600toInf':'DYlight', 'Zcc_Bjets':'DYlight',\
+	'Zcc_BgenFilter':'DYlight', 'Zcc5to50':'DYlight', 'Zcc5to50_100to200':'DYlight', 'Zcc5to50_200to400':'DYlight', 'Zcc5to50_400to600':'DYlight', 
+	'Zcc5to50_600toInf':'DYlight',\
+	'Zudsg_nlo':'DYlight', 'Zcc_nlo':'DYlight', 'ZudsgVpt100to250':'DYlight', 'ZccVpt100to250':'DYlight', 'ZudsgVpt250to400':'DYlight', 'ZccVpt250to400':'DYlight', \
+	'ZudsgVpt400to650':'DYlight', 'ZccVpt400to650':'DYlight','ZudsgVpt650toInf':'DYlight', 'ZccVpt650toInf':'DYlight',
+	'Z1b':'DY1b','Z1bHT100to200':'DY1b', 'Z1bHT200to400':'DY1b', 'Z1bHT400to600':'DY1b', 'Z1bHT600toInf':'DY1b', 'Z1b_Bjets':'DY1b', \
+	'Z1b_BgenFilter':'DY1b', 'Z1b5to50':'DY1b', 'Z1b5to50_100to200':'DY1b', 'Z1b5to50_200to400':'DY1b', 'Z1b5to50_400to600':'DY1b', 'Z1b5to50_600toInf':'DY1b',\
+	'Z1b_nlo':'DY1b', 'Z1bVpt100to250':'DY1b', 'Z1bVpt250to400':'DY1b','Z1bVpt400to650':'DY1b','Z1bVpt650toInf':'DY1b',
+	'Z2b':'DY2b','Z2bHT100to200':'DY2b','Z2bHT200to400':'DY2b','Z2bHT400to600':'DY2b','Z2bHT600toInf':'DY2b', 'Z2b_Bjets':'DY2b', \
+	'Z2b_BgenFilter':'DY2b', 'Z2b5to50':'DY2b', 'Z2b5to50_100to200':'DY2b', 'Z2b5to50_200to400':'DY2b', 'Z2b5to50_400to600':'DY2b', 'Z2b5to50_600toInf':'DY2b',\
+	'Z2b_nlo':'DY2b', 'Z2bVpt100to250':'DY2b', 'Z2bVpt250to400':'DY2b','Z2bVpt400to650':'DY2b','Z2bVpt650toInf':'DY2b',
+	#'ZZlight':'VVlight', 'WZlight':'VVlight', 'ZZb':'VVb', 'WZb':'VVb', 'ZZlight_2L2Q':'VVlight', 'ZZb_2L2Q':'VVb',\
+        'ZZlight':'VVLF', 'WZlight':'VVLF','ZZlight_2L2Q':'VVLF',
+	'ZZb':'VVHF', 'WZb':'VVHF','ZZb_2L2Q':'VVHF',
+	'ttbar':'TT','TT1':'TT','TT2':'TT','TT_FullLept':'TT','TT_SemiLept':'TT',\
+	'ST_s':'ST','ST_t':'ST','ST_tW_antitop':'ST','ST_tW_top':'ST', \
+        'Zee':'Data','Zuu':'Data',\
+	#'Zll':'ZH', 'Zll_regr':'ZH',\
+	'DY_sync':'DYlight',\
+	'gJets':'gJets', 'gJets_100to200':'gJets', 'gJets_200to400':'gJets', 'gJets_400to600':'gJets', 'gJets_600toInf':'gJets',\
+	'qcd':'qcd', 'qcd_100to200':'qcd', 'qcd_250to500':'qcd', 'qcd_500to1000':'qcd', 'qcd_1000toInf':'qcd',
+	'AltZZlight':'VVlight','AltZZb':'VVb','AltWZlight':'VVlight','AltWZb':'VVb'}
+
+
+#'Zudsg180':'DYlight', 'Zcc':'DYlight','Zcc1J':'DYlight','Zcc2J':'DYlight','Zcc3J':'DYlight','Zcc4J':'DYlight',\
+#'Zcc':'DYlight','ZccHT100to200':'DYlight', 'ZccHT200to400':'DYlight', 'ZccHT400to600':'DYlight', 'ZccHT600toInf':'DYlight', \
+
+[Weights]
+
+
+# ==== Lepton SF =====
+
+# Muons
+weightF_muSFid: vLeptons_SF_IdCutLoose[0]*vLeptons_SF_IdCutLoose[1]
+weightF_muSFiso: mIsoSFWeight[0]
+#weightF_muSFiso: 1
+weightF_muSFtracker: vLeptons_SF_trk_eta[0]*vLeptons_SF_trk_eta[1]
+weightF_muSFtrigg: mTrigSFWeight_ICHEP[0]
+
+weightF_muSF: <!Weights|weightF_muSFiso!>*<!Weights|weightF_muSFid!>*<!Weights|weightF_muSFtracker!>*<!Weights|weightF_muSFtrigg!>
+#weightF_muSF: 1
+ 
+# Electrons
+weightF_eSFid: eId90SFWeight[0]
+weightF_eSFtracker: eTrackerSFWeight[0]
+weightF_eSFtrigg: eTrigSFWeight_ele27[0]
+#weightF_eSFtrigg: eTrigSFWeight_ele23[0]
+
+weightF_eSF: <!Weights|weightF_eSFid!>*<!Weights|weightF_eSFtracker!>*<!Weights|weightF_eSFtrigg!>
+
+# Total
+weightF_SF: ((Vtype == 1)*<!Weights|weightF_eSF!> + (Vtype == 0)*<!Weights|weightF_muSF!>)
+
+# btagWeights
+#btagWeightCSV_new = (12.9/22.0)*btagWeightCSV+(7.3/22.0)*bTagWeightEF[0]+(1.9/22)*btagWeightCSV
+btagWeight = bTagWeightICHEP[0]
+#btagWeight = btagWeightCSV
+
+PUWeight: VHbb::puWeight_ichep(nTrueInt) 
+#PUWeight: VHbb::puWeight_ichep(nPVs)
+
+# =================
+
+weightF: <!Weights|PUWeight!>*<!Weights|btagWeight!>*<!Weights|weightF_SF!>*DY_specialWeight
+
+weightF_bdt: sign(genWeight)*<!Weights|PUWeight!>*<!Weights|btagWeight!>*<!Weights|weightF_SF!>*DY_specialWeight
+
+
+
+#weightF_sys_UP:   puWeight*bTagWeightCSV*VHbb::ptWeightEWK_Zll(nGenVbosons[0], GenVbosons_pt[0], VtypeSim, nGenTop, nGenHiggsBoson)*DY_specialWeight*<!Weights|weightF_SF!>
+#weightF_sys_DOWN: puWeight*bTagWeightCSV*VHbb::ptWeightEWK_Zll(nGenVbosons[0], GenVbosons_pt[0], VtypeSim, nGenTop, nGenHiggsBoson)*DY_specialWeight*<!Weights|weightF_SF!>
+    
+#weightF: (PUweight*weightTrig2012*lheWeight*weightSignalQCD*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt)*VHbb::mueEff(Vtype,vLepton_eta[0],vLepton_eta[1],vLepton_pt[0],vLepton_pt[1]))
+
+#weightF_sys_UP: (PUweightP*weightTrig2012*lheWeight*weightSignalQCD*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt)*VHbb::mueEff(Vtype,vLepton_eta[0],vLepton_eta[1],vLepton_pt[0],vLepton_pt[1]))
+
+#weightF_sys_DOWN: (PUweightM*weightTrig2012*lheWeight*weightSignalQCD*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt)*VHbb::mueEff(Vtype,vLepton_eta[0],vLepton_eta[1],vLepton_pt[0],vLepton_pt[1]))
+
+#weightF_QCD_UP: (PUweight*weightTrig2012*lheWeight*weightSignalQCD*(1.+(1./weightSignalQCD-1.)*0.5)*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt)*VHbb::mueEff(Vtype,vLepton_eta[0],vLepton_eta[1],vLepton_pt[0],vLepton_pt[1]))
+
+#weightF_QCD_DOWN: (PUweight*weightTrig2012*lheWeight*weightSignalQCD*(1.-(1./weightSignalQCD-1.)*0.5)*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt)*VHbb::mueEff(Vtype,vLepton_eta[0],vLepton_eta[1],vLepton_pt[0],vLepton_pt[1]))
+
+

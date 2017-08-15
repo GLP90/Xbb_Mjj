@@ -1,0 +1,128 @@
+#-*-Perl-*-
+
+[TrainRegression]
+
+#weight_type: zll_genJet
+#weight_type: zll_quark
+#weight_type: ttbar_genJet
+#weight_type: ttbar_quark
+
+
+#name: _withMET_newSettings
+#name: _withMET_oldSettings
+name: 
+
+#regWeight: /afs/cern.ch/user/c/cvernier/public/forDavid-50t-13d-1000k/TMVARegression_BDTG.weights.xml
+regWeight: /afs/cern.ch/user/c/cvernier/public/forDavid-1000k-depth20-trees300-v2/TMVARegression_BDTG.weights.xml
+
+# this needs to be the input sample name(from sample_config.cfg)
+#signals: ttbar
+signals: ZH125
+
+options: !H:!V:NTrees=800::BoostType=Grad:Shrinkage=0.1:MaxDepth=3
+#:nCuts=10000
+
+
+# When performing independent regression on each H jet, use these
+#regWeight_0: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet0.weights.xml
+#regWeight_1: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet1.weights.xml
+
+   
+cut: abs(Jet_eta[hJidx[0]]) < 2.4 & abs(Jet_eta[hJidx[1]]) < 2.4 & abs(Jet_hadronFlavour[hJidx[0]])==5 & abs(Jet_hadronFlavour[hJidx[1]])==5 & Jet_pt[hJidx[0]] > 20 & Jet_pt[hJidx[1]] > 20
+
+
+vars: Jet_pt 
+    nPVs
+    Jet_eta
+    Jet_mt
+    Jet_leadTrackPt
+    Jet_leptonPtRel
+    Jet_leptonPt
+    Jet_leptonDeltaR
+    Jet_neHEF
+    Jet_neEmEF
+    Jet_vtxPt
+    Jet_vtxMass
+    Jet_vtx3dL
+    Jet_vtxNtrk
+    Jet_vtx3deL
+    #met_pt
+
+
+# Jet_met_dPhi
+#   Jet_chEmEF
+#    Jet_chHEF
+ 
+    
+regVars:['Jet_pt',
+	 'nPVs',
+	 'Jet_eta',
+	 'Jet_mt',
+	 'Jet_leadTrackPt',
+	 'Jet_leptonPtRel',
+	 'Jet_leptonPt',
+	 'Jet_leptonDeltaR',
+	 'Jet_neHEF',
+	 'Jet_neEmEF',
+	 'Jet_vtxPt',
+	 'Jet_vtxMass',
+	 'Jet_vtx3dL',
+	 'Jet_vtxNtrk',
+	 'Jet_vtx3deL',
+	 #'met_pt'
+	 ]
+
+
+#'Jet_mt',
+#'Jet_vtx3dL',
+#'Jet_vtxNtrk',
+#'Jet_vtx3deL'
+#	 'met_pt',
+#	 'Jet_met_dPhi'
+# 'Jet_chEmEF',
+#	 'Jet_chHEF',
+	
+
+
+regDict: {'Jet_pt': 'Jet_pt[hJCidx[0]]',
+	  'nPVs': 'nPVs',
+	  'Jet_eta': 'Jet_eta[hJCidx[0]]',
+	  'Jet_mt': 'Jet_mt[0]',
+	  'Jet_leadTrackPt': 'Jet_leadTrackPt[hJCidx[0]]',
+	  'Jet_leptonPtRel': 'Jet_leptonPtRel[hJCidx[0]]',
+	  'Jet_leptonPt': 'Jet_leptonPt[hJCidx[0]]',
+	  'Jet_leptonDeltaR': 'Jet_leptonDeltaR[hJCidx[0]]',
+	  'Jet_neHEF': 'Jet_neHEF[hJCidx[0]]',
+	  'Jet_neEmEF': 'Jet_neEmEF[hJCidx[0]]',
+	  'Jet_vtxPt': 'Jet_vtxPt[hJCidx[0]]',
+	  'Jet_vtxMass': 'Jet_vtxMass[hJCidx[0]]',
+	  'Jet_vtx3dL': 'Jet_vtx3DVal[hJCidx[0]]',
+	  'Jet_vtxNtrk': 'Jet_vtxNtracks[hJCidx[0]]',
+	  'Jet_vtx3deL': 'Jet_vtx3DSig[hJCidx[0]]',
+	  #'met_pt' : 'met_pt'
+	  }
+
+#'Jet_mt': 'Jet_mt[hJCidx[0]]',
+#'Jet_vtx3dL': 'Jet_vtx3dL[hJCidx[0]]',
+#'Jet_vtxNtrk': 'Jet_vtxNtrk[hJCidx[0]]',
+#'Jet_vtx3deL': 'Jet_vtx3deL[hJCidx[0]]'}
+#	  'met_pt' : 'met_pt',    
+#	  'Jet_met_dPhi': 'Jet_met_dPhi[hJCidx[0]]'
+# 'Jet_chHEF': 'Jet_chHEF[hJCidx[0]]',
+#          'Jet_chEmEF': 'Jet_chEmEF[hJCidx[0]]',
+	 
+
+
+# =====================================
+
+trainCut : evt%1==0 
+testCut  : evt%6!=0 & evt%5==0 
+weight   : 1
+#weight   : PUweight
+target   : GenBQuarkFromH_pt
+
+#  LocalWords:  et xml
+
+
+# New custome variables to be added during the write_regression_systematic step
+

@@ -1,0 +1,1581 @@
+#-*-Perl-*-
+
+# ----------------------------------------------------
+# LIMIT
+# config to configure datacard and workspace writing
+# ----------------------------------------------------
+
+[Plot_general]
+
+addOverFlow: True
+
+[LimitGeneral]
+
+# --------------------------------------
+# Binning:
+# --------------------------------------
+BDTrange: 15,-1,1
+BDToutname: v1
+
+CRrange: 20,0.,1.
+
+# control region variables examples
+METrange: MET.et,10,0,100
+btagrange:  csv,20,0,1
+
+# Rebinning procedure for the BDT. Only suitable for BDT
+# For Mjj or for control region put False.
+rebin_active: True
+#Mjj-> False
+
+# --------------------------------------
+# Systematics
+# --------------------------------------
+
+
+sys_BDT: [
+    #'JER',
+    #'JEC',
+    'JER_low',
+    'JEC_low',
+    'JER_high',
+    'JEC_high',
+    'JER_central',
+    'JEC_central',
+    'JER_forward',
+    'JEC_forward',
+    'btagWeightCSV_lf_low',
+    'btagWeightCSV_lf_high',
+    'btagWeightCSV_lf_forward',
+    'btagWeightCSV_lf_central',
+    'btagWeightCSV_hf_low',
+    'btagWeightCSV_hf_high',
+    'btagWeightCSV_hf_central',
+    'btagWeightCSV_hf_forward',
+    'btagWeightCSV_lfstats1_low',
+    'btagWeightCSV_lfstats1_high',
+    'btagWeightCSV_lfstats1_central',
+    'btagWeightCSV_lfstats1_forward',
+    'btagWeightCSV_lfstats2_low',
+    'btagWeightCSV_lfstats2_high',
+    'btagWeightCSV_lfstats2_central',
+    'btagWeightCSV_lfstats2_forward',
+    'btagWeightCSV_hfstats1_low',
+    'btagWeightCSV_hfstats1_high',
+    'btagWeightCSV_hfstats1_central',
+    'btagWeightCSV_hfstats1_forward',
+    'btagWeightCSV_hfstats2_low',
+    'btagWeightCSV_hfstats2_high',
+    'btagWeightCSV_hfstats2_central',
+    'btagWeightCSV_hfstats2_forward',
+    'btagWeightCSV_cferr1_low',
+    'btagWeightCSV_cferr1_high',
+    'btagWeightCSV_cferr1_central',
+    'btagWeightCSV_cferr1_forward',
+    'btagWeightCSV_cferr2_low',
+    'btagWeightCSV_cferr2_high',
+    'btagWeightCSV_cferr2_central',
+    'btagWeightCSV_cferr2_forward']
+    
+#sys_BDT: ['JER_low',
+#          'JEC_low',
+#          'JER_high',
+#          'JEC_high',
+ #         'JER_central',
+  #        'JEC_central',
+   #       'JER_forward',
+    #      'JEC_forward',
+ #         'btagWeightCSV_lf',
+  #        'btagWeightCSV_hf',
+   #       'btagWeightCSV_lfstats1',
+    #      'btagWeightCSV_lfstats2',
+     #     'btagWeightCSV_hfstats1',
+  #        'btagWeightCSV_hfstats2',
+   #       'btagWeightCSV_cferr1',
+    #      'btagWeightCSV_cferr2']
+
+
+
+
+sys_Mjj: []
+
+# systematics for the control region fit
+sys_cr: ['JER',
+	 'JEC',
+	 'btagWeightCSV_lf',
+	 'btagWeightCSV_hf',
+	 'btagWeightCSV_lfstats1',
+	 'btagWeightCSV_lfstats2',
+	 'btagWeightCSV_hfstats1',
+	 'btagWeightCSV_hfstats2',
+	 'btagWeightCSV_cferr1',
+	 'btagWeightCSV_cferr2']
+    
+
+# configuration of systematics effects and behaviour
+sys_factor: {'JER': 1.0,
+	     'JEC': 1.0,
+	     'JER_low':1.0,
+	     'JEC_low':1.0,
+	     'JER_high':1.0,
+	     'JEC_high':1.0,
+	     'JER_central':1.0,
+	     'JEC_central':1.0,
+	     'JER_forward':1.0,
+	     'JEC_forward':1.0,
+	     'btagWeightCSV_hf':1.0,
+	     'btagWeightCSV_lf':1.0,
+             'btagWeightCSV_lfstats1':1.0,
+             'btagWeightCSV_lfstats2':1.0,
+             'btagWeightCSV_hfstats1':1.0,
+             'btagWeightCSV_hfstats2':1.0,
+             'btagWeightCSV_cferr1':1.0,
+             'btagWeightCSV_cferr2':1.0,
+	     'btagWeightCSV_lf_low':1.0,
+	     'btagWeightCSV_lf_high':1.0,
+	     'btagWeightCSV_lf_forward':1.0,
+	     'btagWeightCSV_lf_central':1.0,
+	     'btagWeightCSV_hf_low':1.0,
+	     'btagWeightCSV_hf_high':1.0,
+	     'btagWeightCSV_hf_central':1.0,
+	     'btagWeightCSV_hf_forward':1.0,
+	     'btagWeightCSV_lfstats1_low':1.0,
+	     'btagWeightCSV_lfstats1_high':1.0,
+	     'btagWeightCSV_lfstats1_central':1.0,
+	     'btagWeightCSV_lfstats1_forward':1.0,
+	     'btagWeightCSV_lfstats2_low':1.0,
+	     'btagWeightCSV_lfstats2_high':1.0,
+	     'btagWeightCSV_lfstats2_central':1.0,
+	     'btagWeightCSV_lfstats2_forward':1.0,
+	     'btagWeightCSV_hfstats1_low':1.0,
+	     'btagWeightCSV_hfstats1_high':1.0,
+	     'btagWeightCSV_hfstats1_central':1.0,
+	     'btagWeightCSV_hfstats1_forward':1.0,
+	     'btagWeightCSV_hfstats2_low':1.0,
+	     'btagWeightCSV_hfstats2_high':1.0,
+	     'btagWeightCSV_hfstats2_central':1.0,
+	     'btagWeightCSV_hfstats2_forward':1.0,
+	     'btagWeightCSV_cferr1_low':1.0,
+	     'btagWeightCSV_cferr1_high':1.0,
+	     'btagWeightCSV_cferr1_central':1.0,
+	     'btagWeightCSV_cferr1_forward':1.0,
+	     'btagWeightCSV_cferr2_low':1.0,
+	     'btagWeightCSV_cferr2_high':1.0,
+	     'btagWeightCSV_cferr2_central':1.0,
+	     'btagWeightCSV_cferr2_forward':1.0}
+
+
+sys_affecting: {'JER':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JEC':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JER_low':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+                'JEC_low':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JER_high':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JEC_high':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JER_central':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JEC_central':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JER_forward':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'JEC_forward':['ZH', 'ggZH', 'DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats1':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats2':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats1':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+                'btagWeightCSV_hfstats2':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hf':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lf':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr1':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr2':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lf_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lf_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lf_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lf_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hf_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hf_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hf_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hf_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats1_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats1_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats1_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats1_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats2_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats2_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats2_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_lfstats2_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats1_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats1_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats1_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats1_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats2_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats2_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats2_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_hfstats2_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr1_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr1_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr1_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr1_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr2_low':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr2_high':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr2_central':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb'],
+		'btagWeightCSV_cferr2_forward':['ZH', 'ggZH','DYlight','DY2b','DY1b','VVlight','TT','ST','ZH125','VVb']}
+
+
+
+
+# naming of systematics
+systematicsnaming: {'JER':'CMS_vhbb_res_j_13TeV',
+		    'JEC':'CMS_vhbb_scale_j_13TeV',
+		    'stats':'CMS_vhbb_stats',
+		    'model':'CMS_vhbb_model',
+		    'btagWeightCSV_hf': 'CMS_vhbb_btagWeightHF',
+		    'btagWeightCSV_lf': 'CMS_vhbb_btagWeightLF',
+		    'btagWeightCSV_lfstats1': 'CMS_vhbb_btagWeightLFStats1',
+		    'btagWeightCSV_lfstats2': 'CMS_vhbb_btagWeightLFStats2',
+		    'btagWeightCSV_hfstats1': 'CMS_vhbb_btagWeightHFStats1',
+		    'btagWeightCSV_hfstats2': 'CMS_vhbb_btagWeightHFStats2',
+		    'btagWeightCSV_cferr1': 'CMS_vhbb_btagWeightcErr1',
+		    'btagWeightCSV_cferr2': 'CMS_vhbb_btagWeightcErr2'}
+
+
+systematicsnaming_low: {'JER':'CMS_vhbb_res_j_13TeV_low',
+			'JEC':'CMS_vhbb_scale_j_13TeV_low',
+			'JER_low':'CMS_vhbb_res_j_13TeV_low_low',
+                        'JEC_low':'CMS_vhbb_scale_j_13TeV_low_low',
+			'JER_high':'CMS_vhbb_res_j_13TeV_high_low',
+			'JEC_high':'CMS_vhbb_scale_j_13TeV_high_low',
+			'JER_central':'CMS_vhbb_res_j_13TeV_central_low',
+			'JEC_central':'CMS_vhbb_scale_j_13TeV_central_low',
+			'JER_forward':'CMS_vhbb_res_j_13TeV_forward_low',
+			'JEC_forward':'CMS_vhbb_scale_j_13TeV_forward_low',
+			'stats':'CMS_vhbb_stats',
+			'model':'CMS_vhbb_model',
+			'btagWeightCSV_hf': 'CMS_vhbb_btagWeightHF_low',
+			'btagWeightCSV_lf': 'CMS_vhbb_btagWeightLF_low',
+			'btagWeightCSV_lfstats1': 'CMS_vhbb_btagWeightLFStats1_low',
+			'btagWeightCSV_lfstats2': 'CMS_vhbb_btagWeightLFStats2_low',
+			'btagWeightCSV_hfstats1': 'CMS_vhbb_btagWeightHFStats1_low',
+			'btagWeightCSV_hfstats2': 'CMS_vhbb_btagWeightHFStats2_low',
+			'btagWeightCSV_cferr1': 'CMS_vhbb_btagWeightcErr1_low',
+			'btagWeightCSV_cferr2': 'CMS_vhbb_btagWeightcErr2_low',
+			'btagWeightCSV_lf_low':'CMS_vhbb_btagWeightLF_low_low',
+			'btagWeightCSV_lf_high':'CMS_vhbb_btagWeightLF_high_low',
+			'btagWeightCSV_lf_forward':'CMS_vhbb_btagWeightLF_forward_low',
+			'btagWeightCSV_lf_central':'CMS_vhbb_btagWeightLF_central_low',
+			'btagWeightCSV_hf_low': 'CMS_vhbb_btagWeightHF_low_low',
+			'btagWeightCSV_hf_high': 'CMS_vhbb_btagWeightHF_high_low',
+			'btagWeightCSV_hf_central': 'CMS_vhbb_btagWeightHF_central_low',
+			'btagWeightCSV_hf_forward': 'CMS_vhbb_btagWeightHF_forward_low',
+			'btagWeightCSV_lfstats1_low': 'CMS_vhbb_btagWeightLFStats1_low_low',
+			'btagWeightCSV_lfstats1_high':'CMS_vhbb_btagWeightLFStats1_high_low',
+			'btagWeightCSV_lfstats1_central':'CMS_vhbb_btagWeightLFStats1_central_low',
+			'btagWeightCSV_lfstats1_forward':'CMS_vhbb_btagWeightLFStats1_forward_low',
+			'btagWeightCSV_lfstats2_low':'CMS_vhbb_btagWeightLFStats2_low_low',
+			'btagWeightCSV_lfstats2_high':'CMS_vhbb_btagWeightLFStats2_high_low',
+			'btagWeightCSV_lfstats2_central':'CMS_vhbb_btagWeightLFStats2_central_low',
+			'btagWeightCSV_lfstats2_forward':'CMS_vhbb_btagWeightLFStats2_forward_low',
+			'btagWeightCSV_hfstats1_low': 'CMS_vhbb_btagWeightHFStats1_low_low',
+			'btagWeightCSV_hfstats1_high': 'CMS_vhbb_btagWeightHFStats1_high_low',
+			'btagWeightCSV_hfstats1_central': 'CMS_vhbb_btagWeightHFStats1_central_low',
+			'btagWeightCSV_hfstats1_forward': 'CMS_vhbb_btagWeightHFStats1_forward_low',
+			'btagWeightCSV_hfstats2_low': 'CMS_vhbb_btagWeightHFStats2_low_low',
+			'btagWeightCSV_hfstats2_high': 'CMS_vhbb_btagWeightHFStats2_high_low',
+			'btagWeightCSV_hfstats2_central': 'CMS_vhbb_btagWeightHFStats2_central_low',
+			'btagWeightCSV_hfstats2_forward': 'CMS_vhbb_btagWeightHFStats2_forward_low',
+			'btagWeightCSV_cferr1_low': 'CMS_vhbb_btagWeightcErr1_low_low',
+			'btagWeightCSV_cferr1_high': 'CMS_vhbb_btagWeightcErr1_high_low',
+			'btagWeightCSV_cferr1_central': 'CMS_vhbb_btagWeightcErr1_foward_low',
+			'btagWeightCSV_cferr1_forward': 'CMS_vhbb_btagWeightcErr1_central_low',
+			'btagWeightCSV_cferr2_low': 'CMS_vhbb_btagWeightcErr2_low_low',
+			'btagWeightCSV_cferr2_high': 'CMS_vhbb_btagWeightcErr2_high_low',		       
+			'btagWeightCSV_cferr2_central': 'CMS_vhbb_btagWeightcErr2_central_low',
+			'btagWeightCSV_cferr2_forward': 'CMS_vhbb_btagWeightcErr2_forward_low'}
+
+systematicsnaming_med: {'JER':'CMS_vhbb_res_j_13TeV_med',
+			'JEC':'CMS_vhbb_scale_j_13TeV_med',
+			'btagWeightCSV_hf': 'CMS_vhbb_btagWeightHF_med',
+			'btagWeightCSV_lf': 'CMS_vhbb_btagWeightLF_med',
+			'btagWeightCSV_lfstats1': 'CMS_vhbb_btagWeightLFStats1_med',
+			'btagWeightCSV_lfstats2': 'CMS_vhbb_btagWeightLFStats2_med',
+			'btagWeightCSV_hfstats1': 'CMS_vhbb_btagWeightHFStats1_med',
+			'btagWeightCSV_hfstats2': 'CMS_vhbb_btagWeightHFStats2_med',
+			'btagWeightCSV_cferr1': 'CMS_vhbb_btagWeightcErr1_med',
+			'btagWeightCSV_cferr2': 'CMS_vhbb_btagWeightcErr2_med'}
+
+systematicsnaming_high: {'JER':'CMS_vhbb_res_j_13TeV_high',
+			 'JEC':'CMS_vhbb_scale_j_13TeV_high',
+			 'JER_low':'CMS_vhbb_res_j_13TeV_low_high',
+			 'JEC_low':'CMS_vhbb_scale_j_13TeV_low_high',
+			 'JER_high':'CMS_vhbb_res_j_13TeV_high_high',
+			 'JEC_high':'CMS_vhbb_scale_j_13TeV_high_high',
+			 'JER_central':'CMS_vhbb_res_j_13TeV_central_high',
+			 'JEC_central':'CMS_vhbb_scale_j_13TeV_central_high',
+			 'JER_forward':'CMS_vhbb_res_j_13TeV_forward_high',
+			 'JEC_forward':'CMS_vhbb_scale_j_13TeV_forward_high',
+			 'stats':'CMS_vhbb_stats',
+			 'model':'CMS_vhbb_model',
+			 'btagWeightCSV_hf': 'CMS_vhbb_btagWeightHF_high',
+			 'btagWeightCSV_lf': 'CMS_vhbb_btagWeightLF_high',
+			 'btagWeightCSV_lfstats1': 'CMS_vhbb_btagWeightLFStats1_high',
+			 'btagWeightCSV_lfstats2': 'CMS_vhbb_btagWeightLFStats2_high',
+			 'btagWeightCSV_hfstats1': 'CMS_vhbb_btagWeightHFStats1_high',
+			 'btagWeightCSV_hfstats2': 'CMS_vhbb_btagWeightHFStats2_high',
+			 'btagWeightCSV_cferr1': 'CMS_vhbb_btagWeightcErr1_high',
+			 'btagWeightCSV_cferr2': 'CMS_vhbb_btagWeightcErr2_high',
+			 'btagWeightCSV_lf_low':'CMS_vhbb_btagWeightLF_low_high',
+			 'btagWeightCSV_lf_high':'CMS_vhbb_btagWeightLF_high_high',
+			 'btagWeightCSV_lf_forward':'CMS_vhbb_btagWeightLF_forward_high',
+			 'btagWeightCSV_lf_central':'CMS_vhbb_btagWeightLF_central_high',
+			 'btagWeightCSV_hf_low': 'CMS_vhbb_btagWeightHF_low_high',
+			 'btagWeightCSV_hf_high': 'CMS_vhbb_btagWeightHF_high_high',
+			 'btagWeightCSV_hf_central': 'CMS_vhbb_btagWeightHF_central_high',
+			 'btagWeightCSV_hf_forward': 'CMS_vhbb_btagWeightHF_forward_high',
+			 'btagWeightCSV_lfstats1_low': 'CMS_vhbb_btagWeightLFStats1_low_high',
+			 'btagWeightCSV_lfstats1_high':'CMS_vhbb_btagWeightLFStats1_high_high',
+			 'btagWeightCSV_lfstats1_central':'CMS_vhbb_btagWeightLFStats1_central_high',
+			 'btagWeightCSV_lfstats1_forward':'CMS_vhbb_btagWeightLFStats1_forward_high',
+			 'btagWeightCSV_lfstats2_low':'CMS_vhbb_btagWeightLFStats2_low_high',
+			 'btagWeightCSV_lfstats2_high':'CMS_vhbb_btagWeightLFStats2_high_high',
+			 'btagWeightCSV_lfstats2_central':'CMS_vhbb_btagWeightLFStats2_central_high',
+			 'btagWeightCSV_lfstats2_forward':'CMS_vhbb_btagWeightLFStats2_forward_high',
+			 'btagWeightCSV_hfstats1_low': 'CMS_vhbb_btagWeightHFStats1_low_high',
+			 'btagWeightCSV_hfstats1_high': 'CMS_vhbb_btagWeightHFStats1_high_high',
+			 'btagWeightCSV_hfstats1_central': 'CMS_vhbb_btagWeightHFStats1_central_high',
+			 'btagWeightCSV_hfstats1_forward': 'CMS_vhbb_btagWeightHFStats1_forward_high',
+			 'btagWeightCSV_hfstats2_low': 'CMS_vhbb_btagWeightHFStats2_low_high',
+			 'btagWeightCSV_hfstats2_high': 'CMS_vhbb_btagWeightHFStats2_high_high',
+			 'btagWeightCSV_hfstats2_central': 'CMS_vhbb_btagWeightHFStats2_central_high',
+			 'btagWeightCSV_hfstats2_forward': 'CMS_vhbb_btagWeightHFStats2_forward_high',
+			 'btagWeightCSV_cferr1_low': 'CMS_vhbb_btagWeightcErr1_low_high',
+			 'btagWeightCSV_cferr1_high': 'CMS_vhbb_btagWeightcErr1_high_high',
+			 'btagWeightCSV_cferr1_central': 'CMS_vhbb_btagWeightcErr1_foward_high',
+			 'btagWeightCSV_cferr1_forward': 'CMS_vhbb_btagWeightcErr1_central_high',
+			 'btagWeightCSV_cferr2_low': 'CMS_vhbb_btagWeightcErr2_low_high',
+			 'btagWeightCSV_cferr2_high': 'CMS_vhbb_btagWeightcErr2_high_high',		       
+			 'btagWeightCSV_cferr2_central': 'CMS_vhbb_btagWeightcErr2_central_high',
+			 'btagWeightCSV_cferr2_forward': 'CMS_vhbb_btagWeightcErr2_forward_high'}
+
+
+
+
+# Add a different Cut (syntax: 'oldVar>newVar?' -> '?' will then automatically be replaced with 'Up'/'Down' for the variations)
+sys_cut_suffix: {'JER':'nominal',
+		 'JEC':'nominal',
+		 'JER_low':'nominal',
+		 'JEC_low':'nominal',
+		 'JER_high':'nominal',
+		 'JEC_high':'nominal',
+		 'JER_central':'nominal',
+		 'JEC_central':'nominal',
+		 'JER_forward':'nominal',
+		 'JEC_forward':'nominal',
+		 'btagWeightCSV_hf':'nominal', 
+		 'btagWeightCSV_lf':'nominal', 
+		 'btagWeightCSV_lfstats1':'nominal', 
+		 'btagWeightCSV_lfstats2':'nominal', 
+		 'btagWeightCSV_hfstats1':'nominal', 
+		 'btagWeightCSV_hfstats2':'nominal', 
+		 'btagWeightCSV_cferr1':'nominal', 
+		 'btagWeightCSV_cferr2':'nominal'}
+
+
+sys_cut_include = ['ZH', 'ggZH', 'VVb','TT','DYlight','DY1b','DY2b','ST','VVlight']
+
+
+# UEPS
+#weightF_sys: ['weightF_sys']
+weightF_sys: ['']
+
+# Example of sample systematic, in this case the ZZ sample is replaced by WZ
+#addSample_sys = {'ZZ-light':'AltZZ-light','ZZ-bb':'AltZZ-bb','WZ':'AltWZ'}
+#addBlindingCut = (H.mass < 90. | H.mass > 145.)
+
+#change_shapes: {'TT':'CMS_vhbb_fake_b_8TeV_Down*0.95','TT':'CMS_vhbb_fake_b_8TeV_Up*1.03','TT':'CMS_vhbb_eff_b_Down*0.98','TT':'CMS_vhbb_eff_b_Up*1.03','DY1b':'CMS_vhbb_fake_b_8TeV_Down*0.95','DY1b':'CMS_vhbb_fake_b_8TeV_Up*1.03','DY1b':'CMS_vhbb_eff_b_Down*0.98','DY1b':'CMS_vhbb_eff_b_Up*1.03','DY2b':'CMS_vhbb_fake_b_8TeV_Down*0.95','DY2b':'CMS_vhbb_fake_b_8TeV_Up*1.03','DY2b':'CMS_vhbb_eff_b_Down*0.98','DY2b':'CMS_vhbb_eff_b_Up*1.03','DYlight':'CMS_vhbb_fake_b_8TeV_Down*0.95','DYlight':'CMS_vhbb_fake_b_8TeV_Up*1.03'}
+
+
+# --------------------------------------
+# Options
+# --------------------------------------
+# bin-by-bin statistics (sqrtN doesn't apply)
+binstat: True
+
+# rescale stat shapes by sqrtN
+rescaleSqrtN: False
+
+# no stat shapes at all:
+ignore_stats: False
+#ignore_stats: True
+
+# inject signal, e.g. ZH125 (working?)
+signal_inject: None
+
+# add signal als BKG, e.g. ZH125 (working?)
+add_signal_as_bkg: None
+  
+# blind Data
+blind: False
+
+# toy Data
+toy: False
+
+# --------------------------------------
+# Samples
+# --------------------------------------
+
+# Datacard samples setup (1st Signal, afterwards BKG)
+#setup: ['ZH', 'ggZH', 'DYlight','DY1b', 'DY2b', 'TT', 'VVlight', 'VVb', 'ST']
+setup: ['VVb', 'VVlight', 'ZH', 'ggZH', 'DYlight','DY1b', 'DY2b', 'TT', 'ST']
+
+# Lists from general config
+BKG: [<!Samples|allBKG!>]
+
+VV_BKG: [<!Samples|VV_BKG!>]
+
+#Group: <!Samples|Group!>
+Group: {'ZH110':'ZH','ZH115':'ZH','ZH120':'ZH','ZH125':'ZH','ZH130':'ZH','ZH135':'ZH','ZH140':'ZH','ZH145':'ZH','ZH150':'ZH',\
+	'ggZH125': 'ggZH', \
+	 'Zudsg':'DYlight', 'ZudsgHT100to200':'DYlight', 'ZudsgHT200to400':'DYlight', 'ZudsgHT400to600':'DYlight', 'ZudsgHT600toInf':'DYlight', 'Zudsg_Bjets':'DYlight', \
+        'Zudsg_BgenFilter':'DYlight', 'Zudsg5to50':'DYlight', 'Zudsg5to50_100to200':'DYlight', 'Zudsg5to50_200to400':'DYlight','Zudsg5to50_400to600':'DYlight',\
+	'Zudsg5to50_600toInf':'DYlight',
+	#'Zcc':'DYc', 'ZccHT100to200':'DYc', 'ZccHT200to400':'DYc', 'ZccHT400to600':'DYc', 'ZccHT600toInf':'DYc', \
+        'Zcc':'DYlight', 'ZccHT100to200':'DYlight', 'ZccHT200to400':'DYlight', 'ZccHT400to600':'DYlight', 'ZccHT600toInf':'DYlight', 'Zcc_Bjets':'DYlight',\
+        'Zcc_BgenFilter':'DYlight', 'Zcc5to50':'DYlight', 'Zcc5to50_100to200':'DYlight', 'Zcc5to50_200to400':'DYlight', 'Zcc5to50_400to600':'DYlight',
+        'Zcc5to50_600toInf':'DYlight',\
+        'Zudsg_nlo':'DYlight', 'Zcc_nlo':'DYlight', 'ZudsgVpt100to250':'DYlight', 'ZccVpt100to250':'DYlight', 'ZudsgVpt250to400':'DYlight', 'ZccVpt250to400':'DYlight', \
+	'ZudsgVpt400to650':'DYlight', 'ZccVpt400to650':'DYlight','ZudsgVpt650toInf':'DYlight', 'ZccVpt650toInf':'DYlight',
+        'Z1b':'DY1b','Z1bHT100to200':'DY1b', 'Z1bHT200to400':'DY1b', 'Z1bHT400to600':'DY1b', 'Z1bHT600toInf':'DY1b', 'Z1b_Bjets':'DY1b', \
+        'Z1b_BgenFilter':'DY1b', 'Z1b5to50':'DY1b', 'Z1b5to50_100to200':'DY1b', 'Z1b5to50_200to400':'DY1b', 'Z1b5to50_400to600':'DY1b', 'Z1b5to50_600toInf':'DY1b',\
+	'Z1b_nlo':'DY1b', 'Z1bVpt100to250':'DY1b', 'Z1bVpt250to400':'DY1b','Z1bVpt400to650':'DY1b','Z1bVpt650toInf':'DY1b',
+        'Z2b':'DY2b','Z2bHT100to200':'DY2b','Z2bHT200to400':'DY2b','Z2bHT400to600':'DY2b','Z2bHT600toInf':'DY2b', 'Z2b_Bjets':'DY2b', \
+        'Z2b_BgenFilter':'DY2b', 'Z2b5to50':'DY2b', 'Z2b5to50_100to200':'DY2b', 'Z2b5to50_200to400':'DY2b', 'Z2b5to50_400to600':'DY2b', 'Z2b5to50_600toInf':'DY2b',\
+	'Z2b_nlo':'DY2b', 'Z2bVpt100to250':'DY2b', 'Z2bVpt250to400':'DY2b','Z2bVpt400to650':'DY2b','Z2bVpt650toInf':'DY2b',
+        'ZZlight':'VVlight', 'WZlight':'VVlight', 'ZZb':'VVb', 'WZb':'VVb', 'ZZlight_2L2Q':'VVlight', 'ZZb_2L2Q':'VVb',\
+        'ttbar':'TT','TT1':'TT','TT2':'TT','TT_FullLept':'TT','TT_SemiLept':'TT',\
+        'ST_s':'ST','ST_t':'ST','ST_tW_antitop':'ST','ST_tW_top':'ST', \
+        'Zee':'Data','Zuu':'Data',\
+        #'Zll':'ZH', 'Zll_regr':'ZH',\
+        'DY_sync':'DYlight',\
+        'gJets':'gJets', 'gJets_100to200':'gJets', 'gJets_200to400':'gJets', 'gJets_400to600':'gJets', 'gJets_600toInf':'gJets',\
+        'qcd':'qcd', 'qcd_100to200':'qcd', 'qcd_250to500':'qcd', 'qcd_500to1000':'qcd', 'qcd_1000toInf':'qcd',
+        'AltZZlight':'VVlight','AltZZb':'VVb','AltWZlight':'VVlight','AltWZb':'VVb'}
+
+# --------------------------------------
+# Naming
+# --------------------------------------
+
+# naming of processes
+Dict: {'ZH':'ZH','ggZH':'ggZH', 'DYlight':'Zj0b','DY1b':'Zj1b','DY2b':'Zj2b','TT':'TT','ST':'s_Top','VVb':'VVb','VVlight':'VVlight','Data':'data_obs','ZH125':'ZH125', 'qcd':'QCD',
+       'VVHF':'VVHF', 'VVLF':'VVLF', 'WH':'WH', 'Wj0b':'Wj0b', 'Wj1b':'Wj1b', 'Wj2b':'Wj2b'}
+#Dict: {'ZH':'ZH','ggZH':'ggZH', 'DYlight':'Zj0b','DY1b':'Zj1b','DY2b':'Zj2b','TT':'TT','ST':'s_Top','VVb':'VVHF','VVlight':'VVLF','Data':'data_obs','ZH125':'ZH125', 'qcd':'QCD'}
+
+
+# --------------------------------------
+# Datacards specif setup
+# --------------------------------------
+[Datacard]
+
+InUse: ['lumi_13TeV', 'pdf_qqbar', 'pdf_gg', 'QCDscale_VH', 'QCDscale_ttbar','QCDscale_VV', 'QCDscale_VH_ggZHacceptance_lowPt', 'QCDscale_VH_ggZHacceptance_highPt', 'CMS_vhbb_boost_EWK_13TeV', 'CMS_vhbb_boost_QCD_13TeV','CMS_vhbb_ST','CMS_vhbb_VV', 'CMS_vhbb_eff_e_13TeV', 'CMS_vhbb_eff_m_13TeV']
+#'CMS_vhbb_eff_e_13TeV', 'CMS_vhbb_eff_m_13TeV']
+
+InUse_HighPt: ['lumi_13TeV', 'pdf_qqbar', 'pdf_gg', 'QCDscale_VH', 'QCDscale_ttbar','QCDscale_VV', 'QCDscale_VH_ggZHacceptance_highPt', 'CMS_vhbb_boost_EWK_13TeV', 'CMS_vhbb_boost_QCD_13TeV','CMS_vhbb_ST','CMS_vhbb_VV', 'CMS_vhbb_eff_e_13TeV', 'CMS_vhbb_eff_m_13TeV']
+
+InUse_LowPt: ['lumi_13TeV', 'pdf_qqbar', 'pdf_gg', 'QCDscale_VH', 'QCDscale_ttbar','QCDscale_VV', 'QCDscale_VH_ggZHacceptance_lowPt', 'CMS_vhbb_boost_EWK_13TeV', 'CMS_vhbb_boost_QCD_13TeV','CMS_vhbb_ST','CMS_vhbb_VV', 'CMS_vhbb_eff_e_13TeV', 'CMS_vhbb_eff_m_13TeV']
+
+
+InUse_cr: <!Datacard|InUse!>
+
+#InUse_cr: []
+    
+lumi_13TeV = {'type':'lnN', 'ZH':1.06, 'ggZH':1.06,'ST':1.06,'VV':1.06,'VVlight':1.06,'VVb':1.06, 'DYlight':1.06,'DY1b':1.06,'DY2b':1.06,'TT':1.06}
+pdf_qqbar = {'type':'lnN', 'ZH':1.023, 'VVlight':1.01,'VVb':1.01, 'DYlight':1.01,'DY1b':1.01,'DY2b':1.01}
+pdf_gg = {'type':'lnN', 'ggZH':1.18, 'ST':1.01,'QCD':1.01}
+QCDscale_VH = {'type':'lnN', 'ZH':1.04, 'ggZH':1.04}
+QCDscale_ttbar = {'type':'lnN', 'TT':1.06}
+QCDscale_VV = {'type':'lnN', 'VVlight':1.04, 'VVb':1.04}
+QCDscale_QCD = {'type':'lnN', 'QCD':1.30}
+QCDscale_VH_ggZHacceptance_highPt = {'type':'lnN', 'ggZH':1.32}
+QCDscale_VH_ggZHacceptance_lowPt  = {'type':'lnN', 'ggZH':1.32}
+CMS_vhbb_boost_EWK_13TeV = {'type':'lnN', 'ZH':1.02,'ZH125':1.02}
+CMS_vhbb_boost_QCD_13TeV = {'type':'lnN', 'ZH':1.05,'ZH125':1.05}
+CMS_vhbb_ST = {'type':'lnN', 'ST':1.15}
+CMS_vhbb_VV = {'type':'lnN', 'VVlight':1.15, 'VVb':1.15}
+CMS_vhbb_ZjLF_ex = {'type':'lnN', 'DYlight':1.05}
+CMS_vhbb_ZjHF_ex = {'type':'lnN', 'DYb':1.05}
+CMS_vhbb_TT_ex = {'type':'lnN', 'TT':1.05}
+CMS_vhbb_eff_e_13TeV = {'type':'lnN', 'ZH':1.05,'ggZH':1.05, 'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05,'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05}
+CMS_vhbb_eff_m_13TeV = {'type':'lnN',  'ZH':1.05,'ggZH':1.05,'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05, 'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05}
+CMS_trigger_e = {'type':'lnN','ZH':1.02,'ZH125':1.02,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.02,'VVlight':1.02 ,'VVb':1.02}
+CMS_trigger_m = {'type':'lnN', 'ZH':1.01,'ZH125':1.01,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.01,'VVlight':1.01,'VVb':1.01 }
+
+
+# LOW
+lumi_13TeV_low = {'type':'lnN', 'ZH':1.06, 'ggZH':1.06,'ST':1.06,'VV':1.06,'VVlight':1.06,'VVb':1.06, 'DYlight':1.06,'DY1b':1.06,'DY2b':1.06,'TT':1.06}
+pdf_qqbar_low = {'type':'lnN', 'ZH':1.023, 'VVlight':1.01,'VVb':1.01, 'DYlight':1.01,'DY1b':1.01,'DY2b':1.01}
+pdf_gg_low = {'type':'lnN', 'ggZH':1.18, 'ST':1.01,'QCD':1.01}
+QCDscale_VH_low = {'type':'lnN', 'ZH':1.04, 'ggZH':1.04}
+QCDscale_ttbar_low = {'type':'lnN', 'TT':1.06}
+QCDscale_VV_low = {'type':'lnN', 'VVlight':1.04, 'VVb':1.04}
+QCDscale_QCD_low = {'type':'lnN', 'QCD':1.30}
+QCDscale_VH_ggZHacceptance_lowPt  = {'type':'lnN', 'ggZH':1.32}
+CMS_vhbb_boost_EWK_13TeV_low = {'type':'lnN', 'ZH':1.02,'ZH125':1.02}
+CMS_vhbb_boost_QCD_13TeV_low = {'type':'lnN', 'ZH':1.05,'ZH125':1.05}
+CMS_vhbb_ST_low = {'type':'lnN', 'ST':1.15}
+CMS_vhbb_VV_low = {'type':'lnN', 'VVlight':1.15, 'VVb':1.15}
+CMS_vhbb_ZjLF_ex_low = {'type':'lnN', 'DYlight':1.05}
+CMS_vhbb_ZjHF_ex_low = {'type':'lnN', 'DYb':1.05}
+CMS_vhbb_TT_ex_low = {'type':'lnN', 'TT':1.05}
+CMS_vhbb_eff_e_13TeV_low = {'type':'lnN', 'ZH':1.05,'ggZH':1.05, 'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05}
+CMS_vhbb_eff_m_13TeV_low = {'type':'lnN',  'ZH':1.05,'ggZH':1.05,'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05}
+CMS_trigger_e_low = {'type':'lnN','ZH':1.02,'ZH125':1.02,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.02,'VVlight':1.02 ,'VVb':1.02}
+CMS_trigger_m_low = {'type':'lnN', 'ZH':1.01,'ZH125':1.01,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.01,'VVlight':1.01,'VVb':1.01 }
+CMS_vhbb_eff_e_13TeV_low = {'type':'lnN', 'ZH':1.05,'ZH125':1.05,'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05,'ST':1.05,'VVlight':1.05,'VVb':1.05}
+CMS_vhbb_eff_m_13TeV_low = {'type':'lnN', 'ZH':1.05,'ZH125':1.05,'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05,'ST':1.05,'VVlight':1.05,'VVb':1.05}
+
+#HIGH
+lumi_13TeV_high = {'type':'lnN', 'ZH':1.06, 'ggZH':1.06,'ST':1.06,'VV':1.06,'VVlight':1.06,'VVb':1.06, 'DYlight':1.06,'DY1b':1.06,'DY2b':1.06,'TT':1.06}
+pdf_qqbar_high = {'type':'lnN', 'ZH':1.023, 'VVlight':1.01,'VVb':1.01, 'DYlight':1.01,'DY1b':1.01,'DY2b':1.01}
+pdf_gg_high = {'type':'lnN', 'ggZH':1.18, 'ST':1.01,'QCD':1.01}
+QCDscale_VH_high = {'type':'lnN', 'ZH':1.04, 'ggZH':1.04}
+QCDscale_ttbar_high = {'type':'lnN', 'TT':1.06}
+QCDscale_VV_high = {'type':'lnN', 'VVlight':1.04, 'VVb':1.04}
+QCDscale_QCD_high = {'type':'lnN', 'QCD':1.30}
+QCDscale_VH_ggZHacceptance_highPt = {'type':'lnN', 'ggZH':1.32}
+CMS_vhbb_boost_EWK_13TeV_high = {'type':'lnN', 'ZH':1.02,'ZH125':1.02}
+CMS_vhbb_boost_QCD_13TeV_high = {'type':'lnN', 'ZH':1.05,'ZH125':1.05}
+CMS_vhbb_ST_high = {'type':'lnN', 'ST':1.15}
+CMS_vhbb_VV_high = {'type':'lnN', 'VVlight':1.15, 'VVb':1.15}
+CMS_vhbb_ZjLF_ex_high = {'type':'lnN', 'DYlight':1.05}
+CMS_vhbb_ZjHF_ex_high = {'type':'lnN', 'DYb':1.05}
+CMS_vhbb_TT_ex_high = {'type':'lnN', 'TT':1.05}
+CMS_vhbb_eff_e_13TeV_high = {'type':'lnN', 'ZH':1.05,'ggZH':1.05, 'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05}
+CMS_vhbb_eff_m_13TeV_high = {'type':'lnN',  'ZH':1.05,'ggZH':1.05,'ZH125':1.05,'ST':1.05,'VVlight':1.05,'QCD':1.05,'VVb':1.05}
+CMS_trigger_e_high = {'type':'lnN','ZH':1.02,'ZH125':1.02,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.02,'VVlight':1.02 ,'VVb':1.02}
+CMS_trigger_m_high = {'type':'lnN', 'ZH':1.01,'ZH125':1.01,'DYlight':1.04,'DY1b':1.04,'DY2b':1.04,'TT':1.04,'ST':1.01,'VVlight':1.01,'VVb':1.01 }
+CMS_vhbb_eff_e_13TeV_high = {'type':'lnN', 'ZH':1.05,'ZH125':1.05,'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05,'ST':1.05,'VVlight':1.05,'VVb':1.05}
+CMS_vhbb_eff_m_13TeV_high = {'type':'lnN', 'ZH':1.05,'ZH125':1.05,'DYlight':1.05,'DY1b':1.05,'DY2b':1.05,'TT':1.05,'ST':1.05,'VVlight':1.05,'VVb':1.05}
+
+
+######## Rate Params #########
+
+rateParams: ['SF_TT_norm_Zll','SF_Zj1b_norm_Zll','SF_Zj2b_norm_Zll','SF_Zj0b_norm_Zll']
+
+rateParams_low: ['SF_TT_norm_low_Zll','SF_Zj1b_norm_low_Zll','SF_Zj2b_norm_low_Zll','SF_Zj0b_norm_low_Zll']
+
+rateParams_high:['SF_TT_norm_high_Zll','SF_Zj1b_norm_high_Zll','SF_Zj2b_norm_high_Zll','SF_Zj0b_norm_high_Zll']
+
+SF_TT_norm_Zll    = {'TT'  : 1.0} # Error: 0.085
+SF_Zj2b_norm_Zll  = {'Zj2b': 1.0} # Error: 0.123
+SF_Zj1b_norm_Zll  = {'Zj1b': 1.0} # Error: 0.130
+SF_Zj0b_norm_Zll  = {'Zj0b': 1.0} # Error: 0.021
+
+SF_TT_norm_low_Zll    = {'TT'  : 1.0} # Error: 0.085
+SF_Zj2b_norm_low_Zll  = {'Zj2b': 1.0} # Error: 0.123
+SF_Zj1b_norm_low_Zll  = {'Zj1b': 1.0} # Error: 0.130
+SF_Zj0b_norm_low_Zll  = {'Zj0b': 1.0} # Error: 0.021
+
+SF_TT_norm_high_Zll    = {'TT'  : 1.0} # Error: 0.085
+SF_Zj2b_norm_high_Zll  = {'Zj2b': 1.0} # Error: 0.123
+SF_Zj1b_norm_high_Zll  = {'Zj1b': 1.0} # Error: 0.130
+SF_Zj0b_norm_high_Zll  = {'Zj0b': 1.0} # Error: 0.021
+
+
+rateParams_Unc = {'TT'  : [0.915, 1.085],
+		  'Zj2b': [0.877, 1.123],
+		  'Zj1b': [0.870, 1.130],
+		  'Zj0b': [0.979, 1.021]}
+
+
+
+# =============================================================================================
+# ==== BDT ====
+
+# Which training to use
+
+bdt_loose: gg_plus_ZH125_highZpt.nominal
+
+bdt_tight: gg_plus_ZH125_tightHmass.nominal
+
+bdt_pt30: gg_plus_ZH125_pt30.nominal
+
+
+bdt: gg_plus_nCuts1000.nominal
+
+
+[dc:BDT_Zee_all_Zpt]
+var       : <!Datacard|bdt!>
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_M125_Zee_HighPt
+cut       : bdt_tightHmass_Zee
+signal    : ZH125 ggZH125
+dcBin     : ZeeHighPt_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_Zuu_all_Zpt]
+var       : <!Datacard|bdt!>
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_M125_Zuu_HighPt
+cut       : bdt_tightHmass_Zuu
+signal    : ZH125 ggZH125
+dcBin     : ZuuHighPt_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+
+###########  pt Bins ##########
+[dc:BDT_Zee_high_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_highZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_HighPt
+cut       : bdt_Zee_high_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZeeHighPt_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_Zuu_high_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_highZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_HighPt
+cut       : bdt_Zuu_high_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZuuHighPt_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+[dc:BDT_Zee_low_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_lowZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_LowPt
+cut       : bdt_Zee_low_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZeeLowPt_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_Zuu_low_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_lowZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_LowPt
+cut       : bdt_Zuu_low_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZuuLowPt_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+[dc:BDT_Zee_med_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_medZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_MedPt
+cut       : bdt_Zee_med_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZeeMedPt_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_Zuu_med_Zpt]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_medZpt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_MedPt
+cut       : bdt_Zuu_med_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZuuMedPt_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+
+# SemiLpetonic categories
+
+[dc:BDT_semiLepton_Zuu]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_semiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_semiLepton
+cut       : bdt_Zuu_semiLepton
+signal    : ZH125 ggZH125
+dcBin     : ZuuSemiLepton_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_semiLepton_Zee]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_semiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_semiLepton
+cut       : bdt_Zee_semiLepton
+signal    : ZH125 ggZH125
+dcBin     : ZeeSemiLepton_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+[dc:BDT_NOsemiLepton_Zuu]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_NOsemiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_NOsemiLepton
+cut       : bdt_Zuu_NOsemiLepton
+signal    : ZH125 ggZH125
+dcBin     : ZuuNOSemiLepton_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_NOsemiLepton_Zee]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_NOsemiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_NOsemiLepton
+cut       : bdt_Zee_NOsemiLepton
+signal    : ZH125 ggZH125
+dcBin     : ZeeNOSemiLepton_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+[dc:BDT_1semiLepton_Zuu]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_1semiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zuu_1semiLepton
+cut       : bdt_Zuu_1semiLepton
+signal    : ZH125 ggZH125
+dcBin     : Zuu1SemiLepton_13TeV
+data      : Zuu
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:BDT_1semiLepton_Zee]
+#var       : <!Datacard|bdt!>
+var       : gg_plus_ZH125_1semiLepton.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_Zee_1semiLepton
+cut       : bdt_Zee_1semiLepton
+signal    : ZH125 ggZH125
+dcBin     : Zee1SemiLepton_13TeV
+data      : Zee
+type      : BDT
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+# VV BDT cross check
+[dc:VV_bdt]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_bdt
+cut       : VV_bdt
+signal    : ZZb_2L2Q
+dcBin     : VV_13TeV
+data      : Zuu Zee
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_bdt_Zee]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zee
+cut       : VV_bdt_Zee
+signal    : ZZb_2L2Q
+dcBin     : Zee_13TeV
+data      : Zee
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_bdt_Zuu]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zuu
+cut       : VV_bdt_Zuu
+signal    : ZZb_2L2Q
+dcBin     : Zuu_13TeV
+data      : Zuu
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_BDT_Zee_lowZpt]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zee_LowPt
+cut       : VV_bdt_Zee_low
+signal    : ZZb_2L2Q
+dcBin     : ZeeLowPt_13TeV
+data      : Zee
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_BDT_Zee_highZpt]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zee_HighPt
+cut       : VV_bdt_Zee_high
+signal    : ZZb_2L2Q
+dcBin     : ZeeHighPt_13TeV
+data      : Zee
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_BDT_Zuu_lowZpt]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zuu_LowPt
+cut       : VV_bdt_Zuu_low
+signal    : ZZb_2L2Q
+dcBin     : ZuuLowPt_13TeV
+data      : Zuu
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+[dc:VV_BDT_Zuu_highZpt]
+var       : VV_bdt.nominal
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|BDTrange!>
+dcName    : BDT_VV_Zuu_HighPt
+cut       : VV_bdt_Zuu_high
+signal    : ZZb_2L2Q
+dcBin     : ZuuHighPt_13TeV
+data      : Zuu
+type      : VV
+bdt_split : 0.6
+doSYS     : True
+doBin     : True
+
+
+# ====== Control Regions =======
+
+# ===== Vpt Bins ======
+
+[dc:Zlf_low]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_low
+cut       : Zlf_low
+signal    : ZH125 ggZH125
+dcBin     : Zlf_low
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_low]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_low
+cut       : Zhf_low
+signal    : ZH125 ggZH125
+dcBin     : Zhf_low
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_low]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_low
+cut       : ttbar_low
+signal    : ZH125 ggZH125
+dcBin     : ttbar_low
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_high]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_high
+cut       : Zlf_high
+signal    : ZH125 ggZH125
+dcBin     : Zlf_high
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_high]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_high
+cut       : Zhf_high
+signal    : ZH125 ggZH125
+dcBin     : Zhf_high
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_high]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_high
+cut       : ttbar_high
+signal    : ZH125 ggZH125
+dcBin     : ttbar_high
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_low_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_low_Zuu
+cut       : Zlf_low_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zlf_low_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_low_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_low_Zuu
+cut       : Zhf_low_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zhf_low_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_low_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_low_Zuu
+cut       : ttbar_low_Zuu
+signal    : ZH125 ggZH125
+dcBin     : ttbar_low_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_low_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_low_Zee
+cut       : Zlf_low_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zlf_low_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_low_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_low_Zee
+cut       : Zhf_low_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zhf_low_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_low_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_low_Zee
+cut       : ttbar_low_Zee
+signal    : ZH125 ggZH125
+dcBin     : ttbar_low_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_high_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_high_Zuu
+cut       : Zlf_high_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zlf_high_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_high_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_high_Zuu
+cut       : Zhf_high_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zhf_high_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_high_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_high_Zuu
+cut       : ttbar_high_Zuu
+signal    : ZH125 ggZH125
+dcBin     : ttbar_high_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_high_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_high_Zee
+cut       : Zlf_high_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zlf_high_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_high_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_high_Zee
+cut       : Zhf_high_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zhf_high_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_high_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_high_Zee
+cut       : ttbar_high_Zee
+signal    : ZH125 ggZH125
+dcBin     : ttbar_high_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+
+
+
+
+[dc:ZH125]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ZH125
+cut       : bdt_tightHmass
+signal    : ZH125 ggZH125
+dcBin     : ZH125
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+# ===================================================================
+
+[dc:Zlf_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_Zuu
+cut       : Zlf_Zuu
+signal    : ZZb_2L2Q
+dcBin     : Zlf_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zlf_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_Zee
+cut       : Zlf_Zee
+signal    : ZZb_2L2Q
+dcBin     : Zlf_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_Zuu
+cut       : Zhf_Zuu_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_Zee
+cut       : Zhf_Zee_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_Zuu
+cut       : ttbar_Zuu
+signal    : ZZb_2L2Q
+dcBin     : ttbar_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_Zee
+cut       : ttbar_Zee
+signal    : ZZb_2L2Q
+dcBin     : ttbar_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+
+[dc:Zlf_low_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_low_Zuu
+cut       : Zlf_low_Zuu
+signal    : ZZb_2L2Q
+dcBin     : Zlf_low_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_low_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_low_Zuu
+cut       : Zhf_low_Zuu_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_low_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_low_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_low_Zuu
+cut       : ttbar_low_Zuu
+signal    : ZZb_2L2Q
+dcBin     : ttbar_low_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_low_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_low_Zee
+cut       : Zlf_low_Zee
+signal    : ZZb_2L2Q
+dcBin     : Zlf_low_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_low_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_low_Zee
+cut       : Zhf_low_Zee_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_low_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_low_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_low_Zee
+cut       : ttbar_low_Zee
+signal    : ZZb_2L2Q
+dcBin     : ttbar_low_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_high_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_high_Zuu
+cut       : Zlf_high_Zuu
+signal    : ZZb_2L2Q
+dcBin     : Zlf_high_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_high_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_high_Zuu
+cut       : Zhf_high_Zuu_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_high_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_high_Zuu_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_high_Zuu
+cut       : ttbar_high_Zuu
+signal    : ZZb_2L2Q
+dcBin     : ttbar_high_Zuu
+data      : Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_high_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_high_Zee
+cut       : Zlf_high_Zee
+signal    : ZZb_2L2Q
+dcBin     : Zlf_high_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_high_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_high_Zee
+cut       : Zhf_high_Zee_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf_high_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_high_Zee_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_high_Zee
+cut       : ttbar_high_Zee
+signal    : ZZb_2L2Q
+dcBin     : ttbar_high_Zee
+data      : Zee
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf
+cut       : Zlf
+signal    : ZZb_2L2Q
+dcBin     : Zlf
+data      : Zee Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+
+[dc:Zhf]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf
+cut       : Zhf
+signal    : ZZb_2L2Q
+dcBin     : Zhf
+data      : Zee Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_VV]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf
+cut       : Zhf_VV
+signal    : ZZb_2L2Q
+dcBin     : Zhf
+data      : Zee Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ttbar]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar
+cut       : ttbar
+signal    : ZZb_2L2Q
+dcBin     : ttbar
+data      : Zee Zuu
+type      : VV
+doSYS     : True
+doBin     : True
+
+[dc:ZH125]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ZH125
+cut       : bdt_tightHmass
+signal    : ZH125 ggZH125
+dcBin     : ZH125
+data      : Zee Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+# Electron CR
+
+[dc:Zlf_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_Zee
+cut       : Zlf_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zlf_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_Zee
+cut       : Zhf_Zee
+signal    : ZH125 ggZH125
+dcBin     : Zhf_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_Zee
+cut       : ttbar_Zee
+signal    : ZH125 ggZH125
+dcBin     : ttbar_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ZH125_Zee]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ZH125_Zee
+cut       : signal_Zee_all_Zpt
+signal    : ZH125 ggZH125
+dcBin     : ZH125_Zee
+data      : Zee
+type      : cr
+doSYS     : True
+doBin     : True
+
+
+[dc:Zlf_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zlf_Zuu
+cut       : Zlf_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zlf_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:Zhf_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : Zhf_Zuu
+cut       : Zhf_Zuu
+signal    : ZH125 ggZH125
+dcBin     : Zhf_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True
+
+[dc:ttbar_Zuu]
+var       : min(Jet_btagCSV[hJCidx[0]],Jet_btagCSV[hJCidx[1]])
+wsVarName : <!LimitGeneral|BDToutname!>
+range     : <!LimitGeneral|CRrange!>
+dcName    : ttbar_Zuu
+cut       : ttbar_Zuu
+signal    : ZH125 ggZH125
+dcBin     : ttbar_Zuu
+data      : Zuu
+type      : cr
+doSYS     : True
+doBin     : True

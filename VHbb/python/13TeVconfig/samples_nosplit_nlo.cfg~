@@ -1,0 +1,645 @@
+
+[General]
+
+prefix = 
+newprefix = v24_9_15_
+
+#newprefix = v23_7_18_
+
+# lumi in picobarns
+#lumi = 22000.00
+lumi = 12900.00
+#lumi = 9235.00
+#lumi = 4340.00
+#lumi =  2280.00
+
+weightexpression = PUweight
+#(PUweight*weightTrig2012*lheWeight*weightSignalQCD*VHbb::ewkAtlas8TeVZllH(genH.pt,genZ.pt)*VHbb::ptWeightDY(lheV_pt))
+
+#mc_triggers = (HLT_BIT_HLT_IsoMu20_v || HLT_BIT_HLT_IsoTkMu20_v || HLT_BIT_HLT_Ele23_WPLoose_Gsf_v)
+#mc_triggers = (HLT_BIT_HLT_IsoMu20_v || HLT_BIT_HLT_IsoTkMu20_v || HLT_BIT_HLT_Ele27_eta2p1_WPLoose_Gsf_v)
+
+#zee_data_triggers = HLT_BIT_HLT_Ele23_WPLoose_Gsf_v 
+zee_data_triggers = HLT_BIT_HLT_Ele27_eta2p1_WPLoose_Gsf_v
+
+zuu_data_triggers = (HLT_BIT_HLT_IsoMu22_v || HLT_BIT_HLT_IsoTkMu22_v)
+
+mc_triggers = Jet_pt[hJCidx[1]] > 15.
+#zuu_data_triggers = Jet_pt[hJCidx[1]] > 15.
+#zee_data_triggers = Jet_pt[hJCidx[1]] > 15.
+
+prep_cut = abs(Jet_eta[hJCidx[0]]) < 2.5 & abs(Jet_eta[hJCidx[1]]) < 2.5 & vLeptons_pt[0] > 15. & vLeptons_pt[1] > 15. & vLeptons_relIso04[0] < 0.25 & vLeptons_relIso04[1] < 0.25 &Jet_pt_reg[hJCidx[0]] > 20. & Jet_pt_reg[hJCidx[1]] > 20.
+
+# ===== Scale factors ======
+
+doSF = False
+
+#  ['DYlight','DYc','DY1b','DY2b']
+#SF_DY_low = [1.097, 1.097, 0.925, 1.031]
+#SF_ttbar_low = 1.13
+
+#SF_DY = [1., 1, 0.90, 0.90]
+#SF_ttbar = 1.
+
+SF_DY = [1., 1., 1., 1.]
+SF_ttbar = 1
+
+SF_VV = [1, 1]
+SF_stop = 1
+# ============================
+
+
+
+# From v21
+# Weights for DY stitching
+#weightZBjetsHT0=        0.08
+#weightZBjetsHT100=      0.48
+#weightZBjetsHT200=      0.54
+#weightZBjetsHT400=      0.91
+#weightZBjetsHT600=      0.97
+
+#weightZBGenjetsHT0=     0.13
+#weightZBGenjetsHT100=   0.84
+#weightZBGenjetsHT200=   0.63
+#weightZBGenjetsHT400=   0.99
+#weightZBGenjetsHT600=   1.00
+
+# For v23
+#weightZBjetsHT0=        0.87
+#weightZBjetsHT100=      0.93
+#weightZBjetsHT200=      0.89
+#weightZBjetsHT400=      0.91
+#weightZBjetsHT600=      0.92
+
+#weightZBGenjetsHT0=     0.42
+#weightZBGenjetsHT100=   0.60
+#weightZBGenjetsHT200=   0.53
+#weightZBGenjetsHT400=   0.64
+#weightZBGenjetsHT600=   0.71
+
+# For v24
+weightZBjetsHT0  =      0.93
+weightZBjetsHT100=      0.92
+weightZBjetsHT200=      0.93
+weightZBjetsHT400=      0.91
+weightZBjetsHT600=      0.86
+
+weightZBGenjetsHT0  =   0.58
+weightZBGenjetsHT100=   0.56
+weightZBGenjetsHT200=   0.63
+weightZBGenjetsHT400=   0.65
+weightZBGenjetsHT600=   0.57
+
+# For Vpt
+weightZPt100= 0.66
+weightZPt250= 0.85
+weightZPt400= 0.98
+weightZPt650= 1.00
+
+
+
+# DY cuts
+DYBJets = (lheNb>0)
+DYJetsBGenFilter = (lheNb==0 && nGenStatus2bHad>0)
+HT0            = (lheHT<100)
+HT100          = (lheHT>100&&lheHT<200)
+HT200          = (lheHT>200&&lheHT<400)
+HT400          = (lheHT>400&&lheHT<600)
+HT600          = (lheHT>600)
+
+#weightEWK = VHbb::ptWeightEWK_Zll(nGenVbosons[0], GenVbosons_pt[0], VtypeSim, GenVbosons_pdgId[0], nGenTop, nGenHiggsBoson)
+#weightEWK = 1
+
+#QCD weights
+QCDHT100 = 1.58/1.23
+QCDHT200 = 1.438/1.23
+QCDHT400 = 1.494/1.23
+QCDHT600 = 1.139/1.23
+
+# Groups =====================================================
+
+DYlight_cut = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0)==0 && Sum$(GenJet_pt>20 & abs(GenJet_eta)<2.4 && GenJet_numCHadrons>0)==0
+
+DYc_cut     = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0)==0 && Sum$(GenJet_pt>20 & abs(GenJet_eta)<2.4 && GenJet_numCHadrons>0)>=1
+
+DY1b_cut    = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0) == 1 
+
+DY2b_cut    = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0) >= 2
+
+VV_b_cut = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0) > 0
+
+VV_2b_cut = Sum$(GenJet_pt>20 && abs(GenJet_eta)<2.4 && GenJet_numBHadrons>0) >= 2
+
+VV_light_cut = !(<!General|VV_b_cut!>)
+
+
+
+# ==== New DY Definitions =====
+#DY2b_cut = abs(Jet_hadronFlavour[hJCidx[0]]) == 5 & abs(Jet_hadronFlavour[hJCidx[1]]) == 5
+
+#DY1b_cut = abs(Jet_hadronFlavour[hJCidx[0]] == 5) | abs(Jet_hadronFlavour[hJCidx[1]] == 5) & !(<!General|DY2b_cut!>)
+
+#DYc_cut = abs(Jet_hadronFlavour[hJCidx[0]]==4) | abs(Jet_hadronFlavour[hJCidx[1]]==4) & !(<!General|DY1b_cut!>) 
+
+#DYlight_cut = !( (<!General|DYc_cut!>) | (<!General|DY1b_cut!>) | (<!General|DY2b_cut!>) )
+
+
+DY_subcuts = ['<!General|DYlight_cut!>', '<!General|DYc_cut!>', '<!General|DY1b_cut!>', '<!General|DY2b_cut!>']
+
+DY_sampleGroup = ['DYlight','DYc','DY1b','DY2b'] 
+
+VV_sampleGroup = ['VVb','VVlight']
+
+VV_subcuts = ['<!General|VV_b_cut!>','<!General|VV_light_cut!>']
+VV_2b_subcuts = ['<!General|VV_2b_cut!>', '<!General|VV_b_cut!>','<!General|VV_light_cut!>']
+
+ttbar_sampleGroup = ['TT']
+
+stop_sampleGroup = ['sTop']
+
+gJets_sampleGroup = ['gJets']
+
+qcd_sampleGroup = ['qcd']
+
+Zll_sampleGroup = ['Zll']
+
+ZH125_sampleGroup = ['ggZH125']
+
+DY_merged_sampleGroup = ['DY_merged']
+
+DY_sync_sampleGroup = ['DY_sync']
+
+# =============================================================
+
+
+[Samples_running]
+#if run_on_fileList is False you run using this config and checking that the sample are in the directory specify in your path config.
+#if run_on_fileList is True you list all the file of your dir and you run using that list, checking in the config if there is a match.
+#if you want to run on splitted samples you need to put True.
+run_on_fileList=False
+
+# ==== Montecarlo Signal ====
+
+# ==== Data ====
+[Zee]
+infile      = Zee
+sampleFile  = Zee
+sampleName  = Zee
+sampleType  = DATA
+sampleGroup = DATA
+subsamples  = False
+cut         = Vtype == 1 && json == 1 & <!General|zee_data_triggers!> & <!General|prep_cut!>
+
+[Zuu]
+infile      = Zuu
+sampleFile  = Zuu
+sampleName  = Zuu
+sampleType  = DATA
+sampleGroup = DATA
+subsamples  = False
+cut         = Vtype == 0 && json == 1  & <!General|zuu_data_triggers!> & <!General|prep_cut!>
+
+
+# ==== Signal MC =====
+[ZH125]
+infile      = ZH125
+sampleName  = ZH125
+sampleType  = SIG
+sampleGroup = ZH
+#Updated x-sec from https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageAt13TeV#ZH_Process
+xSec = 0.04865
+#(0.8839 -  0.1227) * 0.10974 * 0.5824 #[x-section * BR(Z->ll) * BR( H->bb)]
+#xSec        = 0.04837
+SF          = 1.
+subsamples  = False
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[ggZH125]
+infile      = ggZH125
+sampleName  = ggZH125
+sampleType  = SIG
+sampleGroup = ZH
+xSec = 0.007842 
+# (0.1227) * 0.10974 * 0.5824 #[x-section * BR(Z->ll) * BR( H->bb)]
+#xSec        = 0.01340
+SF          = 1.
+subsamples  = False
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[Wlv]
+infile      = Wlv
+sampleName  = Wlv
+sampleType  = SIG
+sampleGroup = ZH
+xSec        = 0.8594
+SF          = 1.
+subsamples  = False
+cut         = Vtype < 4 & Vtype > 1& <!General|mc_triggers!>
+  
+
+# ==== Background ====
+
+#[DY_inclusive]
+#infile      = DY_inclusive
+#sampleName  = DY_inclusive
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg','Zcc','Z1b','Z2b']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [6025.2*1.23]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & lheHT < 100 & lheNb==0 & nGenStatus2bHad==0 
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & lheHT < 100 & <!General|prep_cut!>
+#specialweight = (1-<!General|DYBJets!>*(1-<!General|weightZBjetsHT0!>)-<!General|DYJetsBGenFilter!>*(1-<!General|weightZBGenjetsHT0!>))
+ 
+#[DY_Bjets]
+#infile      = DY_Bjets
+#sampleName  = DY_Bjets
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg_Bjets','Zcc_Bjets','Z1b_Bjets','Z2b_Bjets']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [71.77*1.23]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & lheNb>0 & <!General|prep_cut!>
+#specialweight = (<!General|HT0!>*(1 - <!General|weightZBjetsHT0!>) + <!General|QCDHT100!>*<!General|HT100!>*(1 - <!General|weightZBjetsHT100!>) + <!General|QCDHT200!>*<!General|HT200!>*(1 - <!General|weightZBjetsHT200!>) + <!General|QCDHT400!>*<!General|HT400!>*(1 - <!General|weightZBjetsHT400!>) + <!General|QCDHT600!>*<!General|HT600!>*(1 - <!General|weightZBjetsHT600!>))
+
+
+#[DY_BgenFilter]
+#infile      = DY_BgenFilter
+#sampleName  = DY_BgenFilter
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg_BgenFilter','Zcc_BgenFilter','Z1b_BgenFilter','Z2b_BgenFilter']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [228.9*1.23]*4
+#SF          = <!General|SF_DY!>
+#cut         = (Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & nGenStatus2bHad > 0 & <!General|prep_cut!>)*genWeight
+#specialweight = (<!General|HT0!>*(1 - <!General|weightZBGenjetsHT0!>) + <!General|QCDHT100!>*<!General|HT100!>*(1 - <!General|weightZBGenjetsHT100!>) + <!General|QCDHT200!>*<!General|HT200!>*(1 - <!General|weightZBGenjetsHT200!>) + <!General|QCDHT400!>*<!General|HT400!>*(1 - <!General|weightZBGenjetsHT400!>) + <!General|QCDHT600!>*<!General|HT600!>*(1 - <!General|weightZBGenjetsHT600!>))
+
+
+#[DY_100to200]
+#infile      = DY_100to200
+#sampleName  = DY_100to200
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['ZudsgHT100to200','ZccHT100to200','Z1bHT100to200','Z2bHT100to200']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [171.46]*4
+#with QCD corrections
+#xSec = [147.40*1.588]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+#specialweight = 1-<!General|DYBJets!>*(1-<!General|weightZBjetsHT100!>)-<!General|DYJetsBGenFilter!>*(1-<!General|weightZBGenjetsHT100!>)
+
+
+#[DY_200to400]
+#infile      = DY_200to400
+#sampleName  = DY_200to400
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['ZudsgHT200to400','ZccHT200to400','Z1bHT200to400','Z2bHT200to400']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [52.585]*4
+#with QCD corrections
+#xSec = [40.99*1.438]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+#specialweight = 1-<!General|DYBJets!>*(1-<!General|weightZBjetsHT200!>)-<!General|DYJetsBGenFilter!>*(1-<!General|weightZBGenjetsHT200!>)
+
+#[DY_400to600]
+#infile      = DY_400to600
+#sampleName  = DY_400to600
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['ZudsgHT400to600','ZccHT400to600','Z1bHT400to600','Z2bHT400to600']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [6.76131]*4
+#with QCD corrections
+#xSec = [5.678*1.494]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+#specialweight = 1-<!General|DYBJets!>*(1-<!General|weightZBjetsHT400!>)-<!General|DYJetsBGenFilter!>*(1-<!General|weightZBGenjetsHT400!>)
+
+#[DY_600toInf]
+#infile      = DY_600toInf
+#sampleName  = DY_600toInf
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['ZudsgHT600toInf','ZccHT600toInf','Z1bHT600toInf','Z2bHT600toInf']
+#subcuts     = <!General|DY_subcuts!>
+#xSec = [2.718]*4
+#xSec = [2.198*1.139]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+#specialweight = 1-<!General|DYBJets!>*(1-<!General|weightZBjetsHT600!>)-<!General|DYJetsBGenFilter!>*(1-<!General|weightZBGenjetsHT600!>)
+
+
+# ===== NLO Samples =====
+###############################################################
+[DY_inclusive_nlo]
+infile      = DY_inclusive_nlo
+sampleName  = DY_inclusive_nlo
+sampleType  = BKG
+sampleGroup = <!General|DY_sampleGroup!>
+subsamples  = True
+subnames    = ['Zudsg_nlo','Zcc_nlo','Z1b_nlo','Z2b_nlo']
+subcuts     = <!General|DY_subcuts!>
+xSec        = [1921.8*3]*4
+SF          = <!General|SF_DY!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+
+[DY_Pt100to250]
+infile      = DY_Pt100to250
+sampleName  = DY_Pt100to250
+sampleType  = BKG
+sampleGroup = <!General|DY_sampleGroup!>
+subsamples  = True
+subnames    = ['ZudsgVpt100to250','ZccVpt100to250','Z1bVpt100to250','Z2bVpt100to250']
+subcuts     = <!General|DY_subcuts!>
+xSec        = [83.12]*4
+SF          = <!General|SF_DY!>
+specialweight = 1-<!General|weightZPt100!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[DY_Pt250to400]
+infile      = DY_Pt250to400
+sampleName  = DY_Pt250to400
+sampleType  = BKG
+sampleGroup = <!General|DY_sampleGroup!>
+subsamples  = True
+subnames    = ['ZudsgVpt250to400','ZccVpt250to400','Z1bVpt250to400','Z2bVpt250to400']
+subcuts     = <!General|DY_subcuts!>
+xSec        = [3.047]*4
+SF          = <!General|SF_DY!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+specialweight = 1-<!General|weightZPt250!>
+
+
+[DY_Pt400to650]
+infile      = DY_Pt400to650
+sampleName  = DY_Pt400to650
+sampleType  = BKG
+sampleGroup = <!General|DY_sampleGroup!>
+subsamples  = True
+subnames    = ['ZudsgVpt400to650','ZccVpt400to650','Z1bVpt400to650','Z2bVpt400to650']
+subcuts     = <!General|DY_subcuts!>
+xSec        = [0.3921]*4
+SF          = <!General|SF_DY!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+specialweight = 1-<!General|weightZPt400!>
+
+[DY_Pt650toInf]
+infile      = DY_Pt650toInf
+sampleName  = DY_Pt650toInf
+sampleType  = BKG
+sampleGroup = <!General|DY_sampleGroup!>
+subsamples  = True
+subnames    = ['ZudsgVpt650toInf','ZccVpt650toInf','Z1bVpt650toInf','Z2bVpt650toInf']
+subcuts     = <!General|DY_subcuts!>
+xSec        = [0.03636]*4
+SF          = <!General|SF_DY!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+specialweight = 1-<!General|weightZPt650!>
+
+
+# ==== 5to50 DY Samples =====
+
+#[DY_5to50_inclusive]
+#infile      = DY_5to50_inclusive
+#sampleName  = DY_5to50_inclusive
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg5to50','Zcc5to50','Z1b5to50','Z2b5to50']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [7160]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+
+#[DY_5to50_100to200]
+#infile      = DY_5to50_100to200
+#sampleName  = DY_5to50_100to200
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg5to50_100to200','Zcc5to50_100to200','Z1b5to50_100to200','Z2b5to50_100to200']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [224.2]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+#[DY_5to50_200to400]
+#infile      = DY_5to50_200to400
+#sampleName  = DY_5to50_200to400
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg5to50_200to400','Zcc5to50_200to400','Z1b5to50_200to400','Z2b5to50_200to400']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [37.19]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+#[DY_5to50_400to600]
+#infile      = DY_5to50_400to600
+#sampleName  = DY_5to50_400to600
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg5to50_400to600','Zcc5to50_400to600','Z1b5to50_400to600','Z2b5to50_400to600']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [3.581]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+#[DY_5to50_600toInf]
+#infile      = DY_5to50_600toInf
+#sampleName  = DY_5to50_600toInf
+#sampleType  = BKG
+#sampleGroup = <!General|DY_sampleGroup!>
+#subsamples  = True
+#subnames    = ['Zudsg5to50_600toInf','Zcc5to50_600toInf','Z1b5to50_600toInf','Z2b5to50_600toInf']
+#subcuts     = <!General|DY_subcuts!>
+#xSec        = [1.124]*4
+#SF          = <!General|SF_DY!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+# ===========================
+
+
+[ttbar]
+infile      = ttbar
+sampleName  = ttbar
+sampleType  = BKG
+sampleGroup = <!General|ttbar_sampleGroup!>
+subsamples  = False
+xSec        = 831.76
+SF          = <!General|SF_ttbar!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[ZZ]
+infile      = ZZ
+sampleName  = ZZ
+sampleType  = BKG
+sampleGroup = <!General|VV_sampleGroup!>
+subsamples  = True
+subnames    = ['ZZb', 'ZZlight']
+subcuts     = <!General|VV_subcuts!>
+xSec        = [16.523]*2
+SF          = <!General|SF_VV!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[WZ]
+infile      = WZ
+sampleName  = WZ
+sampleType  = BKG
+sampleGroup = <!General|VV_sampleGroup!>
+subsamples  = True
+subnames    = ['WZb', 'WZlight']
+subcuts     = <!General|VV_subcuts!>
+xSec        = [47.13]*2
+SF          = <!General|SF_VV!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[ZZ_2L2Q]
+infile      = ZZ_2L2Q
+sampleName  = ZZ_2L2Q
+sampleType  = BKG
+sampleGroup = <!General|VV_sampleGroup!>
+subsamples  = True
+subnames    = ['ZZb_2L2Q', 'ZZlight_2L2Q']
+subcuts     = <!General|VV_subcuts!>
+xSec        = [3.22]*2
+SF          = <!General|SF_VV!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+#[ST_t]
+#infile      = ST_t
+#sampleName  = ST_t
+#sampleType  = BKG
+#sampleGroup = <!General|stop_sampleGroup!>
+#subsamples  = False
+#xSec        = 220.45
+#SF          = <!General|SF_stop!>
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[ST_s]
+infile      = ST_s
+sampleName  = ST_s
+sampleType  = BKG
+sampleGroup = <!General|stop_sampleGroup!>
+subsamples  = False
+xSec        = 10.32
+SF          = <!General|SF_stop!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!>
+
+[ST_tW_antitop]
+infile      = ST_tW_antitop
+sampleName  = ST_tW_antitop
+sampleType  = BKG
+sampleGroup = <!General|stop_sampleGroup!>
+subsamples  = False
+xSec        = 35.6
+SF          = <!General|SF_stop!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+[ST_tW_top]
+infile      = ST_tW_top
+sampleName  = ST_tW_top
+sampleType  = BKG
+sampleGroup = <!General|stop_sampleGroup!>
+subsamples  = False
+xSec        = 35.6
+SF          = <!General|SF_stop!>
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!> & <!General|prep_cut!>
+
+
+[gJets_100to200]
+infile      = gJets_100to200
+sampleName  = gJets_100to200
+sampleType  = BKG
+sampleGroup = <!General|gJets_sampleGroup!>
+subsamples  = False
+xSec        = 1534.
+SF          = 1
+cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!>
+
+#[gJets_200to400]
+#infile      = gJets_200to400
+#sampleName  = gJets_200to400
+#sampleType  = BKG
+#sampleGroup = <!General|gJets_sampleGroup!>
+#subsamples  = False
+#xSec        = 489.9
+#SF          = 1
+#cut         = Vtype < 2 & Vtype > -1 & <!General|mc_triggers!>
+
+#[gJets_400to600]
+#infile      = gJets_400to600
+#sampleName  = gJets_400to600
+#sampleType  = BKG
+#sampleGroup = <!General|gJets_sampleGroup!>
+#subsamples  = False
+#xSec        = 62.05
+#SF          = 1
+#cut         = Vtype < 2 & Vtype > -1
+
+#[gJets_600toInf]
+#infile      = gJets_600toInf
+#sampleName  = gJets_600toInf
+#sampleType  = BKG
+#sampleGroup = <!General|gJets_sampleGroup!>
+#subsamples  = False
+#xSec        = 20.87
+#SF          = 1
+#cut         = Vtype < 2 & Vtype > -1
+
+[qcd_100to200]
+infile      = qcd_100to200
+sampleName  = qcd_100to200
+sampleType  = BKG
+sampleGroup = <!General|qcd_sampleGroup!>
+subsamples  = False
+xSec        = 28730000.
+SF          = 1
+cut         = Vtype < 2 & Vtype > -1
+
+#[qcd_250to500]
+#infile      = qcd_250to500
+#sampleName  = qcd_250to500
+#sampleType  = BKG
+#sampleGroup = <!General|qcd_sampleGroup!>
+#subsamples  = False
+#xSec        = 670500.
+#SF          = 1
+#cut         = Vtype < 2
+
+#[qcd_500to1000]
+#infile      = qcd_500to1000
+#sampleName  = qcd_500to1000
+#sampleType  = BKG
+#sampleGroup = <!General|qcd_sampleGroup!>
+#subsamples  = False
+#xSec        = 26740.
+#SF          = 1
+#cut         = Vtype < 2
+
+#[qcd_1000toInf]
+#infile      = qcd_1000toInf
+#sampleName  = qcd_1000toInf
+#sampleType  = BKG
+#sampleGroup = <!General|qcd_sampleGroup!>
+#subsamples  = False
+#xSec        = 769.7
+#SF          = 1
+#cut         = Vtype < 2

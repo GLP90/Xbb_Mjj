@@ -1,0 +1,39 @@
+#Options +Indexes
+#SSLRequireSSL # The modules only work using HTTPS
+#AuthType shibboleth
+#ShibRequireSession On
+#ShibRequireAll On
+#ShibExportAssertion Off
+#Require valid-user
+##Require group "CMS"
+
+#AuthName Site_Name_CERN 
+#AuthType Basic 
+#Satisfy any 
+#SSLRequireSSL 
+#AuthUserFile /CERN_WWW/Apache/Site_Name/Apache/users 
+#require valid-user
+
+#order deny,allow 
+#deny from all 
+#allow from .cern.ch
+
+SSLRequireSSL # The modules only work using HTTPS
+AuthType shibboleth
+ShibRequireSession On
+ShibRequireAll On
+ShibExportAssertion Off
+Require valid-user
+
+
+
+#AuthName Site_Name_CERN
+#AuthType Basic
+#Satisfy any
+#SSLRequireSSL
+#AuthUserFile /CERN_WWW/Apache/Site_Name/Apache/users
+#require valid-user
+
+#order deny,allow
+#deny from all
+#allow from .cern.ch

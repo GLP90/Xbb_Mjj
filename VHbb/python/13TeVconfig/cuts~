@@ -1,0 +1,728 @@
+#-*-Perl-*-
+
+[ZHbb]
+# --------------------------------
+# Variables and values definition
+# --------------------------------
+
+# Choose Jet Index: Highest Pt or CMVA
+#jet_index: hJidx
+jet_index: hJCidx
+
+
+CSVT: 0.97
+CSVM: 0.89
+CSVL: 0.605
+CSVC: 0.244
+
+minBtag: min(Jet_btagCSV[<!ZHbb|jet_index!>[0]],Jet_btagCSV[<!ZHbb|jet_index!>[1]])
+maxBtag: max(Jet_btagCSV[<!ZHbb|jet_index!>[0]],Jet_btagCSV[<!ZHbb|jet_index!>[1]])
+
+# --------------------------------
+# Single variable cuts
+# --------------------------------
+
+cmvaBtag_Zuu: Jet_btagCSV[<!ZHbb|jet_index!>[0]] > <!ZHbb|CSVT!> & Jet_btagCSV[<!ZHbb|jet_index!>[1]] > <!ZHbb|CSVM!>
+cmvaBtag_Zee: Jet_btagCSV[<!ZHbb|jet_index!>[0]] > <!ZHbb|CSVT!> & Jet_btagCSV[<!ZHbb|jet_index!>[1]] > <!ZHbb|CSVM!>
+
+#Zhf_Btag: <!ZHbb|maxBtag!> > <!ZHbb|CSVT!> & <!ZHbb|minBtag!> > <!ZHbb|CSVM!>
+Zhf_Btag: Jet_btagCSV[hJCidx[0]] > <!ZHbb|CSVT!> & Jet_btagCSV[hJCidx[1]] > <!ZHbb|CSVL!>
+
+# for regression validation
+Zhf_Btag_reg: Jet_btagCSV[hJCidx[0]] > <!ZHbb|CSVM!> & Jet_btagCSV[hJCidx[1]] > <!ZHbb|CSVL!>
+
+#Zlf_Btag: <!ZHbb|maxBtag!> < <!ZHbb|CSVM!> 
+Zlf_Btag: Jet_btagCSV[hJCidx[0]] < <!ZHbb|CSVT!> & Jet_btagCSV[hJCidx[1]] > 0
+
+#ttbar_Btag: <!ZHbb|maxBtag!> > <!ZHbb|CSVT!> & <!ZHbb|minBtag!> > <!ZHbb|CSVC!>
+ttbar_Btag: Jet_btagCSV[hJCidx[0]] > <!ZHbb|CSVT!> & Jet_btagCSV[hJCidx[1]] > <!ZHbb|CSVL!>
+
+#bdt_Btag: Jet_btagCSV[<ZHbb|jet_index>[0]] > <!ZHbb|CSVL!> & Jet_btagCSV[<ZHbb|jet_index>[1]] > <!ZHbb|CSVL!>
+
+bdt_Btag: Jet_btagCSV[<ZHbb|jet_index>[0]] > <!ZHbb|CSVL!> & Jet_btagCSV[<ZHbb|jet_index>[1]] > <!ZHbb|CSVL!>
+
+noAddJet: Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4) < 3
+1addJet: Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4)  < 4
+aJets_Zlf  : Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4 & Jet_puId == 1) == 2
+#aJets_Zlf  : Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4 & Jet_puId == 0) < 1 
+aJets_ttbar: Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4) < 100
+aJets_Zhf  : Sum$(Jet_pt > 20 & abs(Jet_eta) < 2.4 & Jet_puId == 1) > 0
+
+
+max1AddJet: Sum$(aJet_pt > 20 & abs(aJet_eta) < 2.4) < 2.
+
+pullAngle: deltaPullAngle < 10. & deltaPullAngle2 < 10.
+
+# V pt cuts
+Vpt_50 : V_pt > 50.
+Vpt_100: V_pt > 100.
+Vpt_120: V_pt > 120.
+Vpt_150: V_pt > 150.
+Vpt_240: V_pt > 240.
+
+Vpt_ttbar: V_pt < 999
+Vpt_Zhf: V_pt < 999
+
+# H pt cuts
+Hpt_100: HCSV_pt > 100
+Hpt_Zhf: HCSV_pt > 0
+
+# Jet cuts
+jet_pt_20: Jet_pt[<!ZHbb|jet_index!>[0]] > 20 & Jet_pt[<!ZHbb|jet_index!>[1]] > 20
+jet_pt_30: Jet_pt[<!ZHbb|jet_index!>[0]] > 30 & Jet_pt[<!ZHbb|jet_index!>[1]] > 30
+
+jet_pt_Zuu: Jet_pt[<ZHbb|jet_index>[0]] >20 & Jet_pt[<ZHbb|jet_index>[1]] >20
+jet_pt_Zee: Jet_pt[<!ZHbb|jet_index!>[0]] > 20. & Jet_pt[<!ZHbb|jet_index!>[1]] > 20.
+
+# MET
+met_signal_Zuu: met_pt < 60
+met_signal_Zee: met_pt < 60
+
+deltaRjj_Zuu: deltaR_jj < 1.6
+deltaRjj_Zee: deltaR_jj < 1.6
+
+dPhiVH: abs( HVdPhi ) > 2.9 
+
+upperHMass          : HCSV_reg_mass < 250.
+upperHMass_beforeReg: HNoReg_mass < 250.
+
+zMassSafety: V_mass > 50.
+
+trigger: ( Vtype==1 & (triggerFlags[5]>0 || triggerFlags[6]>0) ) || ( Vtype==0 & ( triggerFlags[22]>0 || triggerFlags[23]>0 || triggerFlags[14]>0 ||triggerFlags[21]>0 ) )
+
+trigger_ee: HLT_ZeeHbbAll == 1
+#HLT_BIT_HLT_Ele27_eta2p1_WP75_Gsf_v == 1
+#HLT_ZeeHbbAll == 1
+
+trigger_uu: HLT_BIT_HLT_IsoMu20_v == 1
+#HLT_ZmmHbbAll == 1
+
+trigger_combined: (<!ZHbb|trigger_ee!> | <!ZHbb|trigger_uu!>)
+
+# Lepton Isolation
+lepton_Iso_uu: vLeptons_relIso04[0] < 0.25 & vLeptons_relIso04[1] < 0.25
+
+lepton_Iso_ee: vLeptons_relIso04[0] < 0.25 & vLeptons_relIso04[1] < 0.25
+
+
+# ---------------------------------
+# Windows and windows veto
+# ---------------------------------
+Zwindow_mass     : V_mass > 75. & V_mass < 105.
+Zwindow_mass_hf  : V_mass > 85. & V_mass < 97.
+
+vetoVmass_ttbar: (V_mass < 75. | V_mass > 120.)
+vetoVmass_Zhf  : (V_mass < 85. | V_mass > 97.)
+
+vetoHmass_beforeReg : !(HNoReg.mass > 90. | HNoReg.mass < 150.)
+vetoHmass           : (HCSV_reg_mass < 90. | HCSV_reg_mass > 145.)
+
+Vpt_low_window: V_pt > 50. & V_pt < 100.
+Vpt_med_window: V_pt > 100. & V_pt < 150.
+
+looseHMass          : HCSV_reg_mass < 250.
+looseHMass_beforeReg: HNoReg.mass > 40. & HNoReg.mass < 250.
+
+run_range: (EVENT.run < 207883 || EVENT.run > 208307)
+
+# -------------------------------------------
+# Preselections (combination of single cuts)
+# -------------------------------------------
+jet_preselection: abs(Jet_eta[<!ZHbb|jet_index!>[0]]) < 2.4 & abs(Jet_eta[<!ZHbb|jet_index!>[1]]) < 2.4 
+
+lepton_preselection: vLeptons_pt[0] > 20. & vLeptons_pt[1] > 20 & vLeptons_relIso04[0] < 0.25 & vLeptons_relIso04[1] < 0.25
+
+preselection: <!ZHbb|jet_preselection!> & <!ZHbb|lepton_preselection!>
+
+#preselection_loose: Sum$(aJets_pt > 25 & abs(aJets_eta) < 4.5) == 0
+
+#preselection_beforeReg: (hJet_pt[0]/hJet_regWeight[0]) > 20. & (hJet_pt[1]*hJet_regWeight[1]) > 20. & abs(hJet_eta[0]) < 2.4 & abs(hJet_eta[1]) < 2.4 & hbhe & hJet_puJetIdL[0] > 0. & hJet_puJetIdL[1] > 0.& <!ZHbb|run_range!>
+
+#looseBTag: !(hJet_csv[0] > <!ZHbb|CSVL!> & hJet_csv[1] > <!ZHbb|CSVL!>) & (hJet_csv[0] > <!ZHbb|CSVL!> | hJet_csv[1] > <!ZHbb|CSVL!>)
+
+#vtx: hJet_vtx3dL[0] > 0. & hJet_vtxPt[0] > 0.
+
+#soft: (hJet_SoftLeptIdlooseMu[0]==1 || hJet_SoftLeptId95[0] == 1) & hJet_SoftLeptdR[0] > 0.
+
+#Mjj_selection: <!ZHbb|preselection!> & <!ZHbb|ccBtag!> & <!ZHbb|zWindow!> & MET.et < 60. & <!ZHbb|upperHMass!>
+
+# ----------------------------------------
+# Electron muon splitting
+# ----------------------------------------
+[ZHeebb]
+addCuts: Vtype==1 
+
+[ZHmmbb]
+addCuts: Vtype==0 
+
+# ----------------------------------------
+# Signal Region definitions
+# Plots defined in 13TeVconfig/plots
+# ----------------------------------------
+
+
+[Cuts]
+
+Zll: <!ZHbb|preselection!>
+
+Vpt_low_window: V_pt > 50. & V_pt < 100.
+Vpt_med_window: V_pt > 100. & V_pt < 150.
+Vpt_150: V_pt > 150.
+Vpt_100: V_pt > 100.
+
+# ====================================================================================================================
+# ====================================================================================================================
+
+# my own Mjj test regions 
+all_regions: <!ZHbb|preselection!> & <!ZHbb|jet_pt_20!>
+
+regression: <!ZHbb|trigger_combined!> & Vtype > -1 & Vtype < 2 & <!ZHbb|preselection!> & <!ZHbb|jet_pt_Zuu!> & HCSV_mass > 0
+
+signal_all_Zpt: <!ZHbb|trigger_combined!> & Vtype > -1 & Vtype < 2 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zuu!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zuu!> & <!ZHbb|jet_pt_Zuu!>
+
+signal_Zuu_all_Zpt:  Vtype == 0 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zuu!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zuu!> & <!ZHbb|jet_pt_Zuu!>
+
+signal_Zee_all_Zpt:  Vtype == 1 & <!ZHbb|preselection!> & <!ZHbb|jet_pt_20!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zee!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zee!> & <!ZHbb|jet_pt_Zee!>
+
+signal_Zuu_low_Zpt: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zuu!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|met_signal_Zuu!> & <!ZHbb|noAddJet!> & <!ZHbb|jet_pt_Zuu!> 
+
+signal_Zuu_med_Zpt: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zuu!> & <!ZHbb|Vpt_med_window!> & <!ZHbb|met_signal_Zuu!> & <!ZHbb|noAddJet!> & <!ZHbb|jet_pt_Zuu!>
+
+signal_Zuu_high_Zpt: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zuu!> & <!ZHbb|Vpt_150!> & <!ZHbb|deltaRjj_Zuu!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zuu!> & <!ZHbb|jet_pt_Zuu!>
+
+signal_Zee_low_Zpt: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zee!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zee!> & <!ZHbb|jet_pt_Zee!>
+
+signal_Zee_med_Zpt: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zee!> & <!ZHbb|Vpt_med_window!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zee!> & <!ZHbb|jet_pt_Zee!>
+
+signal_Zee_high_Zpt: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|preselection!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|cmvaBtag_Zee!> & <!ZHbb|Vpt_150!> & <!ZHbb|deltaRjj_Zee!> & <!ZHbb|noAddJet!> & <!ZHbb|met_signal_Zee!> & <!ZHbb|jet_pt_Zee!>
+
+
+# ====== Control regions ======
+
+Zallf: Vtype > -1 & Vtype < 2 & <!ZHbb|trigger_combined!> & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> 
+
+Zlf: Vtype > -1 & Vtype < 2 & <!ZHbb|trigger_combined!> & <!ZHbb|jet_pt_20!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!> & <!ZHbb|Hpt_100!> & <!ZHbb|Vpt_100!> 
+
+Zhf: Vtype > -1 & Vtype < 2 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zhf_Btag!> & <!ZHbb|vetoHmass!>
+
+ttbar: Vtype > -1 & Vtype < 2 & <!ZHbb|trigger_combined!> & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|vetoVmass_ttbar!> & <!ZHbb|ttbar_Btag!>
+
+Zlf_Zee: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|Vpt_100!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zee_log: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|Vpt_100!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zuu: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|Vpt_100!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+
+Zlf_Zuu_log: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|Vpt_100!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zhf_Zee: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass_hf!> & <!ZHbb|vetoHmass!> & <!ZHbb|Zhf_Btag!> & <!ZHbb|aJets_Zhf!>  
+
+Zhf_Zee_log: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass_hf!> & <!ZHbb|vetoHmass!> & <!ZHbb|Zhf_Btag!> & <!ZHbb|aJets_Zhf!>
+
+Zhf_Zuu: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass_hf!> & <!ZHbb|vetoHmass!> & <!ZHbb|Zhf_Btag!> & <!ZHbb|aJets_Zhf!> & <!ZHbb|met_signal_Zuu!>
+
+Zhf_Zuu_log: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass_hf!> & <!ZHbb|vetoHmass!> & <!ZHbb|Zhf_Btag!> & <!ZHbb|aJets_Zhf!>
+#& <!ZHbb|Hpt_Zhf!> & <!ZHbb|Vpt_Zhf!> & <!ZHbb|aJets_Zhf!> 
+
+ttbar_Zuu: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|vetoVmass_ttbar!> & <!ZHbb|ttbar_Btag!> 
+#& <!ZHbb|Vpt_ttbar!> & <!ZHbb|aJets_ttbar!>
+
+ttbar_Zuu_log: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|vetoVmass_ttbar!> & <!ZHbb|ttbar_Btag!>
+
+ttbar_Zee: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|vetoVmass_ttbar!> & <!ZHbb|ttbar_Btag!> & <!ZHbb|Vpt_ttbar!> & <!ZHbb|aJets_ttbar!>
+
+ttbar_Zee_log: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|Hpt_100!> & <!ZHbb|vetoVmass_ttbar!> & <!ZHbb|ttbar_Btag!> & <!ZHbb|Vpt_ttbar!> & <!ZHbb|aJets_ttbar!>
+
+# ===== pT Regions
+
+Zlf_Zuu_lowPt: <!ZHbb|Vpt_low_window!> & <!ZHbb|trigger_uu!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zuu_log_lowPt: <!ZHbb|Vpt_low_window!> & <!ZHbb|trigger_uu!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zuu_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zlf_Zuu!>
+
+Zlf_Zuu_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zlf_Zuu!>
+
+Zlf_Zuu_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zlf_Zuu!>
+
+Zlf_Zuu_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zlf_Zuu!>
+
+# =========
+
+Zlf_Zee_lowPt: <!ZHbb|Vpt_low_window!> & <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zee_log_lowPt: <!ZHbb|Vpt_low_window!> & <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|jet_pt_20!> & <!ZHbb|aJets_Zlf!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zlf_Btag!>
+
+Zlf_Zee_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zlf_Zee!>
+
+Zlf_Zee_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zlf_Zee!>
+
+Zlf_Zee_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zlf_Zee!>
+
+Zlf_Zee_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zlf_Zee!>
+
+# ==========
+Zhf_Zuu_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|Zhf_Zuu!>
+
+Zhf_Zuu_log_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|Zhf_Zuu!>
+
+Zhf_Zuu_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zhf_Zuu!>
+
+Zhf_Zuu_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zhf_Zuu!>
+
+Zhf_Zuu_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zhf_Zuu!>
+
+Zhf_Zuu_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zhf_Zuu!>
+
+# ==========
+Zhf_Zee_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|Zhf_Zee!>
+
+Zhf_Zee_log_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|Zhf_Zee!>
+
+Zhf_Zee_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zhf_Zee!>
+
+Zhf_Zee_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|Zhf_Zee!>
+
+Zhf_Zee_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zhf_Zee!>
+
+Zhf_Zee_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|Zhf_Zee!>
+
+# ============
+
+ttbar_Zuu_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|ttbar_Zuu!>
+
+ttbar_Zuu_log_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|ttbar_Zuu!>
+
+ttbar_Zuu_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|ttbar_Zuu!>
+
+ttbar_Zuu_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|ttbar_Zuu!>
+
+ttbar_Zuu_highPt: <!ZHbb|Vpt_150!> & <!Cuts|ttbar_Zuu!>
+
+ttbar_Zuu_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|ttbar_Zuu!>
+
+# ============
+
+ttbar_Zee_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|ttbar_Zee!>
+
+ttbar_Zee_log_lowPt: <!ZHbb|Vpt_low_window!> & <!Cuts|ttbar_Zee!>
+
+ttbar_Zee_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|ttbar_Zee!>
+
+ttbar_Zee_log_medPt: <!ZHbb|Vpt_med_window!> & <!Cuts|ttbar_Zee!>
+
+ttbar_Zee_highPt: <!ZHbb|Vpt_150!> & <!Cuts|ttbar_Zee!>
+
+ttbar_Zee_log_highPt: <!ZHbb|Vpt_150!> & <!Cuts|ttbar_Zee!>
+
+
+# ==============================================================================
+
+
+# ===== BDT V pt regions =====
+
+bdt_low_Zpt: <!ZHbb|trigger_combined!> & Vtype > -1 & Vtype < 2 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_high_Zpt: <!ZHbb|trigger_combined!> & Vtype > -1 & Vtype < 2 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_100!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+    
+bdt_Zuu_low_Zpt : <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zee_low_Zpt : <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zuu_med_Zpt : <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVC!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_med_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zee_med_Zpt : <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVC!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_med_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zuu_high_Zpt: <!ZHbb|trigger_uu!> & Vtype == 0 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_100!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zee_high_Zpt: <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_100!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!>
+
+bdt_Zuu_high_Zpt_test: <!Cuts|bdt_Zuu_high_Zpt!> & evt%2!=0
+
+bdt_Zuu_low_Zpt_test: <!Cuts|bdt_Zuu_low_Zpt!> & evt%2!=0
+
+
+# For JES/JER Testing
+
+bdt_Zee_low_Zpt_lowH : <!ZHbb|trigger_ee!> & Vtype == 1 & <!ZHbb|bdt_Btag!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Vpt_low_window!> & <!ZHbb|preselection!> & <!ZHbb|looseHMass!> & <!ZHbb|jet_pt_20!> & HCSV_mass < 125
+
+# ========================================================================================================================
+# Jet Regression Region
+jet_regression: <!Cuts|ttbar!>
+
+jet_regression_ttbar: <!Cuts|ttbar!>
+
+jet_regression_Zhf: <!ZHbb|trigger_combined!> & Vtype > -1 & Vtype < 2 & <!ZHbb|jet_pt_20!> & <!ZHbb|dPhiVH!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|Zhf_Btag_reg!>
+
+
+# ========================================================================================================================
+
+
+
+# -------------
+# Mjj
+# -------------
+
+mjjLowPt : <!ZHbb|preselection!> & <!ZHbb|rMed!> & <!ZHbb|tlBtag!> & <!ZHbb|zWindow!> & <!ZHbb|max1AddJet!> & <!ZHbb|upperHMass!> & <!ZHbb|dPhiVH!>
+mjjHighPt: <!ZHbb|preselection!> & <!ZHbb|rTight!> & <!ZHbb|tlBtag!> & <!ZHbb|zWindow!> & <!ZHbb|max1AddJet!> & <!ZHbb|upperHMass!> & <!ZHbb|dPhiVH!>
+mjjHighPt_opt: <!ZHbb|preselection!> & <!ZHbb|rTight2!> & <!ZHbb|ccBtag!> & <!ZHbb|zWindow2!> & <!ZHbb|upperHMass!> & <!ZHbb|dPhiVH!>
+mjjLowPt_opt : <!ZHbb|preselection!> & <!ZHbb|rLow2!> & <!ZHbb|tcBtag!> & <!ZHbb|zWindow2!> & <!ZHbb|max1AddJet!> & <!ZHbb|upperHMass!> & <!ZHbb|dPhiVH!>
+mjjMedPt_opt : <!ZHbb|preselection!> & <!ZHbb|rMed2!> & <!ZHbb|ccBtag!> & <!ZHbb|zWindow2!> & <!ZHbb|upperHMass!> & <!ZHbb|dPhiVH!>
+
+
+# ----------------
+# V.pt regions
+# ----------------
+
+RMed  : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!ZHbb|looseHMass!>
+RTight: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|Zwindow_mass!> & <!ZHbb|upperHMass!>
+RTightLooseBTag: <!ZHbb|30jets!> & <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|upperHMass!> & <!ZHbb|looseBTag!>
+
+RLoose     : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rLoose!>
+RMed_120   : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed_120!>
+RTight_120 : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight_120!>
+RMed_150   : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed_150!> 
+RTight_150 : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight_150!>
+RMed_240   : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed_240!> 
+RTight_240 : <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight_240!>
+
+HighPt : <!Cuts|RTight!>
+LowPt  : <!Cuts|RMed!>
+
+HighPtLooseBTag: <!Cuts|RTightLooseBTag!>
+
+
+# ---------------------
+# individual training
+# ---------------------
+
+RTight_andTT: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28
+RTight_andDY: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1
+HighPt_ExpertRegion0: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal <= 0.28
+HighPt_ExpertRegion1: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal <= -0.1
+HighPt_ExpertRegion2: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal <= 0.28
+HighPt_ExpertRegion3: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal > 0.28
+
+# Electron muon splitting
+HighPt_ExpertRegion0_EE: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal <= 0.28 & <!ZHeebb|addCuts!>
+HighPt_ExpertRegion1_EE: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal <= -0.1 & <!ZHeebb|addCuts!>
+HighPt_ExpertRegion2_EE: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal <= 0.28 & <!ZHeebb|addCuts!>
+HighPt_ExpertRegion3_EE: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal > 0.28 & <!ZHeebb|addCuts!>
+HighPt_ExpertRegion0_MM: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal <= 0.28 & <!ZHmmbb|addCuts!>
+HighPt_ExpertRegion1_MM: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal <= -0.1 & <!ZHmmbb|addCuts!>
+HighPt_ExpertRegion2_MM: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal <= 0.28 & <!ZHmmbb|addCuts!>
+HighPt_ExpertRegion3_MM: <!Cuts|RTight!> & TT_HighPt_ZH125_nov.nominal > 0.28 & DY_HighPt_ZH125_nov.nominal > -0.1 & VV_HighPt_ZH125_nov.nominal > 0.28 & <!ZHmmbb|addCuts!>
+
+
+# ------------------------------
+# Regions for scale factors fit
+# ------------------------------
+
+# Test.  Name here must match the name of the plot
+DYJetsToLL: <!ZHbb|Zwindow_mass!>
+
+RTight_TTbar_fit: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!>
+
+RMed_TTbar_fit: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!>
+
+RTight_TTbarOpen_fit: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVetoSmall!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!>
+
+RMed_TTbarOpen_fit: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVetoSmall!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!>
+
+RTight_DYJets_fit: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!>
+
+# For RMed_DYJets_fit region: btag extrapolation from loose (in the fit region) to custom (in the signal region)
+RMed_DYJets_fit: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!ZHbb|vetoHMass!> 
+
+# Sum high / low pt
+DYJets_fit: <!Cuts|RTight_DYJets_fit!> || <!Cuts|RMed_DYJets_fit!>
+TTbar_fit : <!Cuts|RTight_TTbar_fit!> || <!Cuts|RMed_TTbar_fit!>
+ZLight_fit: <!Cuts|ZLight_HighPt!> || <!Cuts|ZLight_LowPt!>
+
+# Electron - Muons splitting
+DYJets_fit_EE: (<!Cuts|RTight_DYJets_fit!> || <!Cuts|RMed_DYJets_fit!>) & <!ZHeebb|addCuts!>
+TTbar_fit_EE : (<!Cuts|RTight_TTbar_fit!> || <!Cuts|RMed_TTbar_fit!>) & <!ZHeebb|addCuts!>
+DYJets_fit_MM: (<!Cuts|RTight_DYJets_fit!> || <!Cuts|RMed_DYJets_fit!>) & <!ZHmmbb|addCuts!>
+TTbar_fit_MM : (<!Cuts|RTight_TTbar_fit!> || <!Cuts|RMed_TTbar_fit!>) & <!ZHmmbb|addCuts!>
+
+RTight_TTbar_fit_EE : <!Cuts|RTight_TTbar_fit!> & <!ZHeebb|addCuts!>
+RTight_TTbar_fit_MM : <!Cuts|RTight_TTbar_fit!> & <!ZHmmbb|addCuts!>
+RMed_TTbar_fit_EE   : <!Cuts|RMed_TTbar_fit!> & <!ZHeebb|addCuts!>
+RMed_TTbar_fit_MM   : <!Cuts|RMed_TTbar_fit!> & <!ZHmmbb|addCuts!>
+RTight_DYJets_fit_EE: <!Cuts|RTight_DYJets_fit!> & <!ZHeebb|addCuts!>
+RTight_DYJets_fit_MM: <!Cuts|RTight_DYJets_fit!> & <!ZHmmbb|addCuts!>
+RMed_DYJets_fit_EE  : <!Cuts|RMed_DYJets_fit!> & <!ZHeebb|addCuts!>
+RMed_DYJets_fit_MM  : <!Cuts|RMed_DYJets_fit!> & <!ZHmmbb|addCuts!>
+
+RTight_TTbarOpen_fit_EE: <!Cuts|RTight_TTbarOpen_fit!> & <!ZHeebb|addCuts!>
+RTight_TTbarOpen_fit_MM: <!Cuts|RTight_TTbarOpen_fit!> & <!ZHmmbb|addCuts!>
+RMed_TTbarOpen_fit_EE  : <!Cuts|RMed_TTbarOpen_fit!> & <!ZHeebb|addCuts!>
+RMed_TTbarOpen_fit_MM  : <!Cuts|RMed_TTbarOpen_fit!> & <!ZHmmbb|addCuts!>
+
+
+
+
+
+TTbar_unbiased: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & MET.et > 60. & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & <!ZHbb|upperHMass!>
+ZLight= <!ZHbb|preselection!> & <!ZHbb|noAddJet!> & <!ZHbb|zWindow!> & <!ZHbb|ntBtag!> & <!ZHbb|upperHMass!> & <!ZHbb|twoCSV0!> & <!ZHbb|dPhiVH!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & V.pt > 50.
+
+TTbar: <!ZHbb|preselection!> & <!ZHbb|upperHMass!> & <!ZHbb|tcBtag!> & <!ZHbb|zVeto!> & H_pt > 100.
+
+Zbb: <!ZHbb|preselection!> & <!ZHbb|vetoHMass!> & <!ZHbb|upperHMass!> & <!ZHbb|zWindow!> & <!ZHbb|tcBtag!> & <!ZHbb|max1AddJet!> & <!ZHbb|dPhiVH!> 
+
+ZLight_beforeReg: <!ZHbb|preselection_beforeReg!> & <!ZHbb|noAddJet!> & <!ZHbb|zWindow!> & <!ZHbb|ntBtag!> & <!ZHbb|upperHMass_beforeReg!> & <!ZHbb|twoCSV0!> & <!ZHbb|dPhiVH!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!>
+
+TTbar_beforeReg: <!ZHbb|preselection_beforeReg!> & <!ZHbb|upperHMass_beforeReg!> & <!ZHbb|tcBtag!> & <!ZHbb|zVeto!> & HNoReg.pt > 100.
+
+Zbb_beforeReg: <!ZHbb|preselection_beforeReg!> & <!ZHbb|vetoHMass_beforeReg!> & <!ZHbb|upperHMass_beforeReg!> & <!ZHbb|zWindow!> & <!ZHbb|tcBtag!> & <!ZHbb|max1AddJet!> & <!ZHbb|dPhiVH!> 
+
+Zbb_Balance: <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|ccBtag!> & <!ZHbb|noAddJet!> & V.pt > 50. & H.pt/V.pt < 2.
+
+Zbb_BalanceNoReg: <!ZHbb|preselection_beforeReg!> & <!ZHbb|zWindow!> & <!ZHbb|ccBtag!> & <!ZHbb|noAddJet!> & V.pt > 50. & HNoReg.pt/V.pt < 2. 
+
+ZLight_HighPt: <!Cuts|ZLight!> & <!ZHbb|rTight!>
+
+ZLight_HighPt_beforeReg: <!Cuts|ZLight_beforeReg!> & <!ZHbb|rTight!>
+
+TTbar_HighPt: <!Cuts|TTbar!> & <!ZHbb|rTight!>
+
+Zbb_HighPt: <!Cuts|Zbb!> & <!ZHbb|rTight!>
+
+ZPeak: <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|upperHMass!> & <!ZHbb|twoCSV0!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> 
+
+ZPeak_Zee: <!ZHbb|zWindow!> & <!ZHeebb|addCuts!> & hJet_pt[0] > 20. & hJet_pt[1] > 20.
+
+ZPeak_Zmm: <!ZHbb|zWindow!> & <!ZHmmbb|addCuts!> & hJet_pt[0] > 20. & hJet_pt[1] > 20.
+
+ZLight_LowPt: <!Cuts|ZLight!> & <!ZHbb|rMed!> & H.mass > 50.
+
+ZLight_LowPt_beforeReg: <!Cuts|ZLight_beforeReg!> & <!ZHbb|rMed!> & HNoReg.mass > 50.
+
+TTbar_LowPt: <!Cuts|TTbar!> & <!ZHbb|rMed!>
+
+Zbb_LowPt: <!Cuts|Zbb!> & <!ZHbb|rMed!>
+
+ZLight_HighPt_Zee: <!Cuts|ZLight_HighPt!> & <!ZHeebb|addCuts!>
+
+ZLight_HighPt_Zmm: <!Cuts|ZLight_HighPt!> & <!ZHmmbb|addCuts!>
+
+ZLight_LowPt_Zee: <!Cuts|ZLight_LowPt!> & <!ZHeebb|addCuts!>
+
+ZLight_LowPt_Zmm: <!Cuts|ZLight_LowPt!> & <!ZHmmbb|addCuts!>
+
+TTbar_Zee: <!Cuts|TTbar!> & <!ZHeebb|addCuts!>
+
+TTbar_Zmm: <!Cuts|TTbar!> & <!ZHmmbb|addCuts!>
+
+Zbb_Zee: <!Cuts|Zbb!> & <!ZHeebb|addCuts!>
+
+Zbb_Zmm: <!Cuts|Zbb!> & <!ZHmmbb|addCuts!>
+
+Zbb_HighPt_Zee: <!Cuts|Zbb!> & <!ZHbb|rTight!> & <!ZHeebb|addCuts!>
+
+Zbb_HighPt_Zmm: <!Cuts|Zbb!> & <!ZHbb|rTight!> & <!ZHmmbb|addCuts!>
+
+Zbb_LowPt_Zee: <!Cuts|Zbb!> & <!ZHbb|rMed!> & <!ZHeebb|addCuts!>
+
+Zbb_LowPt_Zmm: <!Cuts|Zbb!> & <!ZHbb|rMed!> & <!ZHmmbb|addCuts!>
+
+TTbar_vtx: <!Cuts|TTbar!> & <!ZHbb|vtx!>
+
+TTbar_soft: <!Cuts|TTbar!> & <!ZHbb|soft!>
+
+Zbb_vtx: <!Cuts|Zbb!> & <!ZHbb|vtx!>
+
+Zbb_soft: <!Cuts|Zbb!> & <!ZHbb|soft!>
+
+# IVF regions: Additional cut on the number of inclusive secondary vertices
+RTight_TTbar_fit_SV: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & nSvs==2
+
+RMed_TTbar_fit_SV: <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVC!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & <!Z
+Hbb|rMed!> & nSvs==2
+
+RTight_DYJets_fit_SV: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!Z
+Hbb|vetoHMass!> & nSvs==2
+
+RMed_DYJets_fit_SV: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!ZHbb|vetoHMass!> & nSvs==2
+
+RTight_DYJets_fit_SV_gs: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi < 1.0
+
+RMed_DYJets_fit_SV_gs: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi < 1.0
+
+RTight_DYJets_fit_SV_dR1: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 1.0
+
+RMed_DYJets_fit_SV_dR1: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 1.0
+
+RTight_DYJets_fit_SV_dR5: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 0.5
+
+RMed_DYJets_fit_SV_dR5: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rMed!> & <!Z
+Hbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 0.5
+
+RTight_Z1b_SV    : <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2
+RTight_Z1b_SV_gs : <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi < 1.0
+RTight_Z1b_SV_dR1: <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 1.0
+RTight_Z1b_SV_dR5: <!ZHbb|preselection!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|rTight!> & <!ZHbb|vetoHMass!> & nSvs==2 & SVH.dPhi > 0.5
+
+#!! Inclusive in Vpt
+TTbar_fit_SV : <!ZHbb|zMassSafety!> & <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zVeto!> & <!ZHbb|pullAngle!> & nSvs==2
+DYJets_fit_SV: <!ZHbb|preselection!> & <!ZHbb|maxBtag!> > <!ZHbb|CSVL!> & <!ZHbb|minBtag!> > <!ZHbb|CSVL!> & <!ZHbb|zWindow!> & <!ZHbb|pullAngle!> & <!ZHbb|vetoHMass!> & nSvs==2
+
+
+#!! ---------------------------
+#!! Electron muons separation
+#!! ---------------------------
+RTight_EE: Vtype==1  & <!Cuts|RTight!>
+RTight_MM: Vtype==0 & <!Cuts|RTight!>
+RTight_120_EE: Vtype==1  & <!Cuts|RTight_120!>
+RTight_120_MM: Vtype==0 & <!Cuts|RTight_120!>
+RTight_150_EE: Vtype==1  & <!Cuts|RTight_150!>
+RTight_150_MM: Vtype==0 & <!Cuts|RTight_150!>
+RTight_240_EE: Vtype==1  & <!Cuts|RTight_240!>
+RTight_240_MM: Vtype==0 & <!Cuts|RTight_240!>
+RMed_EE: Vtype==1 & <!Cuts|RMed!>
+RMed_MM: Vtype==0 & <!Cuts|RMed!>
+RMed_120_EE: Vtype==1  & <!Cuts|RMed_120!>
+RMed_120_MM: Vtype==0 & <!Cuts|RMed_120!>
+RMed_150_EE: Vtype==1  & <!Cuts|RMed_150!>
+RMed_150_MM: Vtype==0 & <!Cuts|RMed_150!>
+RMed_240_EE: Vtype==1  & <!Cuts|RMed_240!>
+RMed_240_MM: Vtype==0 & <!Cuts|RMed_240!>
+RLoose_EE: Vtype==1  & <!Cuts|RLoose!>
+RLoose_MM: Vtype==0  & <!Cuts|RLoose!>
+RTightLooseBTag_EE: Vtype==1 & <!Cuts|RTightLooseBTag!>
+RTightLooseBTag_MM: Vtype==0 & <!Cuts|RTightLooseBTag!>
+
+#!! Change naming
+HighPt_EE: Vtype==1  & <!Cuts|RTight!>
+HighPt_MM: Vtype==0 & <!Cuts|RTight!>
+HighPt_Zee: <!Cuts|RTight_EE!>
+HighPt_Zmm: <!Cuts|RTight_MM!>
+LowPt_EE: Vtype==1 & <!Cuts|RMed!>
+LowPt_MM: Vtype==0 & <!Cuts|RMed!>
+LowPt_Zee: <!Cuts|RMed_EE!>
+LowPt_Zmm: <!Cuts|RMed_MM!>
+HighPtLooseBTag_EE: Vtype==1 & <!Cuts|RTightLooseBTag!>
+HighPtLooseBTag_MM: Vtype==0 & <!Cuts|RTightLooseBTag!>
+HighPtLooseBTag_Zee: <!Cuts|RTightLooseBTag_EE!>
+HighPtLooseBTag_Zmm: <!Cuts|RTightLooseBTag_MM!>
+TTbar_unbiased_Zee: <!Cuts|TTbar_unbiased!> & <!ZHeebb|addCuts!>
+TTbar_unbiased_Zmm: <!Cuts|TTbar_unbiased!> & <!ZHmmbb|addCuts!>
+Zbb_soft_Zee: <!Cuts|Zbb!> & <!ZHbb|soft!> & <!ZHeebb|addCuts!>
+Zbb_soft_Zmm: <!Cuts|Zbb!> & <!ZHbb|soft!> & <!ZHmmbb|addCuts!>
+
+#!! Very loose pt region ( 0-50 )
+VLowPt_Zee: <!Cuts|RLoose_EE!>
+VLowPt_Zmm: <!Cuts|RLoose_MM!>
+
+#!! IVF regions
+RTight_TTbar_fit_SV_EE = <!Cuts|RTight_TTbar_fit_SV!> & <!ZHeebb|addCuts!>
+RTight_TTbar_fit_SV_MM = <!Cuts|RTight_TTbar_fit_SV!> & <!ZHmmbb|addCuts!>
+RMed_TTbar_fit_SV_EE = <!Cuts|RMed_TTbar_fit_SV!> & <!ZHeebb|addCuts!>
+RMed_TTbar_fit_SV_MM = <!Cuts|RMed_TTbar_fit_SV!> & <!ZHmmbb|addCuts!>
+RTight_DYJets_fit_SV_EE = <!Cuts|RTight_DYJets_fit_SV!> & <!ZHeebb|addCuts!>
+RTight_DYJets_fit_SV_MM = <!Cuts|RTight_DYJets_fit_SV!> & <!ZHmmbb|addCuts!>
+RMed_DYJets_fit_SV_EE = <!Cuts|RMed_DYJets_fit_SV!> & <!ZHeebb|addCuts!>
+RMed_DYJets_fit_SV_MM = <!Cuts|RMed_DYJets_fit_SV!> & <!ZHmmbb|addCuts!>
+TTbar_fit_SV_EE = <!Cuts|TTbar_fit_SV!> & <!ZHeebb|addCuts!>
+TTbar_fit_SV_MM = <!Cuts|TTbar_fit_SV!> & <!ZHmmbb|addCuts!>
+DYJets_fit_SV_EE = <!Cuts|DYJets_fit_SV!> & <!ZHeebb|addCuts!>
+DYJets_fit_SV_MM = <!Cuts|DYJets_fit_SV!> & <!ZHmmbb|addCuts!>
+RTight_Z1b_SV_EE = <!Cuts|RTight_Z1b_SV!> & <!ZHeebb|addCuts!>
+RTight_Z1b_SV_MM = <!Cuts|RTight_Z1b_SV!> & <!ZHmmbb|addCuts!>
+
+
+#!! --------------------------
+#!! VV regions
+#!! --------------------------
+ZZll = <!ZHbb|zWindow!> & hJet_pt[0] > 40. & hJet_pt[1] > 20. & <!ZHbb|preselection!> & <!ZHbb|tcBtag!> & MET.et < 45.
+ZZll_Zee = <!ZHeebb|addCuts!> & <!ZHbb|zWindow!> & hJet_pt[0] > 40. & hJet_pt[1] > 20. & <!ZHbb|preselection!> & <!ZHbb|tcBtag!> & MET.et < 45.
+ZZll_Zmm = <!ZHmmbb|addCuts!> & <!ZHbb|zWindow!> & hJet_pt[0] > 40. & hJet_pt[1] > 20. & <!ZHbb|preselection!> & <!ZHbb|tcBtag!> & MET.et < 45.
+
+#!! ---------------------
+#!! Mjj
+#!! ---------------------
+#LowPt_MJJ_Zee = <!ZHeebb|addCuts!> & <!Cuts|mjjLowPt!> 
+#LowPt_MJJ_Zmm = <!ZHmmbb|addCuts!> & <!Cuts|mjjLowPt!> 
+LowPt_MJJ_Zee = <!ZHeebb|addCuts!> & <!Cuts|mjjLowPt_opt!> 
+LowPt_MJJ_Zmm = <!ZHmmbb|addCuts!> & <!Cuts|mjjLowPt_opt!> 
+#HighPt_MJJ_Zee = <!ZHeebb|addCuts!> & <!Cuts|mjjHighPt!>
+#HighPt_MJJ_Zmm = <!ZHmmbb|addCuts!> & <!Cuts|mjjHighPt!> 
+HighPt_MJJ_Zee = <!ZHeebb|addCuts!> & <!Cuts|mjjHighPt_opt!>
+HighPt_MJJ_Zmm = <!ZHmmbb|addCuts!> & <!Cuts|mjjHighPt_opt!> 
+MedPt_MJJ_Zee = <!ZHeebb|addCuts!> & <!Cuts|mjjMedPt_opt!>
+MedPt_MJJ_Zmm = <!ZHmmbb|addCuts!> & <!Cuts|mjjMedPt_opt!> 
+
+#!! --------------------------------
+#!! Fat higgs control regions
+#!! --------------------------------
+Zbb_fatH = <!ZHbb|preselection!> & <!ZHbb|vetoHMass!> & <!ZHbb|upperHMass!> & <!ZHbb|zWindow!> & <!ZHbb|ccBtag!> & <!ZHbb|max1AddJet!> & <!ZHbb|dPhiVH!> & V.pt > 100 & fathFilterJets_pt > 20
+Zbb_Zee_fatH = <!Cuts|Zbb_fatH!> & <!ZHeebb|addCuts!> 
+Zbb_Zmm_fatH = <!Cuts|Zbb_fatH!> & <!ZHmmbb|addCuts!>
+
+#!! --------------
+#!! ATLAS Mjj 
+#!! --------------
+ATLAS_preselection = hJet_pt[0] > 45. & hJet_pt[1] > 20. & abs(hJet_eta[0]) < 2.4 & abs(hJet_eta[1]) < 2.4 & hbhe & hJet_puJetIdL[0] > 0. & hJet_puJetIdL[1] > 0.
+ATLAS_zWindow = V.mass > 83. & V.mass < 99
+ATLAS_Mjj = <!Cuts|ATLAS_preselection!> & <!ZHbb|ccBtag!> & MET.et < 60. & <!Cuts|ATLAS_zWindow!>
+#ATLAS_Mjj = <!Cuts|ATLAS_preselection!> & <!ZHbb|ccBtag!> & MET.et < 60. & <!Cuts|ATLAS_zWindow!> & <!ZHbb|dPhiVH!>
+
+ATLAS_Mjj_pt50 =     <!Cuts|ATLAS_Mjj!>               & V.pt <= 50.
+ATLAS_Mjj_pt50100 =  <!Cuts|ATLAS_Mjj!> & V.pt > 50.  & V.pt <= 100.
+ATLAS_Mjj_pt100150 = <!Cuts|ATLAS_Mjj!> & V.pt > 100. & V.pt <= 150.
+ATLAS_Mjj_pt150200 = <!Cuts|ATLAS_Mjj!> & V.pt > 150. & V.pt <= 200.
+ATLAS_Mjj_pt200 =    <!Cuts|ATLAS_Mjj!> & V.pt > 200.
+
+ATLAS_Mjj_pt50_dR =     <!Cuts|ATLAS_Mjj_pt50!>     & H.dR > 0.7
+ATLAS_Mjj_pt50100_dR =  <!Cuts|ATLAS_Mjj_pt50100!>  & H.dR > 0.7
+ATLAS_Mjj_pt100150_dR = <!Cuts|ATLAS_Mjj_pt100150!> & H.dR > 0.7
+ATLAS_Mjj_pt150200_dR = <!Cuts|ATLAS_Mjj_pt150200!> & H.dR > 0.7 & H.dR < 1.8
+ATLAS_Mjj_pt200_dR =    <!Cuts|ATLAS_Mjj_pt200!>                 & H.dR < 1.6
+
+ATLAS_Mjj_pt50_dR_Zee =     <!Cuts|ATLAS_Mjj_pt50!>     & H.dR > 0.7              & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt50100_dR_Zee =  <!Cuts|ATLAS_Mjj_pt50100!>  & H.dR > 0.7              & <!ZHeebb|addCuts!> 
+ATLAS_Mjj_pt100150_dR_Zee = <!Cuts|ATLAS_Mjj_pt100150!> & H.dR > 0.7              & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt150200_dR_Zee = <!Cuts|ATLAS_Mjj_pt150200!> & H.dR > 0.7 & H.dR < 1.8 & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt200_dR_Zee =    <!Cuts|ATLAS_Mjj_pt200!>                 & H.dR < 1.6 & <!ZHeebb|addCuts!>
+
+ATLAS_Mjj_pt50_dR_Zmm =     <!Cuts|ATLAS_Mjj_pt50!>     & H.dR > 0.7              & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt50100_dR_Zmm =  <!Cuts|ATLAS_Mjj_pt50100!>  & H.dR > 0.7              & <!ZHmmbb|addCuts!> 
+ATLAS_Mjj_pt100150_dR_Zmm = <!Cuts|ATLAS_Mjj_pt100150!> & H.dR > 0.7              & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt150200_dR_Zmm = <!Cuts|ATLAS_Mjj_pt150200!> & H.dR > 0.7 & H.dR < 1.8 & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt200_dR_Zmm =    <!Cuts|ATLAS_Mjj_pt200!>                 & H.dR < 1.6 & <!ZHmmbb|addCuts!>
+
+ATLAS_Mjj_pt50_Zee =     <!Cuts|ATLAS_Mjj_pt50!>     & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt50100_Zee =  <!Cuts|ATLAS_Mjj_pt50100!>  & <!ZHeebb|addCuts!> 
+ATLAS_Mjj_pt100150_Zee = <!Cuts|ATLAS_Mjj_pt100150!> & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt150200_Zee = <!Cuts|ATLAS_Mjj_pt150200!> & <!ZHeebb|addCuts!>
+ATLAS_Mjj_pt200_Zee =    <!Cuts|ATLAS_Mjj_pt200!>    & <!ZHeebb|addCuts!>
+
+ATLAS_Mjj_pt50_Zmm =     <!Cuts|ATLAS_Mjj_pt50!>     & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt50100_Zmm =  <!Cuts|ATLAS_Mjj_pt50100!>  & <!ZHmmbb|addCuts!> 
+ATLAS_Mjj_pt100150_Zmm = <!Cuts|ATLAS_Mjj_pt100150!> & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt150200_Zmm = <!Cuts|ATLAS_Mjj_pt150200!> & <!ZHmmbb|addCuts!>
+ATLAS_Mjj_pt200_Zmm =    <!Cuts|ATLAS_Mjj_pt200!>    & <!ZHmmbb|addCuts!>
+
+#!! ------------
+#!! new Mjj 
+#!! ------------
+Mjj_selection: <!ZHbb|preselection!> & <!ZHbb|mcBtag!> & <!ZHbb|zWindow!> & MET.et < 60. & <!ZHbb|looseHMass!>
+#Mjj_pt70 = <!Cuts|Mjj_selection!> & V.pt <= 70. & H.dR > 1.2
+#Mjj_pt70150 = <!Cuts|Mjj_selection!> & V.pt > 70.  & V.pt <= 150.
+#Mjj_pt150 = <!Cuts|Mjj_selection!> & V.pt > 150. & H.dR < 1.6
+Mjj_pt100 = <!Cuts|Mjj_selection!> & V.pt > 50. & V.pt <= 100.
+Mjj_pt100150 = <!Cuts|Mjj_selection!> & V.pt > 100.  & V.pt <= 150.
+Mjj_pt150 = <!Cuts|Mjj_selection!> & V.pt > 150. & H.dR < 1.6
+Mjj_pt100_Zee =    <!Cuts|Mjj_pt100!>  & <!ZHeebb|addCuts!>
+Mjj_pt100_Zmm =    <!Cuts|Mjj_pt100!>  & <!ZHmmbb|addCuts!>
+Mjj_pt100150_Zee =    <!Cuts|Mjj_pt100150!>  & <!ZHeebb|addCuts!>
+Mjj_pt100150_Zmm =    <!Cuts|Mjj_pt100150!>  & <!ZHmmbb|addCuts!>
+Mjj_pt150_Zee =    <!Cuts|Mjj_pt150!>  & <!ZHeebb|addCuts!>
+Mjj_pt150_Zmm =    <!Cuts|Mjj_pt150!>  & <!ZHmmbb|addCuts!>
+
+#!! ---------------------
+#!! Triggers
+#!! ---------------------
+triggerEE = (triggerFlags[5]>0 || triggerFlags[6]>0)
+triggerMM = (triggerFlags[14]>0 || triggerFlags[21]>0 || triggerFlags[22]>0 || triggerFlags[23]>0) 

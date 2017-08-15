@@ -1,0 +1,101 @@
+[lheWeights]
+inclusive = DY_inclusive
+prefix = /exports/uftrig01a/dcurry/data/bbar/13TeV/heppy/v11/
+newpostfix = _lhe.root
+fileList = {'DY_inclusive': 2008.0, \
+	'DY_100to200': 194.3, \
+	'DY_200to400': 52.24, \
+	'DY_400to600': 6.55, \
+	'DY_600toInf': 2.18}
+lheBin = ['lheV_pt < 50 & lheNj == 0 & lheHT < 200',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT < 200',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT < 200',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT < 200',\
+	'lheV_pt > 180 & lheNj == 0 & lheHT < 200',\
+	\
+	'lheV_pt < 50 & lheNj == 1 & lheHT < 200',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT < 200',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT < 200',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT < 200',\
+	'lheV_pt > 180 & lheNj == 1 & lheHT < 200',\
+	\
+	'lheV_pt < 50 & lheNj == 2 & lheHT < 200',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT < 200',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT < 200',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT < 200',\
+	'lheV_pt > 180 & lheNj == 2 & lheHT < 200',\
+	\
+	'lheV_pt < 50 & lheNj == 3 & lheHT < 200',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT < 200',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT < 200',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT < 200',\
+	'lheV_pt > 180 & lheNj == 3 & lheHT < 200',\
+	\
+	'lheV_pt < 50 & lheNj == 4 & lheHT < 200',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT < 200',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT < 200',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT < 200',\
+	'lheV_pt > 180 & lheNj == 4 & lheHT < 200',\
+	\
+	'lheV_pt < 50 & lheNj == 0 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 180 & lheNj == 0 & lheHT > 200 & lheHT < 400',\
+	\
+	'lheV_pt < 50 & lheNj == 1 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 180 & lheNj == 1 & lheHT > 200 & lheHT < 400',\
+	\
+	'lheV_pt < 50 & lheNj == 2 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 180 & lheNj == 2 & lheHT > 200 & lheHT < 400',\
+	\
+	'lheV_pt < 50 & lheNj == 3 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 180 & lheNj == 3 & lheHT > 200 & lheHT < 400',\
+	\
+	'lheV_pt < 50 & lheNj == 4 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT > 200 & lheHT < 400',\
+	'lheV_pt > 180 & lheNj == 4 & lheHT > 200 & lheHT < 400',\
+	\
+	'lheV_pt < 50 & lheNj == 0 & lheHT > 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT > 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT > 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT > 400',\
+	'lheV_pt > 180 & lheNj == 0 & lheHT > 400',\
+	\
+	'lheV_pt < 50 & lheNj == 1 & lheHT > 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT > 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT > 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT > 400',\
+	'lheV_pt > 180 & lheNj == 1 & lheHT > 400',\
+	\
+	'lheV_pt < 50 & lheNj == 2 & lheHT > 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT > 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT > 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT > 400',\
+	'lheV_pt > 180 & lheNj == 2 & lheHT > 400',\
+	\
+	'lheV_pt < 50 & lheNj == 3 & lheHT > 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT > 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT > 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT > 400',\
+	'lheV_pt > 180 & lheNj == 3 & lheHT > 400',\
+	\
+	'lheV_pt < 50 & lheNj == 4 & lheHT > 400',\
+	'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT > 400',\
+	'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT > 400',\
+	'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT > 400',\
+	'lheV_pt > 180 & lheNj == 4 & lheHT > 400'\
+	]
+weights_per_bin = {'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT < 200': 0.06568129379978763, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT > 400': 0.0012016864292380763, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT > 400': 1.0, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT > 200 & lheHT < 400': 0.01565473532710729, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT > 200 & lheHT < 400': 0.015674362183963137, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT > 400': 1.0, 'lheV_pt < 50 & lheNj == 0 & lheHT < 200': 1.0, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT < 200': 0.9984404242046163, 'lheV_pt < 50 & lheNj == 3 & lheHT > 400': 0.001233914376703519, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT < 200': 0.06522242853364849, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT > 400': 1.0, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT > 200 & lheHT < 400': 0.015650047528266167, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT < 200': 0.06549524597354016, 'lheV_pt < 50 & lheNj == 1 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt < 50 & lheNj == 3 & lheHT > 200 & lheHT < 400': 0.015653895092841628, 'lheV_pt > 180 & lheNj == 3 & lheHT > 400': 0.0011184007717132004, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT < 200': 0.06538771995017528, 'lheV_pt > 180 & lheNj == 1 & lheHT > 400': 0.001483170141759324, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT > 200 & lheHT < 400': 0.01564928346856123, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT < 200': 0.06352056972699552, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 180 & lheNj == 2 & lheHT > 400': 0.0012101329048361889, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT > 400': 1.0, 'lheV_pt < 50 & lheNj == 1 & lheHT < 200': 1.0, 'lheV_pt > 180 & lheNj == 1 & lheHT < 200': 0.06521184358248462, 'lheV_pt > 180 & lheNj == 3 & lheHT > 200 & lheHT < 400': 0.015665752747731656, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT > 200 & lheHT < 400': 0.015650779596592956, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT > 200 & lheHT < 400': 0.015636698210887888, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 0 & lheHT < 200': 1.0, 'lheV_pt > 180 & lheNj == 4 & lheHT > 400': 0.00039558619146467914, 'lheV_pt > 180 & lheNj == 0 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT < 200': 0.06593893640452683, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT > 200 & lheHT < 400': 0.0156724472543904, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 2 & lheHT > 400': 0.0012136041872320095, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT < 200': 0.05973180936906621, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 180 & lheNj == 4 & lheHT > 200 & lheHT < 400': 0.01566984108760912, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT > 400': 0.0010085380231728998, 'lheV_pt > 180 & lheNj == 1 & lheHT > 200 & lheHT < 400': 0.015654956551796374, 'lheV_pt > 180 & lheNj == 4 & lheHT < 200': 0.06594496536036386, 'lheV_pt < 50 & lheNj == 2 & lheHT > 200 & lheHT < 400': 0.015645278978586998, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT > 200 & lheHT < 400': 0.015675072939415526, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT > 400': 0.0012165580056259738, 'lheV_pt < 50 & lheNj == 2 & lheHT < 200': 0.05267945113322203, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 1 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt < 50 & lheNj == 4 & lheHT < 200': 0.06570728179971579, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 3 & lheHT > 400': 0.0011856814227919248, 'lheV_pt > 180 & lheNj == 2 & lheHT > 200 & lheHT < 400': 0.015652946562858684, 'lheV_pt > 180 & lheNj == 0 & lheHT > 400': 1.0, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 4 & lheHT < 200': 0.06576148952910797, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT < 200': 1.0, 'lheV_pt < 50 & lheNj == 3 & lheHT < 200': 0.06357653275450324, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 0 & lheHT < 200': 1.0, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT < 200': 0.06590970816584987, 'lheV_pt < 50 & lheNj == 4 & lheHT > 400': 0.0010242683527606738, 'lheV_pt > 180 & lheNj == 0 & lheHT < 200': 1.0, 'lheV_pt < 50 & lheNj == 0 & lheHT > 400': 1.0, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 1 & lheHT < 200': 1.0, 'lheV_pt < 50 & lheNj == 2 & lheHT > 400': 0.001252809793413228, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 3 & lheHT > 200 & lheHT < 400': 0.01565113538097107, 'lheV_pt > 180 & lheNj == 3 & lheHT < 200': 0.06612477595610038, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 2 & lheHT > 400': 0.0012336786282852012, 'lheV_pt < 50 & lheNj == 0 & lheHT > 200 & lheHT < 400': 1.0, 'lheV_pt > 70 & lheV_pt < 100 & lheNj == 4 & lheHT > 400': 0.0009888603053737996, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 0 & lheHT > 400': 1.0, 'lheV_pt > 180 & lheNj == 2 & lheHT < 200': 0.06541547177583729, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 1 & lheHT > 400': 1.0, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 2 & lheHT > 400': 0.0011975616601668177, 'lheV_pt > 50 & lheV_pt < 70 & lheNj == 3 & lheHT < 200': 0.06467127079147486, 'lheV_pt < 50 & lheNj == 1 & lheHT > 400': 1.0, 'lheV_pt < 50 & lheNj == 4 & lheHT > 200 & lheHT < 400': 0.015676625938685473, 'lheV_pt > 100 & lheV_pt < 180 & lheNj == 4 & lheHT > 400': 0.0009522908272444556}
+

@@ -1,0 +1,96 @@
+#-*-Perl-*-
+ 
+[Configuration]
+# List of the config you want to use
+# The number of config has to be exaclty 7
+# The list only support spaces between configs
+List: paths general cuts training datacard plots lheWeights
+
+
+[Directories]
+
+# just a variable
+Dname: VHbb
+    
+# Working Directory
+Wdir: /afs/cern.ch/work/d/dcurry/public/v25Heppy/CMSSW_7_4_7/src/
+scratch: /scratch/dcurry
+ 
+# heppy version
+version: v25/
+
+# Base file storage directory
+#file_source: root://t3dcachedb03.psi.ch:1094//pnfs/psi.ch/cms/trivcat/store/user/perrozzi/VHBBHeppyV21bis/
+
+# ===== Sample Paths ======    
+
+# on Uftrig
+#samplepath: /exports/uftrig01a/dcurry/heppy/
+
+# on Lxplus
+samplepath: root://eoscms//eos/cms/store/user/dcurry/heppy/
+
+# tmp2.2.3 post-higgsreview
+t3Private: <!Directories|samplepath!>/files/tmp/
+
+   
+uftrig_storage: /exports/uftrig01a/dcurry/heppy/
+
+scratch: /scratch/dcurry
+    
+# The directory with the code
+vhbbpath: <!Directories|Wdir!><!Directories|Dname!>
+    
+# specifies the .cfg files with the Samples information
+samplesinfo: <!Directories|vhbbpath!>/python/13TeVconfig/samples_nosplit.cfg
+    
+# where you want to store the logfiles from job submissions
+logpath: <!Directories|vhbbpath!>/LOG/
+    
+# from which samples to plot and where to save the plots
+#plottingSamples: /exports/uftrig01a/dcurry/data/bbar/13TeV/heppy/regression/fromPier/
+#plottingSamples : <!Directories|SYSout!>
+#plottingSamples : <!Directories|PREPout!>
+#plottingSamples : <!Directories|uftrig_storage!>/files/btag_MVA_out/
+plottingSamples : <!Directories|MVAout!>
+
+plotpath        : <!Directories|vhbbpath!>/plots/basic_out/
+
+# cahed files
+tmpSamples: <!Directories|t3Private!>
+
+#!! from which samples to make the DCs and where to save the DCs
+dcSamples   : <!Directories|MVAout!>
+#dcSamples   : <!Directories|PREPout!>
+#dcSamples   : <!Directories|SYSout!>
+
+plot_dc_path: <!Directories|vhbbpath!>/datacards/
+
+limits: <!Directories|vhbbpath!>/limits/
+
+# Where to take the raw samples and where to put the prepared trees:
+#PREPin : <!Directories|samplepath!><!Directories|version!>
+#PREPout: <!Directories|uftrig_storage!>/files/prep_out_large/
+PREPin : <!Directories|uftrig_storage!>/files/vtype_out/
+PREPout: <!Directories|uftrig_storage!>/files/prep_out/
+
+
+# Where Regression takes its input, and where to put the Regression output
+REGRin : <!Directories|PREPout!>
+REGRout: <!Directories|uftrig_storage!>/files/regr_out
+
+# On which samples to apply the regression and write the sys and where to write the resulting trees:
+SYSin : <!Directories|uftrig_storage!>/files/btag_out/
+SYSout: <!Directories|uftrig_storage!>/files/sys_out/
+
+# On which samples to evaluate the MVA on and where to write the resulting trees:
+MVAin : <!Directories|SYSout!>
+#MVAout: <!Directories|uftrig_storage!>/files/MVA_out/
+#MVAout: <!Directories|uftrig_storage!>/files/MVA_out_VV/
+MVAout: <!Directories|uftrig_storage!>/files/btag_MVA_out/
+#MVAout: <!Directories|uftrig_storage!>/files/btag_MVA_out_VV/
+
+# On which samples to evaluate the MVAon and where to write the resulting trees:
+SPLITin : <!Directories|samplepath!>/env/sys/
+SPLITout: <!Directories|SYSout!>/split/
+

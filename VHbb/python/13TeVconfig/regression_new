@@ -1,0 +1,110 @@
+#-*-Perl-*-
+
+[TrainRegression]
+name: v14_myTest_
+#name: _ttbar_weights
+
+# this needs to be the input sample name(from sample_config.cfg)
+#signals: ttbar
+signals: ZH125
+#signals: Wlv
+
+
+options: !H:!V:NTrees=800::BoostType=Grad:Shrinkage=0.1:MaxDepth=3
+#:nCuts=10000
+
+# the weight name determines what training to apply to sys file
+regWeight: weights/MVA_BDT_REG_<!TrainRegression|name!>.weights.xml
+#regWeight:weights/temp_weights.xml
+#regWeight:weights/ttbar_weights.xml
+
+
+# When performing independent regression on each H jet, use these
+regWeight_0: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet0.weights.xml
+regWeight_1: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet1.weights.xml
+
+#regWeight_SL  : weights/MVA_BDT_REG__with_semiLept.weights.xml
+#regWeight_noSL: weights/MVA_BDT_REG__no_semiLept.weights.xml
+   
+cut: abs(Jet_eta[hJidx[0]]) < 2.4 & abs(Jet_eta[hJidx[1]]) < 2.4 & Jet_mcPt[hJidx[0]] > 0. & Jet_mcPt[hJidx[1]] > 0. & abs(Jet_mcFlavour[hJidx[0]])==5 & abs(Jet_mcFlavour[hJidx[1]])==5 & Jet_pt[hJidx[0]] > 20 & Jet_pt[hJidx[1]] > 20
+
+
+vars: Jet_pt 
+    Jet_rawPt
+    rho
+    Jet_eta
+    Jet_leadTrackPt
+    Jet_leptonPtRel
+    Jet_leptonPt
+    Jet_leptonDeltaR
+    Jet_chEmEF
+    Jet_chHEF
+    Jet_neHEF
+    Jet_neEmEF
+    Jet_chMult
+    Jet_vtxPt
+    Jet_vtxMass
+
+#Jet_vtx3dL
+#Jet_vtxNtrk
+#Jet_vtx3deL
+#Jet_mt
+    
+regVars:['Jet_pt',
+    'Jet_rawPt',
+    'rho',
+    'Jet_eta',
+    'Jet_leadTrackPt',
+    'Jet_leptonPtRel',
+    'Jet_leptonPt',
+    'Jet_leptonDeltaR',
+    'Jet_chEmEF',
+    'Jet_chHEF',
+    'Jet_neHEF',
+    'Jet_neEmEF',
+    'Jet_chMult',
+    'Jet_vtxPt',
+    'Jet_vtxMass'
+	 ]
+
+
+#'Jet_mt',
+    #'Jet_vtx3dL',
+    #'Jet_vtxNtrk',
+    #'Jet_vtx3deL'
+    
+
+
+regDict: {'Jet_pt': 'Jet_pt[hJCidx[0]]',
+	  'Jet_rawPt': 'Jet_rawPt[hJCidx[0]]',
+	  'rho' : 'rho',
+	  'Jet_eta': 'Jet_eta[hJCidx[0]]',
+	  
+	  'Jet_leadTrackPt': 'Jet_leadTrackPt[hJCidx[0]]',
+	  'Jet_leptonPtRel': 'Jet_leptonPtRel[hJCidx[0]]',
+	  'Jet_leptonPt': 'Jet_leptonPt[hJCidx[0]]',
+	  'Jet_leptonDeltaR': 'Jet_leptonDeltaR[hJCidx[0]]',
+	  'Jet_chEmEF': 'Jet_chEmEF[hJCidx[0]]',
+	  'Jet_chHEF': 'Jet_chHEF[hJCidx[0]]',
+	  'Jet_neHEF': 'Jet_neHEF[hJCidx[0]]',
+	  'Jet_neEmEF': 'Jet_neEmEF[hJCidx[0]]',
+	  'Jet_chMult': 'Jet_chMult[hJCidx[0]]',
+	  'Jet_vtxPt': 'Jet_vtxPt[hJCidx[0]]',
+	  'Jet_vtxMass': 'Jet_vtxMass[hJCidx[0]]'
+      }
+
+#'Jet_mt': 'Jet_mt[hJCidx[0]]',
+#'Jet_vtx3dL': 'Jet_vtx3dL[hJCidx[0]]',
+#'Jet_vtxNtrk': 'Jet_vtxNtrk[hJCidx[0]]',
+#'Jet_vtx3deL': 'Jet_vtx3deL[hJCidx[0]]'}
+
+
+# =====================================
+
+trainCut : evt%2==0 
+testCut  : evt%6!=0 & evt%5==0 
+weight   : 1
+#weight   : PUweight
+target   : Jet_mcPt
+
+#  LocalWords:  et xml

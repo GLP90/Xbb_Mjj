@@ -1,0 +1,449 @@
+#-*-Perl-*-
+
+#!! -----------------------------
+#!! Config for the MVA training
+#!! -----------------------------
+
+[MVAGeneral]
+
+name: _01_07_test
+
+#!! ------------------
+#!! Factory settings
+#!! ------------------
+type: BDT
+SettingsTight: !H:!V:NTrees=200:nEventsMin=100:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.10:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsLooseBtag: !H:!V:NTrees=400:nEventsMin=500:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsMed: !H:!V:NTrees=400:nEventsMin=300:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.12:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsTight_overtrain: !H:!V:NTrees=400:nEventsMin=2:MaxDepth=5:BoostType=Grad:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=100:PruneMethod=CostComplexity:PruneStrength=50:GradBaggingFraction=1.0:Shrinkage=0.1:UseBaggedGrad=True:UseRandomisedTrees=False:UseNvars=30
+SettingsTight_optimisation: !H:!V:NTrees=400:nEventsMin=500:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsTT: !H:!V:NTrees=300:nEventsMin=300:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsDY: !H:!V:NTrees=400:nEventsMin=500:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+SettingsVV: !H:!V:NTrees=250:nEventsMin=250:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=25:PruneMethod=NoPruning
+
+SettingsTight_VV: !H:!V:NTrees=500:nEventsMin=400:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=20:PruneMethod=CostComplexity:PruneBeforeBoost=False:PruneStrength=3
+SettingsMed_VV: !H:!V:NTrees=500:nEventsMin=500:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.1:SeparationType=MisClassificationError:nCuts=20:PruneMethod=CostComplexity:PruneBeforeBoost=False:PruneStrength=3
+
+#!! define the backgorund for the training.
+#!! the "Samples" seciton is in the file "general".
+backgrounds: [<!Samples|allBKG_BDT!>] 
+
+signals    : [<!Samples|allSIG_BDT!>]
+ 
+gg_signals: [<!Samples|allSIG_BDT_gg!>]
+
+ZH_gg_signals: [<!Samples|allSIG_BDT_ZH_gg!>]
+
+[treeVars]
+
+#index: hJidx
+index: hJCidx
+
+Nominal: HCSV_reg_mass HCSV_reg_pt HVdPhi HCSV_dEta HCSV_dR met_pt hJet_btagCSV[0] hJet_btagCSV[1] max(hJet_pt[0],hJet_pt[1]) min(hJet_pt[0],hJet_pt[1]) V_mass Sum$(Jet_pt>20.&abs(Jet_eta)<2.4&Jet_puId>0.) deltaR_jj V_pt (HCSV_reg_pt/V_pt) #
+#
+
+
+JER_up:  HCSV_reg_mass_JER_up HCSV_reg_pt_JER_up HVdPhi HCSV_dEta HCSV_dR met_pt hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 max(hJet_pt_JER_up[0],hJet_pt_JER_up[1]) min(hJet_pt_JER_up[0],hJet_pt_JER_up[1]) naddGoodLeptons5 V_mass
+
+JER_down:  HCSV_reg_mass_JER_down HCSV_reg_pt_JER_down HVdPhi HCSV_dEta HCSV_dR metPuppi_pt hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 max(hJet_pt_JER_down[0],hJet_pt_JER_down[1]) min(hJet_pt_JER_down[0],hJet_pt_JER_down[1]) naddGoodLeptons5 V_mass
+
+JES_up:  HCSV_reg_mass_JES_up HCSV_reg_pt_JES_up HVdPhi HCSV_dEta HCSV_dR metPuppi_pt hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 max(hJet_pt_JES_up[0],hJet_pt_JES_up[1]) min(hJet_pt_JES_up[0],hJet_pt_JES_up[1]) naddGoodLeptons5 V_mass
+
+JES_down: HCSV_reg_mass_JES_down HCSV_reg_pt_JES_down HVdPhi HCSV_dEta HCSV_dR metPuppi_pt hJet_btagCSV[0] hJet_btagCSV[1] addCenJetNoPU30 max(hJet_pt_JES_down[0],hJet_pt_JES_down[1]) min(hJet_pt_JES_down[0],hJet_pt_JES_down[1]) naddGoodLeptons5 V_mass
+
+
+
+[factory]
+#!! additional options for the factory
+factoryname: MVA
+factorysettings: !V:Color:!DrawProgressBar:AnalysisType=Classification:Transformations=I
+#:Transformations=I;D;P;G,D
+
+[MVALists]
+#!! list to be trained and evaluated
+#List_for_submitscript: RTight_ZH110_janAngularOnly,RTight_ZH115_janAngularOnly,RTight_ZH120_janAngularOnly,RTight_ZH125_janAngularOnly,RTight_ZH130_janAngularOnly,RTight_ZH135_janAngularOnly,RTight_ZH140_janAngularOnly,RTight_ZH145_janAngularOnly,RTight_ZH150_janAngularOnly,RMed_ZH110_janAngularOnly,RMed_ZH115_janAngularOnly,RMed_ZH120_janAngularOnly,RMed_ZH125_janAngularOnly,RMed_ZH130_janAngularOnly,RMed_ZH135_janAngularOnly,RMed_ZH140_janAngularOnly,RMed_ZH145_janAngularOnly,RMed_ZH150_janAngularOnly,RTight_VVb_apr_noWeights,RMed_VVb_apr_noWeights
+
+# which BDTs to apply during evaluation step
+List_for_submitscript:gg_plus_ZH125_highZpt
+
+#,gg_plus_ZH125_lowZpt
+
+#gg_plus_ZH125_Zuu_highZpt,gg_plus_ZH125_Zuu_lowZpt,gg_plus_ZH125_Zee_highZpt,gg_plus_ZH125_Zee_lowZpt
+#,ZH125_Zuu_lowZpt,gg_plus_ZH125_Zuu_lowZpt
+#ZH125_Zuu_lowZpt,gg_plus_ZH125_Zuu_lowZpt,ZH125_Zuu_highZpt,gg_plus_ZH125_Zuu_highZpt
+
+#List_for_submitscript: ZH125_Zuu_lowZpt,ZH125_Zuu_highZpt,ZH125_Zee_lowZpt,ZH125_Zee_highZpt,ggZH125_Zuu_lowZpt,ggZH125_Zuu_highZpt,gg_plus_ZH125_Zuu_lowZpt,gg_plus_ZH125_Zuu_highZpt,gg_plus_ZH125_Zee_lowZpt,gg_plus_ZH125_Zee_highZpt
+    
+
+
+# ==== My BDT training regions =====
+
+#  ==== Now for ZH+ggZH ====
+
+[gg_plus_ZH125_lowZpt]
+MVAtype     : <!MVAGeneral|type!>
+MVAsettings : <!MVAGeneral|SettingsTight!>
+signals     : <!MVAGeneral|ZH_gg_signals!>
+backgrounds : <!MVAGeneral|backgrounds!>
+treeVarSet  : treeVars
+treeCut     : bdt_low_Zpt
+
+[gg_plus_ZH125_highZpt]
+MVAtype     : <!MVAGeneral|type!>
+MVAsettings : <!MVAGeneral|SettingsTight!>
+signals     : <!MVAGeneral|ZH_gg_signals!>
+backgrounds : <!MVAGeneral|backgrounds!>
+treeVarSet  : treeVars
+treeCut     : bdt_high_Zpt
+
+# ===================================
+
+[ZH125_Zuu_lowZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_low_Zpt
+
+[ZH125_Zuu_highZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_high_Zpt
+
+
+
+
+[gg_plus_ZH125_Zuu_lowZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: <!MVAGeneral|ZH_gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_low_Zpt
+
+[gg_plus_ZH125_Zuu_highZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|ZH_gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_high_Zpt
+
+[gg_plus_ZH125_Zee_lowZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|ZH_gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zee_low_Zpt
+
+[gg_plus_ZH125_Zee_highZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|ZH_gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zee_high_Zpt
+
+
+# ==== gg only Regions
+[ggZH125_Zuu_lowZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_low_Zpt
+
+[ggZH125_Zuu_highZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|gg_signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zuu_high_Zpt
+
+
+
+
+# ==============================================
+# Zee
+
+[ZH125_Zee_lowZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zee_low_Zpt
+
+[ZH125_Zee_medZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: Vpt_med_window
+
+[ZH125_Zee_highZpt]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: <!MVAGeneral|signals!>
+backgrounds: <!MVAGeneral|backgrounds!>
+treeVarSet: treeVars
+treeCut: bdt_Zee_high_Zpt
+
+#!! individual BKGds training
+[TT_HighPt_ZH125_nov]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTT!>
+signals: ['ZH125']
+backgrounds: [<!Samples|Top!>]
+treeVarSet: treeVarsICHEP
+treeCut: RTight
+
+[DY_HighPt_ZH125_nov]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsDY!>
+signals: ['ZH125']
+backgrounds: [<!Samples|DrellYan!>]
+treeVarSet: treeVarsICHEP
+treeCut: RTight_andTT
+
+[VV_HighPt_ZH125_nov]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsVV!>
+signals: ['ZH125']
+backgrounds: [<!Samples|Diboson!>]
+treeVarSet: treeVarsICHEP
+treeCut: RTight_andDY
+
+#!! ---------------------------------------------
+#!! LHCP - ICHEP VARIABLES + ANGULAR VARIABLES
+#!! ---------------------------------------------
+#!! ZZbb training
+[RTight_ZZbb_oct_noang4]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['VVb']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsSystMass
+treeCut: RTight
+
+[RMed_ZZbb_oct_noang]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['VVb']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsSystMass
+treeCut: RMed
+
+
+# no weights
+
+[RTight_ZH125_janAngularOnly_noWeights]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH125']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RMed_ZH125_janAngularOnly_noWeights]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH125']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RTight_VVb_apr_noWeights]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight_VV!>
+signals: ['AltZZb','AltWZb','ZZb','WZb']
+backgrounds: <!MVAGeneral|backgrounds_Diboson8TeV!>
+treeVarSet: treeVarsAngularOnly 
+treeCut: RTight
+
+[RMed_VVb_apr_noWeights]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed_VV!>
+signals: ['AltZZb','AltWZb','ZZb','WZb']
+backgrounds: <!MVAGeneral|backgrounds_Diboson8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+#!! RTight
+
+[RTight_ZH110_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH110']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH115_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH115']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH120_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH120']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH125_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH125']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH130_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH130']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH135_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH135']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH140_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH140']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH145_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH145']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+[RTight_ZH150_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsTight!>
+signals: ['ZH150']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RTight
+
+
+#!! RMed
+
+[RMed_ZH110_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH110']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH115_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH115']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH120_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH120']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH125_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH125']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH130_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH130']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH135_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH135']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH140_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH140']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH145_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH145']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+[RMed_ZH150_janAngularOnly]
+MVAtype: <!MVAGeneral|type!>
+MVAsettings: <!MVAGeneral|SettingsMed!>
+signals: ['ZH150']
+backgrounds: <!MVAGeneral|backgrounds8TeV!>
+treeVarSet: treeVarsAngularOnly
+treeCut: RMed
+
+
+[Optimisation]
+
+training: RTight_ZH125_janAngularOnly
+parameters:NTrees,nEventsMin,MaxDepth,BoostType,AdaBoostBeta,SeparationType,nCuts,PruneMethod,PruneStrength,GradBaggingFraction,Shrinkage,UseBaggedGrad,UseRandomisedTrees,UseNvars
+ 
+#Var= min max number_of steps. number_of_steps is 0 for only min, 1 for min and max, etc...
+NTrees = [100,200,10]
+nEventsMin = [50,600,0]
+MaxDepth = [4,5,0]
+BoostType = ['AdaBoost']
+AdaBoostBeta = [0.01,0.2,10]
+SeparationType = ['MisClassificationError']
+nCuts = [25,150,0]
+PruneMethod = ['NoPruning']
+PruneStrength = [50]
+GradBaggingFraction = [1.0]
+Shrinkage = [0.1]
+UseBaggedGrad = ['True']
+UseRandomisedTrees = ['False']
+UseNvars = [30]

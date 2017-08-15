@@ -1,0 +1,80 @@
+
+
+===================== BDT Split: 0.0,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+3.73508432508   3205.29646594   0.0659730114671   0.00534213365291    0.00153126231071    0.586869761348    3.14821456373
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.1,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+3.52961761132   2531.75015951   0.070148313579   0.00632359235171    0.001488913385    0.546249259263    2.98336835206
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.2,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+3.25732525811   1931.0157127   0.074125600234   0.0075462803743    0.00143079350172    0.496293123811    2.76103213429
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.3,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+3.25732525811   1931.0157127   0.074125600234   0.0075462803743    0.00143079350172    0.496293123811    2.76103213429
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.4,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+2.9291757457   1373.27276334   0.0790436572152   0.00935204726804    0.00135734054561    0.448759298772    2.48041644692
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.5,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+2.44500138238   886.716510812   0.0821082340147   0.0117198189765    0.00124081246462    0.370420206338    2.07458117604
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.6,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+1.76100896671   478.335066887   0.0805184594825   0.0147936848234    0.00105390484588    0.257388968021    1.50361999869
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.7,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+1.76100896671   478.335066887   0.0805184594825   0.0147936848234    0.00105390484588    0.257388968021    1.50361999869
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.8,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+0.960055816919   177.900995681   0.0719792461565   0.0190418683024    0.000778903519188    0.141492385417    0.818563431501
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+
+
+===================== BDT Split: 0.9,   Region: bdt_Zuu_low_Zpt  BDT SIG/BKG Stats =========================================
+
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH
+0.254107635468   23.8367120717   0.0520468607389   0.0227906829323    0.000401060698061    0.0341034643352    0.220004171133
+     ========  gg-plus Region =======
+Signal   ,       BKG,            S/B,            Punzi,         Uncertainty,           ggZH,             ZH

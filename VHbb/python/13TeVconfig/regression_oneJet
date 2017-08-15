@@ -1,0 +1,117 @@
+#-*-Perl-*-
+
+[TrainRegression]
+name: v11_train_Zll_noMET_trees800_OneJet
+
+# this needs to be the input sample name(from sample_config.cfg)
+#signals: ttbar
+signals: ZH125
+#signals: Wlv
+
+# Jet type: highestPt or bestCSV
+index: hJidx
+#index: hJCidx
+
+
+options: !H:!V:NTrees=800::BoostType=Grad:Shrinkage=0.1:MaxDepth=3
+#:nCuts=10000
+
+# the weight name determines what training to apply to sys file
+regWeight: weights/MVA_BDT_REG_<!TrainRegression|name!>.weights.xml
+
+# When performing independent regression on each H jet, use these
+regWeight_0: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet0.weights.xml
+regWeight_1: weights/MVA_BDT_REG_<!TrainRegression|name!>_Jet1.weights.xml
+
+#regWeight_SL  : weights/MVA_BDT_REG__with_semiLept.weights.xml
+#regWeight_noSL: weights/MVA_BDT_REG__no_semiLept.weights.xml
+   
+cut: abs(Jet_eta[<!TrainRegression|index!>[0]]) < 2.4 & abs(Jet_eta[<!TrainRegression|index!>[1]]) < 2.4 & Jet_mcPt[<!TrainRegression|index!>[0]] > 0. & Jet_mcPt[<!TrainRegression|index!>[1]] > 0. & abs(Jet_mcFlavour[<!TrainRegression|index!>[0]])==5 & abs(Jet_mcFlavour[<!TrainRegression|index!>[1]])==5 
+
+# One Jet cut 
+#cut: 
+
+
+vars: Jet_rawPt
+    Jet_mass
+    Jet_neEmEF
+    Jet_chHEF
+    Jet_eta
+    rho
+    Jet_neHEF
+    Jet_chEmEF
+    max(0,Jet_leptonPt)
+    max(0,Jet_vtxMass)
+
+#    Jet_pt
+#    max(0,hJets_leptonDeltaR)    
+#    max(0,hJets_vtxPt)
+#    hJets_leadTrackPt
+#    max(0,hJets_vtx3DVal)
+#    max(0,hJets_leptonPtRel)
+#    hJets_vtxNtracks
+#    hJets_chMult 
+#    VHbb::deltaPhi(met_phi,hJets_phi)
+#    met_pt
+
+    
+regVars:['Jet_rawPt',
+	 'Jet_mass',
+	 'Jet_neEmEF',
+	 'Jet_chHEF',
+	 'Jet_eta',
+	 'rho',
+	 'Jet_neHEF',
+	 'Jet_chEmEF',
+	 'max(0,Jet_leptonPt)',
+	 'max(0,Jet_vtxMass)']
+
+
+#    	  'Jet_pt']
+#	  'max(0,Jet_leptonDeltaR)',
+#	  'max(0,Jet_vtxPt)',    
+#	  'Jet_leadTrackPt',
+#	  'max(0,Jet_vtx3DVal)',
+#	  'max(0,Jet_leptonPtRel)',
+#	  'Jet_vtxNtracks',	  
+#	  'Jet_chMult']
+#	  'VHbb::deltaPhi(met_phi,Jet_phi)',
+#	  'met_pt',
+
+
+regDict: {'Jet_rawPt': 'Jet_rawPt[hJidx[0]]',
+	  'Jet_mass': 'Jet_mass[hJidx[0]]',
+	  'Jet_neEmEF': 'Jet_neEmEF[hJidx[0]]',
+	  'Jet_chHEF': 'Jet_chHEF[hJidx[0]]',
+	  'Jet_eta': 'Jet_eta[hJidx[0]]',
+	  'rho': 'rho',
+	  'Jet_neHEF': 'Jet_neHEF[hJidx[0]]',
+	  'Jet_chEmEF': 'Jet_chEmEF[hJidx[0]]',
+	  'max(0,Jet_leptonPt)': 'max(0,Jet_leptonPt[hJidx[0]])',
+	  'max(0,Jet_vtxMass)': 'max(0,Jet_vtxMass[hJidx[0]])'}
+
+
+#    'Jet_pt': 'Jet_pt[hJidx[0]]'}
+#    'max(0,hJets_leptonDeltaR)': 'max(0,hJets_leptonDeltaR[0])',
+#    'max(0,hJets_vtxPt)': 'max(0,hJets_vtxPt[0])',
+#   'hJets_leadTrackPt': 'hJets_leadTrackPt[0]',
+#   'max(0,hJets_vtx3DVal)': 'max(0,hJets_vtx3DVal[0])',
+#    'hJets_vtxNtracks':  'hJets_vtxNtracks[0]',
+#    'max(0,hJets_leptonPtRel)': 'max(0,hJets_leptonPtRel[0])',
+#    'hJets_chMult': 'hJets_chMult[0]'}
+
+
+
+#    'VHbb::deltaPhi(met_phi,hJets_phi)': 'VHbb::deltaPhi(met_phi,hJets_phi[0])',
+#    'met_pt': 'met_pt'}
+
+
+# =====================================
+
+trainCut : evt%2==0 
+testCut  : evt%6!=0 & evt%5==0 
+weight   : 1
+#weight   : PUweight
+target   : Jet_mcPt
+
+#  LocalWords:  et xml

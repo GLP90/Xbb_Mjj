@@ -1,0 +1,236 @@
+#-*-Perl-*-
+
+# -------------------------
+# GENERAL CONFIGURATION
+# -------------------------
+
+[Analysis]
+tag: 13TeV
+
+# If this Flag is used then 50% of MC samples will go in training and the rest will be scaled up by a factor of 2.
+# if you train on 50% but then set it to 'False' while writing DC, then you get your biased training samples in the limit!!!
+# be sure to have this right !!!
+
+TrainFlag: True
+#Mjj-> False
+
+# -------------------------
+# REGRESSION
+# -------------------------
+
+[Regression]
+
+#regWeight: weights/MVA_BDT_REG_<!TrainRegression|name!>.weights.xml
+
+writeNewVariables = {}
+
+#!! --------------------------
+#!! Libraries
+#!! --------------------------
+[BTagReshaping]
+
+library: <!Directories|vhbbpath!>/interface/BTagReshaping_h.so
+
+[VHbbNameSpace]
+
+library: <!Directories|vhbbpath!>/interface/VHbbNameSpace_h.so
+
+#!! for the likelihood
+[AngularLike]
+
+backgrounds: ['Zbb','Zudsg','ttbar','ZZ']
+yields: {'Zbb':584.8,'Zudsg':881.61,'ttbar':135.7,'ZZ':44.04,'Sig':5.13}
+
+#!! --------------------------
+#!! SYSTEMATICS
+#!! --------------------------
+[systematics]
+#systematics: Nominal
+
+systematics: Nominal JER_Up JER_Down PileUpDataMC_Up PileUpDataMC_Down PileUpPtRef_Up PileUpPtRef_Down PileUpPtBB_Up PileUpPtBB_Down PileUpPtEC1_Up PileUpPtEC1_Down RelativeJEREC1_Up RelativeJEREC1_Down RelativeFSR_Up RelativeFSR_Down RelativeStatFSR_Up RelativeStatFSR_Down RelativeStatEC_Up RelativeStatEC_Down RelativePtBB_Up RelativePtBB_Down RelativePtEC1_Up RelativePtEC1_Down AbsoluteScale_Up AbsoluteScale_Down AbsoluteMPFBias_Up AbsoluteMPFBias_Down AbsoluteStat_Up AbsoluteStat_Down SinglePionECAL_Up SinglePionECAL_Down SinglePionHCAL_Up SinglePionHCAL_Down Fragmentation_Up Fragmentation_Down TimePtEta_Up TimePtEta_Down FlavorQCD_Up FlavorQCD_Down
+
+# --------------------------------------------------
+# Varibles definition for trainging and evaluation
+# --------------------------------------------------
+
+[ZllBDTVars]
+
+
+
+###########################################################################################
+# other things:
+
+[Samples]
+
+DYudsg_nolhe: 'Zudsg','Zudsg5070','Zudsg70100','Zudsg100ext'
+DYc_nolhe:    'Zcc',  'Zcc5070',  'Zcc70100',  'Zcc100ext'  
+DY1b_nolhe:   'Z1b',  'Z1b5070',  'Z1b70100',  'Z1b100ext'  
+DY2b_nolhe:   'Z2b',  'Z2b5070',  'Z2b70100',  'Z2b100ext'  
+
+#DYudsg: 'Zudsg','Zudsg1J','Zudsg2J','Zudsg3J','Zudsg4J','ZudsgHT100to200','ZudsgHT200to400','ZudsgHT400to600', 'ZudsgHT600toInf','Zudsg5070','Zudsg70100','Zudsg100','Zudsg180','Zudsg100ext'
+
+DYudsg: 'Zudsg','ZudsgHT100to200', 'ZudsgHT200to400','ZudsgHT400to600','ZudsgHT600toInf', 'Zudsg_Bjets', 'Zudsg_BgenFilter', 'Zudsg5to50', 'Zudsg5to50_100to200', 'Zudsg5to50_200to400', 'Zudsg5to50_400to600', 'Zudsg5to50_600toInf', 'Zudsg_nlo','ZudsgVpt100to250','ZudsgVpt250to400','ZudsgVpt400to650','ZudsgVpt650toInf', 'ZudsgHT600to800', 'ZudsgHT800to1200_ext1', 'ZudsgHT800to1200_ext2', 'ZudsgHT1200to2500', 'ZudsgHT2500toInf', 'ZudsgHT70to100', 'ZudsgVpt50to100', 'Zudsg0J', 'Zudsg1J', 'Zudsg2J','Zudsg2J','Zudsg2Jext2','Zudsg2Jext3','Zudsg2Jext4','Zudsg2Jext1', 'ZudsgHT600to800_ext1', 'ZudsgHT600to800_ext2','ZudsgHT600to800_ext3','ZudsgHT600to800_ext4','ZudsgHT600to800_ext5','ZudsgHT600to800_ext6','Zudsg_Bjets_Vpt100to200','Zudsg_Bjets_Vpt200toInf', 'Zudsg_DY1J_10to50', 'Zudsg_DY2J_10to50', 'Zudsg_DY3J_10to50','Zudsg_Bjets_Vpt100to200_ext2','Zudsg_Bjets_Vpt200toInf_ext2'
+    
+
+DYc: 'Zcc','ZccHT100to200','ZccHT200to400','ZccHT400to600','ZccHT600toInf', 'Zcc_Bjets', 'Zcc_BgenFilter', 'Zcc5to50', 'Zcc5to50_100to200', 'Zcc5to50_200to400', 'Zcc5to50_400to600', 'Zcc5to50_600toInf','Zcc_nlo','ZccVpt100to250','ZccVpt250to400','ZccVpt400to650','ZccVpt650toInf','ZccHT70to100'
+
+DY1b: 'Z1b','Z1bHT100to200','Z1bHT200to400','Z1bHT400to600','Z1bHT600toInf', 'Z1b_Bjets', 'Z1b_BgenFilter', 'Z1b5to50', 'Z1b5to50_100to200', 'Z1b5to50_200to400', 'Z1b5to50_400to600', 'Z1b5to50_600toInf','Z1b_nlo','Z1bVpt100to250','Z1bVpt250to400','Z1bVpt400to650','Z1bVpt650toInf','Z1bHT600to800', 'Z1bHT800to1200_ext1', 'Z1bHT800to1200_ext2', 'Z1bHT1200to2500', 'Z1bHT2500toInf','Z1bHT70to100', 'Z1bVpt50to100', 'Z1b0J', 'Z1b1J','Z1b2J','Z1b2Jext2','Z1b2Jext3','Z1b2Jext4','Z1b2Jext1', 'Z1bHT600to800_ext1','Z1bHT600to800_ext2','Z1bHT600to800_ext3','Z1bHT600to800_ext4','Z1bHT600to800_ext5','Z1bHT600to800_ext6','Z1b_Bjets_Vpt100to200','Z1b_Bjets_Vpt200toInf','Z1b_DY1J_10to50', 'Z1b_DY2J_10to50', 'Z1b_DY3J_10to50','Z1b_Bjets_Vpt100to200_ext2','Z1b_Bjets_Vpt200toInf_ext2'
+
+DY2b: 'Z2b','Z2bHT100to200','Z2bHT200to400','Z2bHT400to600','Z2bHT600toInf', 'Z2b_Bjets', 'Z2b_BgenFilter', 'Z2b5to50', 'Z2b5to50_100to200', 'Z2b5to50_200to400', 'Z2b5to50_400to600', 'Z2b5to50_600toInf','Z2b_nlo','Z2bVpt100to250','Z2bVpt250to400','Z2bVpt400to650','Z2bVpt650toInf', 'Z2bHT600to800', 'Z2bHT800to1200_ext1', 'Z2bHT800to1200_ext2','Z2bHT1200to2500', 'Z2bHT2500toInf','Z2bHT70to100', 'Z2bVpt50to100', 'Z2b0J', 'Z2b1J', 'Z2b2J','Z2b2Jext2','Z2b2Jext3','Z2b2Jext4','Z2b2Jext1','Z2bHT600to800_ext1','Z2bHT600to800_ext2','Z2bHT600to800_ext3','Z2bHT600to800_ext4','Z2bHT600to800_ext5','Z2bHT600to800_ext6','Z2b_Bjets_Vpt100to200','Z2b_Bjets_Vpt200toInf', 'Z2b_DY1J_10to50', 'Z2b_DY2J_10to50', 'Z2b_DY3J_10to50','Z2b_Bjets_Vpt100to200_ext2','Z2b_Bjets_Vpt200toInf_ext2'
+
+
+DY_inclusive: 'Zudsg','Zcc','Z1b','Z2b'
+
+DY_inclusive_nlo: 'Zudsg_nlo','Zcc_nlo','Z1b_nlo','Z2b_nlo'
+
+#Diboson: 'ZZb','WZb', 'ZZlight', 'WZlight'
+Diboson: 'WZb','WZlight','ZZb_2L2Q_ext1','ZZlight_2L2Q_ext1', 'ZZb_2L2Q_ext2','ZZlight_2L2Q_ext2', 'ZZb_2L2Q_ext3','ZZlight_2L2Q_ext3','ZZb_2L2Q','ZZlight_2L2Q' 
+
+Top: 'ttbar' 
+
+s_Top:  'ST_t', 'ST_s', 'ST_tW_antitop', 'ST_tW_top', 'ST_t_antitop'
+
+gJets: 'gJets', 'gJets_100to200' 
+#'gJets_200to400', 'gJets_400to600', 'gJets_600toInf'
+
+qcd: 'qcd_100to200'
+#, 'qcd_250to500', 'qcd_500to1000', 'qcd_1000toInf'
+
+Zll: 'Zll' 
+
+Zll_regr: 'Zll_regr'
+
+DrellYan: <!Samples|DYudsg!>,<!Samples|DYc!>,<!Samples|DY1b!>,<!Samples|DY2b!>
+
+#DrellYan_nolhe: <!Samples|DYudsg_nolhe!>,<!Samples|DYc_nolhe!>,<!Samples|DY1b_nolhe!>,<!Samples|DY2b_nolhe!>
+
+DrellYan_noHT: 'Zudsg', 'Zcc', 'Z1b', 'Z2b'    
+
+
+# === BDT Regions ====
+
+#allSIG: 'ZH110','ZH115','ZH120','ZH125','ZH130','ZH135'
+    
+allSIG: 'ZH125','ggZH125'
+    
+allSIG_BDT: 'ZH125','ggZH125'
+
+allBKG: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|Diboson!>,<!Samples|s_Top!>
+#,<!Samples|qcd!>
+
+allBKG_BDT: <!Samples|DrellYan!>,<!Samples|Top!>
+#,'ZZb_2L2Q','ZZlight_2L2Q'
+#,<!Samples|s_Top!>
+
+VV_SIG: 'ZZb_2L2Q_ext1','ZZb_2L2Q_ext2','ZZb_2L2Q_ext3','ZZb_2L2Q'
+
+VV_BKG: <!Samples|DrellYan!>,<!Samples|Top!>,'ZH125','ZZlight_2L2Q_ext1','ZZlight_2L2Q_ext2','ZZlight_2L2Q_ext3','ZZlight_2L2Q','ggZH125',<!Samples|s_Top!>
+
+allBKG_regr: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|gJets!>,<!Samples|qcd!>,<!Samples|Zll_regr!>
+
+allBKG_nolhe: <!Samples|DrellYan_nolhe!>,<!Samples|Diboson!>,<!Samples|Top!>,<!Samples|s_Top!>
+
+forRegression: <!Samples|allSIG!>,<!Samples|DrellYan!>,<!Samples|Top!>
+
+
+# for synchronization
+allBKG_sync: 'DY_sync'    
+
+BKG_VV_training: <!Samples|DrellYan!>,<!Samples|Top!>,<!Samples|s_Top!>,'WW','WZ'
+
+Group: {'ZH110':'ZH','ZH115':'ZH','ZH120':'ZH','ZH125':'ZH','ZH130':'ZH','ZH135':'ZH','ZH140':'ZH','ZH145':'ZH','ZH150':'ZH',\
+	#'ggZH125': 'ggZH', \    
+        'ggZH125': 'ZH', \
+	'Zudsg':'DYlight', 'ZudsgHT100to200':'DYlight', 'ZudsgHT200to400':'DYlight', 'ZudsgHT400to600':'DYlight', 'ZudsgHT600toInf':'DYlight', 'Zudsg_Bjets':'DYlight', \
+	'Zudsg_BgenFilter':'DYlight', 'Zudsg5to50':'DYlight', 'Zudsg5to50_100to200':'DYlight', 'Zudsg5to50_200to400':'DYlight','Zudsg5to50_400to600':'DYlight',\
+	'Zudsg5to50_600toInf':'DYlight','ZudsgHT600to800':'DYlight', 'ZudsgHT800to1200_ext1':'DYlight', 'ZudsgHT800to1200_ext2':'DYlight',
+	'ZudsgHT1200to2500':'DYlight', 'ZudsgHT2500toInf':'DYlight', \
+	'ZudsgHT70to100':'DYlight','ZudsgVpt50to100':'DYlight',
+	'Zudsg0J':'DYlight', 'Zudsg1J':'DYlight', 'Zudsg2J':'DYlight','Zudsg2Jext2':'DYlight','Zudsg2Jext3':'DYlight','Zudsg2Jext4':'DYlight','Zudsg2Jext1':'DYlight',
+	'ZudsgHT600to800_ext1':'DYlight', 'ZudsgHT600to800_ext2':'DYlight','ZudsgHT600to800_ext3':'DYlight','ZudsgHT600to800_ext4':'DYlight','ZudsgHT600to800_ext5':'DYlight',
+	'ZudsgHT600to800_ext6':'DYlight',
+	'Zudsg_Bjets_Vpt100to200':'DYlight','Zudsg_Bjets_Vpt200toInf':'DYlight', 'Zudsg_Bjets_Vpt100to200_ext2':'DYlight','Zudsg_Bjets_Vpt200toInf_ext2':'DYlight',
+	'Zudsg_DY1J_10to50':'DYlight', 'Zudsg_DY2J_10to50':'DYlight', 'Zudsg_DY3J_10to50':'DYlight',
+	'Zcc':'DYlight', 'ZccHT100to200':'DYlight', 'ZccHT200to400':'DYlight', 'ZccHT400to600':'DYlight', 'ZccHT600toInf':'DYlight', 'Zcc_Bjets':'DYlight',\
+	'Zcc_BgenFilter':'DYlight', 'Zcc5to50':'DYlight', 'Zcc5to50_100to200':'DYlight', 'Zcc5to50_200to400':'DYlight', 'Zcc5to50_400to600':'DYlight', 
+	'Zcc5to50_600toInf':'DYlight',\
+	'Zudsg_nlo':'DYlight', 'Zcc_nlo':'DYlight', 'ZudsgVpt100to250':'DYlight', 'ZccVpt100to250':'DYlight', 'ZudsgVpt250to400':'DYlight', 'ZccVpt250to400':'DYlight', \
+	'ZudsgVpt400to650':'DYlight', 'ZccVpt400to650':'DYlight','ZudsgVpt650toInf':'DYlight', 'ZccVpt650toInf':'DYlight',
+	'Z1b':'DY1b','Z1bHT100to200':'DY1b', 'Z1bHT200to400':'DY1b', 'Z1bHT400to600':'DY1b', 'Z1bHT600toInf':'DY1b', 'Z1b_Bjets':'DY1b', \
+	'Z1b_BgenFilter':'DY1b', 'Z1b5to50':'DY1b', 'Z1b5to50_100to200':'DY1b', 'Z1b5to50_200to400':'DY1b', 'Z1b5to50_400to600':'DY1b', 'Z1b5to50_600toInf':'DY1b',\
+	'Z1b_nlo':'DY1b', 'Z1bVpt100to250':'DY1b', 'Z1bVpt250to400':'DY1b','Z1bVpt400to650':'DY1b','Z1bVpt650toInf':'DY1b',
+	'Z1bHT600to800':'DY1b', 'Z1bHT800to1200_ext1':'DY1b', 'Z1bHT800to1200_ext2':'DY1b',\
+	'Z1bHT1200to2500':'DY1b', 'Z1bHT2500toInf':'DY1b','Z1bHT70to100':'DY1b','Z1bVpt50to100':'DY1b',
+	'Z1b0J':'DY1b', 'Z1b1J':'DY1b', 'Z1b2J':'DY1b','Z1b2Jext2':'DY1b','Z1b2Jext3':'DY1b','Z1b2Jext4':'DY1b','Z1b2Jext1':'DY1b',
+	'Z1bHT600to800_ext1':'DY1b','Z1bHT600to800_ext2':'DY1b','Z1bHT600to800_ext3':'DY1b','Z1bHT600to800_ext4':'DY1b','Z1bHT600to800_ext5':'DY1b','Z1bHT600to800_ext6':'DY1b',
+	'Z1b_Bjets_Vpt100to200':'DY1b','Z1b_Bjets_Vpt200toInf':'DY1b','Z1b_Bjets_Vpt100to200_ext2':'DY1b','Z1b_Bjets_Vpt200toInf_ext2':'DY1b',
+	'Z1b_DY1J_10to50':'DY1b', 'Z1b_DY2J_10to50':'DY1b', 'Z1b_DY3J_10to50':'DY1b',
+	'Z2b':'DY2b','Z2bHT100to200':'DY2b','Z2bHT200to400':'DY2b','Z2bHT400to600':'DY2b','Z2bHT600toInf':'DY2b', 'Z2b_Bjets':'DY2b', \
+	'Z2b_BgenFilter':'DY2b', 'Z2b5to50':'DY2b', 'Z2b5to50_100to200':'DY2b', 'Z2b5to50_200to400':'DY2b', 'Z2b5to50_400to600':'DY2b', 'Z2b5to50_600toInf':'DY2b',\
+	'Z2b_nlo':'DY2b', 'Z2bVpt100to250':'DY2b', 'Z2bVpt250to400':'DY2b','Z2bVpt400to650':'DY2b','Z2bVpt650toInf':'DY2b',
+	'Z2bHT600to800':'DY2b', 'Z2bHT800to1200_ext1':'DY2b', 'Z2bHT800to1200_ext2':'DY2b',
+	'Z2bHT1200to2500':'DY2b', 'Z2bHT2500toInf':'DY2b','Z2bHT70to100':'DY2b','Z2bVpt50to100':'DY2b',
+        'Z2b0J':'DY2b', 'Z2b1J':'DY2b', 'Z2b2J':'DY2b', 'Z2b2Jext2':'DY2b', 'Z2b2Jext3':'DY2b', 'Z2b2Jext4':'DY2b', 'Z2b2Jext1':'DY2b',
+	'Z2bHT600to800_ext1':'DY2b','Z2bHT600to800_ext2':'DY2b','Z2bHT600to800_ext3':'DY2b','Z2bHT600to800_ext4':'DY2b','Z2bHT600to800_ext5':'DY2b','Z2bHT600to800_ext6':'DY2b',
+	'Z2b_Bjets_Vpt100to200':'DY2b','Z2b_Bjets_Vpt200toInf':'DY2b','Z2b_Bjets_Vpt100to200_ext2':'DY2b','Z2b_Bjets_Vpt200toInf_ext2':'DY2b',
+	'Z2b_DY1J_10to50':'DY2b', 'Z2b_DY2J_10to50':'DY2b', 'Z2b_DY3J_10to50':'DY2b',
+	'WZb':'DYC',
+	'ZZlight':'VVLF', 'WZlight':'VVLF','ZZlight_2L2Q':'VVLF','ZZlight_2L2Q_ext1':'VVLF', 'ZZlight_2L2Q_ext2':'VVLF', 'ZZlight_2L2Q_ext3':'VVLF',
+	'ZZb_2L2Q':'VVHF','ZZb_2L2Q_ext1':'VVHF', 'ZZb_2L2Q_ext2':'VVHF', 'ZZb_2L2Q_ext3':'VVHF',
+	'ttbar':'TT','TT1':'TT','TT2':'TT','TT_FullLept':'TT','TT_SemiLept':'TT',\
+	'ST_s':'ST','ST_t':'ST','ST_tW_antitop':'ST','ST_tW_top':'ST', 'ST_t_antitop':'ST',
+        'Zee':'Data','Zuu':'Data',\
+	#'Zll':'ZH', 'Zll_regr':'ZH',\
+	'DY_sync':'DYlight',\
+	'gJets':'gJets', 'gJets_100to200':'gJets', 'gJets_200to400':'gJets', 'gJets_400to600':'gJets', 'gJets_600toInf':'gJets',\
+	'qcd':'qcd', 'qcd_100to200':'qcd', 'qcd_250to500':'qcd', 'qcd_500to1000':'qcd', 'qcd_1000toInf':'qcd',
+	'AltZZlight':'VVlight','AltZZb':'VVb','AltWZlight':'VVlight','AltWZb':'VVb'}
+
+
+#'Zudsg180':'DYlight', 'Zcc':'DYlight','Zcc1J':'DYlight','Zcc2J':'DYlight','Zcc3J':'DYlight','Zcc4J':'DYlight',\
+#'Zcc':'DYlight','ZccHT100to200':'DYlight', 'ZccHT200to400':'DYlight', 'ZccHT400to600':'DYlight', 'ZccHT600toInf':'DYlight', \
+
+[Weights]
+
+
+# ==== Lepton SF =====
+
+# Muons
+weightF_muSFid: mIdSFWeight[0]
+weightF_muSFiso: mIsoSFWeight[0]
+weightF_muSFtracker: mTrackerSFWeight[0]
+weightF_muSFtrigg: mTrigSFWeight_doubleMu80x[0]
+
+weightF_muSF: <!Weights|weightF_muSFiso!>*<!Weights|weightF_muSFid!>*<!Weights|weightF_muSFtracker!>*<!Weights|weightF_muSFtrigg!>
+ 
+# Electrons
+weightF_eSFid: eId90SFWeight[0]
+weightF_eSFtracker: eTrackerSFWeight[0]
+weightF_eSFtrigg: eTrigSFWeight_doubleEle80x[0]
+
+weightF_eSF: <!Weights|weightF_eSFid!>*<!Weights|weightF_eSFtracker!>*<!Weights|weightF_eSFtrigg!>
+
+# Total lepton SF
+weightF_SF: ((Vtype_new == 1)*<!Weights|weightF_eSF!> + (Vtype_new == 0)*<!Weights|weightF_muSF!>)
+
+# btagWeights
+#btagWeight = bTagWeightCSV_Moriond[0]
+btagWeight = bTagWeightCMVAv2_Moriond[0]
+
+#PUWeight: VHbb::puWeight_ichep(nTrueInt) 
+PUWeight: puWeight
+
+# =================
+
+weightF: <!Weights|PUWeight!>*<!Weights|btagWeight!>*<!Weights|weightF_SF!>*Signal_ewkWeight[0]
+#*DY_ewkWeight[0]*DY_specialWeight[0]*NLO_Weight[0]
+
+
+#weightF: <!Weights|PUWeight!>*<!Weights|weightF_SF!>
+
+#weightF_bdt: sign(genWeight)*<!Weights|PUWeight!>*<!Weights|btagWeight!>*<!Weights|weightF_SF!>*DY_specialWeight[0]*DY_ewkWeight[0]*NLO_Weight[0]*Signal_ewkWeight[0]
+
+weightF_bdt: <!Weights|PUWeight!>*<!Weights|btagWeight!>*<!Weights|weightF_SF!>*DY_specialWeight[0]
+#*DY_specialWeight[0]*DY_ewkWeight[0]*NLO_Weight[0]*Signal_ewkWeight[0]
+
+

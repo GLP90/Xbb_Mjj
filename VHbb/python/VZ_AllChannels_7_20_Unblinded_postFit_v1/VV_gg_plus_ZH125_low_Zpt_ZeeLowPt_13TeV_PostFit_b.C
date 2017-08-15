@@ -1,0 +1,1260 @@
+void VV_gg_plus_ZH125_low_Zpt_ZeeLowPt_13TeV_PostFit_b()
+{
+//=========Macro generated from canvas: gg_plus_ZH125_low_Zpt/
+//=========  (Sat Jul 22 20:26:00 2017) by ROOT version6.02/05
+   TCanvas *gg_plus_ZH125_low_Zpt = new TCanvas("gg_plus_ZH125_low_Zpt", "",0,0,600,600);
+   gStyle->SetOptFit(1);
+   gStyle->SetOptStat(0);
+   gStyle->SetOptTitle(0);
+   gg_plus_ZH125_low_Zpt->SetHighLightColor(2);
+   gg_plus_ZH125_low_Zpt->Range(0,0,1,1);
+   gg_plus_ZH125_low_Zpt->SetFillColor(0);
+   gg_plus_ZH125_low_Zpt->SetFillStyle(4000);
+   gg_plus_ZH125_low_Zpt->SetBorderMode(0);
+   gg_plus_ZH125_low_Zpt->SetBorderSize(2);
+   gg_plus_ZH125_low_Zpt->SetTickx(1);
+   gg_plus_ZH125_low_Zpt->SetTicky(1);
+   gg_plus_ZH125_low_Zpt->SetLeftMargin(0.13);
+   gg_plus_ZH125_low_Zpt->SetRightMargin(0.05);
+   gg_plus_ZH125_low_Zpt->SetTopMargin(0.05);
+   gg_plus_ZH125_low_Zpt->SetBottomMargin(0.13);
+   gg_plus_ZH125_low_Zpt->SetFrameFillStyle(1000);
+   gg_plus_ZH125_low_Zpt->SetFrameBorderMode(0);
+  
+// ------------>Primitives in pad: oben
+   TPad *oben = new TPad("oben", "oben",0,0.3,1,1);
+   oben->Draw();
+   oben->cd();
+   oben->Range(-1.085366,-1.727469,1.109756,8.633312);
+   oben->SetFillColor(0);
+   oben->SetFillStyle(4000);
+   oben->SetBorderMode(0);
+   oben->SetBorderSize(2);
+   oben->SetLogy();
+   oben->SetTickx(1);
+   oben->SetTicky(1);
+   oben->SetLeftMargin(0.13);
+   oben->SetRightMargin(0.05);
+   oben->SetTopMargin(0.05);
+   oben->SetBottomMargin(0);
+   oben->SetFrameFillStyle(1000);
+   oben->SetFrameBorderMode(0);
+   oben->SetFrameFillStyle(1000);
+   oben->SetFrameBorderMode(0);
+   
+   THStack *gg_plus_ZH125_low_Zpt = new THStack();
+   gg_plus_ZH125_low_Zpt->SetName("gg_plus_ZH125_low_Zpt");
+   gg_plus_ZH125_low_Zpt->SetTitle("");
+   gg_plus_ZH125_low_Zpt->SetMinimum(0.1);
+   gg_plus_ZH125_low_Zpt->SetMaximum(4.766655e+07);
+   
+   TH1F *gg_plus_ZH125_low_Zpt_stack_1 = new TH1F("gg_plus_ZH125_low_Zpt_stack_1","",15,-0.8,1);
+   gg_plus_ZH125_low_Zpt_stack_1->SetMinimum(0.01872972);
+   gg_plus_ZH125_low_Zpt_stack_1->SetMaximum(1.303986e+08);
+   gg_plus_ZH125_low_Zpt_stack_1->SetDirectory(0);
+   gg_plus_ZH125_low_Zpt_stack_1->SetStats(0);
+   gg_plus_ZH125_low_Zpt_stack_1->SetFillColor(63);
+   gg_plus_ZH125_low_Zpt_stack_1->SetLineStyle(0);
+   gg_plus_ZH125_low_Zpt_stack_1->SetMarkerStyle(20);
+   gg_plus_ZH125_low_Zpt_stack_1->SetMarkerSize(1.2);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetRange(1,15);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetLabelFont(42);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetLabelOffset(999);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetLabelSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetTitleSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetXaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetTitle("Entries / 0.12");
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetLabelFont(42);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetLabelOffset(0.007);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetLabelSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetTitleSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetTitleOffset(1.4);
+   gg_plus_ZH125_low_Zpt_stack_1->GetYaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt_stack_1->GetZaxis()->SetLabelFont(42);
+   gg_plus_ZH125_low_Zpt_stack_1->GetZaxis()->SetLabelOffset(0.007);
+   gg_plus_ZH125_low_Zpt_stack_1->GetZaxis()->SetLabelSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetZaxis()->SetTitleSize(0.05);
+   gg_plus_ZH125_low_Zpt_stack_1->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->SetHistogram(gg_plus_ZH125_low_Zpt_stack_1);
+   
+   
+   TH1F *s_Top1 = new TH1F("s_Top1","s_Top",15,-0.8,1);
+   s_Top1->SetBinContent(1,7.320531);
+   s_Top1->SetBinContent(2,22.45825);
+   s_Top1->SetBinContent(3,18.76099);
+   s_Top1->SetBinContent(4,18.84656);
+   s_Top1->SetBinContent(5,21.43181);
+   s_Top1->SetBinContent(6,22.51864);
+   s_Top1->SetBinContent(7,7.897468);
+   s_Top1->SetBinContent(8,11.41032);
+   s_Top1->SetBinContent(9,15.38446);
+   s_Top1->SetBinContent(10,3.072211);
+   s_Top1->SetBinContent(11,3.246542);
+   s_Top1->SetBinContent(12,0.430308);
+   s_Top1->SetBinContent(13,1.527781e-07);
+   s_Top1->SetBinContent(14,1.527781e-07);
+   s_Top1->SetBinContent(15,1.527781e-07);
+   s_Top1->SetBinError(1,2.707191);
+   s_Top1->SetBinError(2,5.384516);
+   s_Top1->SetBinError(3,4.145546);
+   s_Top1->SetBinError(4,4.083309);
+   s_Top1->SetBinError(5,4.866494);
+   s_Top1->SetBinError(6,5.231904);
+   s_Top1->SetBinError(7,2.452682);
+   s_Top1->SetBinError(8,3.616429);
+   s_Top1->SetBinError(9,4.809657);
+   s_Top1->SetBinError(10,0.8638007);
+   s_Top1->SetBinError(11,0.9480357);
+   s_Top1->SetBinError(12,0.3475525);
+   s_Top1->SetEntries(15);
+   s_Top1->SetDirectory(0);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#00ffcc");
+   s_Top1->SetFillColor(ci);
+   s_Top1->GetXaxis()->SetLabelFont(42);
+   s_Top1->GetXaxis()->SetLabelSize(0.035);
+   s_Top1->GetXaxis()->SetTitleSize(0.035);
+   s_Top1->GetXaxis()->SetTitleFont(42);
+   s_Top1->GetYaxis()->SetLabelFont(42);
+   s_Top1->GetYaxis()->SetLabelSize(0.035);
+   s_Top1->GetYaxis()->SetTitleSize(0.035);
+   s_Top1->GetYaxis()->SetTitleFont(42);
+   s_Top1->GetZaxis()->SetLabelFont(42);
+   s_Top1->GetZaxis()->SetLabelSize(0.035);
+   s_Top1->GetZaxis()->SetTitleSize(0.035);
+   s_Top1->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(s_Top,"");
+   
+   TH1F *ggZH_hbb2 = new TH1F("ggZH_hbb2","ggZH_hbb",15,-0.8,1);
+   ggZH_hbb2->SetBinContent(1,0.00300087);
+   ggZH_hbb2->SetBinContent(2,0.03103511);
+   ggZH_hbb2->SetBinContent(3,0.1555463);
+   ggZH_hbb2->SetBinContent(4,0.4786675);
+   ggZH_hbb2->SetBinContent(5,0.9483004);
+   ggZH_hbb2->SetBinContent(6,1.794489);
+   ggZH_hbb2->SetBinContent(7,2.605349);
+   ggZH_hbb2->SetBinContent(8,1.953388);
+   ggZH_hbb2->SetBinContent(9,1.187663);
+   ggZH_hbb2->SetBinContent(10,1.141641);
+   ggZH_hbb2->SetBinContent(11,1.071792);
+   ggZH_hbb2->SetBinContent(12,0.8915079);
+   ggZH_hbb2->SetBinContent(13,0.5599871);
+   ggZH_hbb2->SetBinContent(14,0.1490091);
+   ggZH_hbb2->SetBinContent(15,0.004953308);
+   ggZH_hbb2->SetBinError(1,0.0007537588);
+   ggZH_hbb2->SetBinError(2,0.002572934);
+   ggZH_hbb2->SetBinError(3,0.005741539);
+   ggZH_hbb2->SetBinError(4,0.009972183);
+   ggZH_hbb2->SetBinError(5,0.01376946);
+   ggZH_hbb2->SetBinError(6,0.01867528);
+   ggZH_hbb2->SetBinError(7,0.02223999);
+   ggZH_hbb2->SetBinError(8,0.01913636);
+   ggZH_hbb2->SetBinError(9,0.01525265);
+   ggZH_hbb2->SetBinError(10,0.01493915);
+   ggZH_hbb2->SetBinError(11,0.0144266);
+   ggZH_hbb2->SetBinError(12,0.01314268);
+   ggZH_hbb2->SetBinError(13,0.01038842);
+   ggZH_hbb2->SetBinError(14,0.005245509);
+   ggZH_hbb2->SetBinError(15,0.0009394553);
+   ggZH_hbb2->SetEntries(15);
+   ggZH_hbb2->SetDirectory(0);
+   ggZH_hbb2->SetFillColor(46);
+   ggZH_hbb2->GetXaxis()->SetLabelFont(42);
+   ggZH_hbb2->GetXaxis()->SetLabelSize(0.035);
+   ggZH_hbb2->GetXaxis()->SetTitleSize(0.035);
+   ggZH_hbb2->GetXaxis()->SetTitleFont(42);
+   ggZH_hbb2->GetYaxis()->SetLabelFont(42);
+   ggZH_hbb2->GetYaxis()->SetLabelSize(0.035);
+   ggZH_hbb2->GetYaxis()->SetTitleSize(0.035);
+   ggZH_hbb2->GetYaxis()->SetTitleFont(42);
+   ggZH_hbb2->GetZaxis()->SetLabelFont(42);
+   ggZH_hbb2->GetZaxis()->SetLabelSize(0.035);
+   ggZH_hbb2->GetZaxis()->SetTitleSize(0.035);
+   ggZH_hbb2->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(ggZH_hbb,"");
+   
+   TH1F *ZH_hbb3 = new TH1F("ZH_hbb3","ZH",15,-0.8,1);
+   ZH_hbb3->SetBinContent(1,0.01999551);
+   ZH_hbb3->SetBinContent(2,0.1818554);
+   ZH_hbb3->SetBinContent(3,0.6721403);
+   ZH_hbb3->SetBinContent(4,1.765086);
+   ZH_hbb3->SetBinContent(5,3.453608);
+   ZH_hbb3->SetBinContent(6,5.637038);
+   ZH_hbb3->SetBinContent(7,6.814724);
+   ZH_hbb3->SetBinContent(8,5.106363);
+   ZH_hbb3->SetBinContent(9,3.514508);
+   ZH_hbb3->SetBinContent(10,3.444093);
+   ZH_hbb3->SetBinContent(11,3.039392);
+   ZH_hbb3->SetBinContent(12,2.345774);
+   ZH_hbb3->SetBinContent(13,1.598056);
+   ZH_hbb3->SetBinContent(14,0.4338204);
+   ZH_hbb3->SetBinContent(15,0.01121434);
+   ZH_hbb3->SetBinError(1,0.004145568);
+   ZH_hbb3->SetBinError(2,0.01322603);
+   ZH_hbb3->SetBinError(3,0.02489055);
+   ZH_hbb3->SetBinError(4,0.03980783);
+   ZH_hbb3->SetBinError(5,0.05448685);
+   ZH_hbb3->SetBinError(6,0.06869902);
+   ZH_hbb3->SetBinError(7,0.07513543);
+   ZH_hbb3->SetBinError(8,0.06499378);
+   ZH_hbb3->SetBinError(9,0.05472213);
+   ZH_hbb3->SetBinError(10,0.05419739);
+   ZH_hbb3->SetBinError(11,0.05060366);
+   ZH_hbb3->SetBinError(12,0.04499325);
+   ZH_hbb3->SetBinError(13,0.03627167);
+   ZH_hbb3->SetBinError(14,0.01908265);
+   ZH_hbb3->SetBinError(15,0.002948984);
+   ZH_hbb3->SetEntries(15);
+   ZH_hbb3->SetDirectory(0);
+   ZH_hbb3->SetFillColor(2);
+   ZH_hbb3->GetXaxis()->SetLabelFont(42);
+   ZH_hbb3->GetXaxis()->SetLabelSize(0.035);
+   ZH_hbb3->GetXaxis()->SetTitleSize(0.035);
+   ZH_hbb3->GetXaxis()->SetTitleFont(42);
+   ZH_hbb3->GetYaxis()->SetLabelFont(42);
+   ZH_hbb3->GetYaxis()->SetLabelSize(0.035);
+   ZH_hbb3->GetYaxis()->SetTitleSize(0.035);
+   ZH_hbb3->GetYaxis()->SetTitleFont(42);
+   ZH_hbb3->GetZaxis()->SetLabelFont(42);
+   ZH_hbb3->GetZaxis()->SetLabelSize(0.035);
+   ZH_hbb3->GetZaxis()->SetTitleSize(0.035);
+   ZH_hbb3->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(ZH_hbb,"");
+   
+   TH1F *VVLF4 = new TH1F("VVLF4","VVLF",15,-0.8,1);
+   VVLF4->SetBinContent(1,0.03800902);
+   VVLF4->SetBinContent(2,1.986716);
+   VVLF4->SetBinContent(3,6.125569);
+   VVLF4->SetBinContent(4,11.34342);
+   VVLF4->SetBinContent(5,11.77092);
+   VVLF4->SetBinContent(6,9.145469);
+   VVLF4->SetBinContent(7,7.094626);
+   VVLF4->SetBinContent(8,5.790622);
+   VVLF4->SetBinContent(9,3.870571);
+   VVLF4->SetBinContent(10,4.300882);
+   VVLF4->SetBinContent(11,3.384637);
+   VVLF4->SetBinContent(12,2.11996);
+   VVLF4->SetBinContent(13,1.191239);
+   VVLF4->SetBinContent(14,0.1906453);
+   VVLF4->SetBinContent(15,0.01489188);
+   VVLF4->SetBinError(1,0.04673676);
+   VVLF4->SetBinError(2,0.3356522);
+   VVLF4->SetBinError(3,0.5622507);
+   VVLF4->SetBinError(4,0.7601936);
+   VVLF4->SetBinError(5,0.7595071);
+   VVLF4->SetBinError(6,0.7020046);
+   VVLF4->SetBinError(7,0.6416846);
+   VVLF4->SetBinError(8,0.5541978);
+   VVLF4->SetBinError(9,0.4934774);
+   VVLF4->SetBinError(10,0.4423363);
+   VVLF4->SetBinError(11,0.4071346);
+   VVLF4->SetBinError(12,0.3535161);
+   VVLF4->SetBinError(13,0.2475627);
+   VVLF4->SetBinError(14,0.1246424);
+   VVLF4->SetBinError(15,0.02475305);
+   VVLF4->SetEntries(15);
+   VVLF4->SetDirectory(0);
+
+   ci = TColor::GetColor("#666666");
+   VVLF4->SetFillColor(ci);
+   VVLF4->GetXaxis()->SetLabelFont(42);
+   VVLF4->GetXaxis()->SetLabelSize(0.035);
+   VVLF4->GetXaxis()->SetTitleSize(0.035);
+   VVLF4->GetXaxis()->SetTitleFont(42);
+   VVLF4->GetYaxis()->SetLabelFont(42);
+   VVLF4->GetYaxis()->SetLabelSize(0.035);
+   VVLF4->GetYaxis()->SetTitleSize(0.035);
+   VVLF4->GetYaxis()->SetTitleFont(42);
+   VVLF4->GetZaxis()->SetLabelFont(42);
+   VVLF4->GetZaxis()->SetLabelSize(0.035);
+   VVLF4->GetZaxis()->SetTitleSize(0.035);
+   VVLF4->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(VVLF,"");
+   
+   TH1F *TT5 = new TH1F("TT5","TT",15,-0.8,1);
+   TT5->SetBinContent(1,263.1685);
+   TT5->SetBinContent(2,406.2355);
+   TT5->SetBinContent(3,542.3749);
+   TT5->SetBinContent(4,610.8234);
+   TT5->SetBinContent(5,530.5115);
+   TT5->SetBinContent(6,388.8105);
+   TT5->SetBinContent(7,299.8716);
+   TT5->SetBinContent(8,221.9475);
+   TT5->SetBinContent(9,180.1826);
+   TT5->SetBinContent(10,129.0691);
+   TT5->SetBinContent(11,96.68529);
+   TT5->SetBinContent(12,49.222);
+   TT5->SetBinContent(13,16.73564);
+   TT5->SetBinContent(14,2.090879);
+   TT5->SetBinContent(15,3.737729e-06);
+   TT5->SetBinError(1,13.69112);
+   TT5->SetBinError(2,17.53532);
+   TT5->SetBinError(3,20.6758);
+   TT5->SetBinError(4,21.71091);
+   TT5->SetBinError(5,19.91008);
+   TT5->SetBinError(6,16.91408);
+   TT5->SetBinError(7,15.33706);
+   TT5->SetBinError(8,12.93276);
+   TT5->SetBinError(9,11.7027);
+   TT5->SetBinError(10,10.0851);
+   TT5->SetBinError(11,8.185555);
+   TT5->SetBinError(12,6.258419);
+   TT5->SetBinError(13,3.258258);
+   TT5->SetBinError(14,1.199903);
+   TT5->SetEntries(15);
+   TT5->SetDirectory(0);
+
+   ci = TColor::GetColor("#3333ff");
+   TT5->SetFillColor(ci);
+   TT5->GetXaxis()->SetLabelFont(42);
+   TT5->GetXaxis()->SetLabelSize(0.035);
+   TT5->GetXaxis()->SetTitleSize(0.035);
+   TT5->GetXaxis()->SetTitleFont(42);
+   TT5->GetYaxis()->SetLabelFont(42);
+   TT5->GetYaxis()->SetLabelSize(0.035);
+   TT5->GetYaxis()->SetTitleSize(0.035);
+   TT5->GetYaxis()->SetTitleFont(42);
+   TT5->GetZaxis()->SetLabelFont(42);
+   TT5->GetZaxis()->SetLabelSize(0.035);
+   TT5->GetZaxis()->SetTitleSize(0.035);
+   TT5->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(TT,"");
+   
+   TH1F *Zj0b6 = new TH1F("Zj0b6","Zj0b",15,-0.8,1);
+   Zj0b6->SetBinContent(1,15.71407);
+   Zj0b6->SetBinContent(2,540.8703);
+   Zj0b6->SetBinContent(3,1185.625);
+   Zj0b6->SetBinContent(4,1441.542);
+   Zj0b6->SetBinContent(5,1055.482);
+   Zj0b6->SetBinContent(6,770.7349);
+   Zj0b6->SetBinContent(7,474.3486);
+   Zj0b6->SetBinContent(8,262.7444);
+   Zj0b6->SetBinContent(9,139.4119);
+   Zj0b6->SetBinContent(10,171.4754);
+   Zj0b6->SetBinContent(11,95.11106);
+   Zj0b6->SetBinContent(12,38.93573);
+   Zj0b6->SetBinContent(13,21.54202);
+   Zj0b6->SetBinContent(14,0.2947704);
+   Zj0b6->SetBinContent(15,0.02576078);
+   Zj0b6->SetBinError(1,4.910105);
+   Zj0b6->SetBinError(2,47.54738);
+   Zj0b6->SetBinError(3,81.89963);
+   Zj0b6->SetBinError(4,74.23346);
+   Zj0b6->SetBinError(5,63.42348);
+   Zj0b6->SetBinError(6,50.12304);
+   Zj0b6->SetBinError(7,44.72621);
+   Zj0b6->SetBinError(8,26.13826);
+   Zj0b6->SetBinError(9,30.44439);
+   Zj0b6->SetBinError(10,18.79125);
+   Zj0b6->SetBinError(11,16.80931);
+   Zj0b6->SetBinError(12,8.382178);
+   Zj0b6->SetBinError(13,6.262629);
+   Zj0b6->SetBinError(14,0.06639627);
+   Zj0b6->SetBinError(15,0.0235101);
+   Zj0b6->SetEntries(15);
+   Zj0b6->SetDirectory(0);
+
+   ci = TColor::GetColor("#cccc00");
+   Zj0b6->SetFillColor(ci);
+   Zj0b6->GetXaxis()->SetLabelFont(42);
+   Zj0b6->GetXaxis()->SetLabelSize(0.035);
+   Zj0b6->GetXaxis()->SetTitleSize(0.035);
+   Zj0b6->GetXaxis()->SetTitleFont(42);
+   Zj0b6->GetYaxis()->SetLabelFont(42);
+   Zj0b6->GetYaxis()->SetLabelSize(0.035);
+   Zj0b6->GetYaxis()->SetTitleSize(0.035);
+   Zj0b6->GetYaxis()->SetTitleFont(42);
+   Zj0b6->GetZaxis()->SetLabelFont(42);
+   Zj0b6->GetZaxis()->SetLabelSize(0.035);
+   Zj0b6->GetZaxis()->SetTitleSize(0.035);
+   Zj0b6->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(Zj0b,"");
+   
+   TH1F *Zj1b7 = new TH1F("Zj1b7","Zj1b",15,-0.8,1);
+   Zj1b7->SetBinContent(1,4.010005);
+   Zj1b7->SetBinContent(2,42.31226);
+   Zj1b7->SetBinContent(3,214.2647);
+   Zj1b7->SetBinContent(4,345.2465);
+   Zj1b7->SetBinContent(5,383.4704);
+   Zj1b7->SetBinContent(6,349.2269);
+   Zj1b7->SetBinContent(7,330.7222);
+   Zj1b7->SetBinContent(8,278.9276);
+   Zj1b7->SetBinContent(9,258.3914);
+   Zj1b7->SetBinContent(10,214.0395);
+   Zj1b7->SetBinContent(11,161.0533);
+   Zj1b7->SetBinContent(12,81.99811);
+   Zj1b7->SetBinContent(13,27.41075);
+   Zj1b7->SetBinContent(14,6.116925);
+   Zj1b7->SetBinContent(15,0.08166656);
+   Zj1b7->SetBinError(1,2.408006);
+   Zj1b7->SetBinError(2,13.55852);
+   Zj1b7->SetBinError(3,25.13205);
+   Zj1b7->SetBinError(4,34.20362);
+   Zj1b7->SetBinError(5,30.4886);
+   Zj1b7->SetBinError(6,25.33555);
+   Zj1b7->SetBinError(7,29.60642);
+   Zj1b7->SetBinError(8,28.33801);
+   Zj1b7->SetBinError(9,24.95618);
+   Zj1b7->SetBinError(10,24.94926);
+   Zj1b7->SetBinError(11,12.60594);
+   Zj1b7->SetBinError(12,8.340608);
+   Zj1b7->SetBinError(13,4.616581);
+   Zj1b7->SetBinError(14,2.016233);
+   Zj1b7->SetBinError(15,0.03700681);
+   Zj1b7->SetEntries(15);
+   Zj1b7->SetDirectory(0);
+   Zj1b7->SetFillColor(41);
+   Zj1b7->GetXaxis()->SetLabelFont(42);
+   Zj1b7->GetXaxis()->SetLabelSize(0.035);
+   Zj1b7->GetXaxis()->SetTitleSize(0.035);
+   Zj1b7->GetXaxis()->SetTitleFont(42);
+   Zj1b7->GetYaxis()->SetLabelFont(42);
+   Zj1b7->GetYaxis()->SetLabelSize(0.035);
+   Zj1b7->GetYaxis()->SetTitleSize(0.035);
+   Zj1b7->GetYaxis()->SetTitleFont(42);
+   Zj1b7->GetZaxis()->SetLabelFont(42);
+   Zj1b7->GetZaxis()->SetLabelSize(0.035);
+   Zj1b7->GetZaxis()->SetTitleSize(0.035);
+   Zj1b7->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(Zj1b,"");
+   
+   TH1F *Zj2b8 = new TH1F("Zj2b8","Zj2b",15,-0.8,1);
+   Zj2b8->SetBinContent(1,2.292433);
+   Zj2b8->SetBinContent(2,58.53648);
+   Zj2b8->SetBinContent(3,178.9625);
+   Zj2b8->SetBinContent(4,335.3151);
+   Zj2b8->SetBinContent(5,501.1882);
+   Zj2b8->SetBinContent(6,512.3042);
+   Zj2b8->SetBinContent(7,434.7078);
+   Zj2b8->SetBinContent(8,375.5334);
+   Zj2b8->SetBinContent(9,428.2387);
+   Zj2b8->SetBinContent(10,397.5539);
+   Zj2b8->SetBinContent(11,325.1699);
+   Zj2b8->SetBinContent(12,237.0401);
+   Zj2b8->SetBinContent(13,161.0398);
+   Zj2b8->SetBinContent(14,46.48034);
+   Zj2b8->SetBinContent(15,1.007904);
+   Zj2b8->SetBinError(1,1.448014);
+   Zj2b8->SetBinError(2,14.84542);
+   Zj2b8->SetBinError(3,22.88666);
+   Zj2b8->SetBinError(4,26.43889);
+   Zj2b8->SetBinError(5,32.00518);
+   Zj2b8->SetBinError(6,30.27863);
+   Zj2b8->SetBinError(7,22.75194);
+   Zj2b8->SetBinError(8,22.04313);
+   Zj2b8->SetBinError(9,31.05511);
+   Zj2b8->SetBinError(10,22.89591);
+   Zj2b8->SetBinError(11,16.22978);
+   Zj2b8->SetBinError(12,16.14029);
+   Zj2b8->SetBinError(13,10.4254);
+   Zj2b8->SetBinError(14,4.433893);
+   Zj2b8->SetBinError(15,0.1276405);
+   Zj2b8->SetEntries(15);
+   Zj2b8->SetDirectory(0);
+   Zj2b8->SetFillColor(5);
+   Zj2b8->GetXaxis()->SetLabelFont(42);
+   Zj2b8->GetXaxis()->SetLabelSize(0.035);
+   Zj2b8->GetXaxis()->SetTitleSize(0.035);
+   Zj2b8->GetXaxis()->SetTitleFont(42);
+   Zj2b8->GetYaxis()->SetLabelFont(42);
+   Zj2b8->GetYaxis()->SetLabelSize(0.035);
+   Zj2b8->GetYaxis()->SetTitleSize(0.035);
+   Zj2b8->GetYaxis()->SetTitleFont(42);
+   Zj2b8->GetZaxis()->SetLabelFont(42);
+   Zj2b8->GetZaxis()->SetLabelSize(0.035);
+   Zj2b8->GetZaxis()->SetTitleSize(0.035);
+   Zj2b8->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(Zj2b,"");
+   
+   TH1F *VVHF9 = new TH1F("VVHF9","VVHF",15,-0.8,1);
+   VVHF9->SetBinContent(1,0.06100721);
+   VVHF9->SetBinContent(2,0.6331159);
+   VVHF9->SetBinContent(3,1.960621);
+   VVHF9->SetBinContent(4,3.888692);
+   VVHF9->SetBinContent(5,7.419362);
+   VVHF9->SetBinContent(6,9.244035);
+   VVHF9->SetBinContent(7,12.19636);
+   VVHF9->SetBinContent(8,14.02834);
+   VVHF9->SetBinContent(9,17.28193);
+   VVHF9->SetBinContent(10,21.82247);
+   VVHF9->SetBinContent(11,26.76943);
+   VVHF9->SetBinContent(12,28.70415);
+   VVHF9->SetBinContent(13,22.99064);
+   VVHF9->SetBinContent(14,9.87776);
+   VVHF9->SetBinContent(15,0.5336987);
+   VVHF9->SetBinError(1,0.04913809);
+   VVHF9->SetBinError(2,0.1593068);
+   VVHF9->SetBinError(3,0.3046433);
+   VVHF9->SetBinError(4,0.4642317);
+   VVHF9->SetBinError(5,0.570831);
+   VVHF9->SetBinError(6,0.6613564);
+   VVHF9->SetBinError(7,0.736224);
+   VVHF9->SetBinError(8,0.7939118);
+   VVHF9->SetBinError(9,0.8552322);
+   VVHF9->SetBinError(10,0.9618148);
+   VVHF9->SetBinError(11,1.016952);
+   VVHF9->SetBinError(12,1.077536);
+   VVHF9->SetBinError(13,0.9732252);
+   VVHF9->SetBinError(14,0.6406778);
+   VVHF9->SetBinError(15,0.1536866);
+   VVHF9->SetEntries(15);
+   VVHF9->SetDirectory(0);
+
+   ci = TColor::GetColor("#cccccc");
+   VVHF9->SetFillColor(ci);
+   VVHF9->GetXaxis()->SetLabelFont(42);
+   VVHF9->GetXaxis()->SetLabelSize(0.035);
+   VVHF9->GetXaxis()->SetTitleSize(0.035);
+   VVHF9->GetXaxis()->SetTitleFont(42);
+   VVHF9->GetYaxis()->SetLabelFont(42);
+   VVHF9->GetYaxis()->SetLabelSize(0.035);
+   VVHF9->GetYaxis()->SetTitleSize(0.035);
+   VVHF9->GetYaxis()->SetTitleFont(42);
+   VVHF9->GetZaxis()->SetLabelFont(42);
+   VVHF9->GetZaxis()->SetLabelSize(0.035);
+   VVHF9->GetZaxis()->SetTitleSize(0.035);
+   VVHF9->GetZaxis()->SetTitleFont(42);
+   gg_plus_ZH125_low_Zpt->Add(VVHF,"");
+   gg_plus_ZH125_low_Zpt->Draw("hist");
+   
+   Double_t Graph_from_VVHF_fx1001[15] = {
+   -0.74,
+   -0.62,
+   -0.5,
+   -0.38,
+   -0.26,
+   -0.14,
+   -0.02,
+   0.1,
+   0.22,
+   0.34,
+   0.46,
+   0.58,
+   0.7,
+   0.82,
+   0.94};
+   Double_t Graph_from_VVHF_fy1001[15] = {
+   292.6275,
+   1073.245,
+   2148.902,
+   2769.249,
+   2515.676,
+   2069.417,
+   1576.259,
+   1177.442,
+   1047.464,
+   945.9192,
+   715.5312,
+   441.6877,
+   253.0681,
+   65.63416,
+   1.680094};
+   Double_t Graph_from_VVHF_fex1001[15] = {
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06};
+   Double_t Graph_from_VVHF_fey1001[15] = {
+   15.05937,
+   54.78678,
+   91.14852,
+   88.70367,
+   79.9839,
+   66.22234,
+   60.3061,
+   46.40504,
+   51.72191,
+   40.04221,
+   27.82038,
+   20.99791,
+   13.44799,
+   5.059167,
+   0.206049};
+   TGraphErrors *gre = new TGraphErrors(15,Graph_from_VVHF_fx1001,Graph_from_VVHF_fy1001,Graph_from_VVHF_fex1001,Graph_from_VVHF_fey1001);
+   gre->SetName("Graph_from_VVHF");
+   gre->SetTitle("VVHF");
+
+   ci = TColor::GetColor("#333333");
+   gre->SetFillColor(ci);
+   gre->SetFillStyle(3013);
+   
+   TH1F *Graph_Graph_from_VVHF1001 = new TH1F("Graph_Graph_from_VVHF1001","VVHF",100,-0.98,1.18);
+   Graph_Graph_from_VVHF1001->SetMinimum(1.32664);
+   Graph_Graph_from_VVHF1001->SetMaximum(3143.601);
+   Graph_Graph_from_VVHF1001->SetDirectory(0);
+   Graph_Graph_from_VVHF1001->SetStats(0);
+   Graph_Graph_from_VVHF1001->SetFillColor(63);
+   Graph_Graph_from_VVHF1001->SetLineStyle(0);
+   Graph_Graph_from_VVHF1001->SetMarkerStyle(20);
+   Graph_Graph_from_VVHF1001->SetMarkerSize(1.2);
+   Graph_Graph_from_VVHF1001->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_from_VVHF1001->GetXaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_VVHF1001->GetXaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_VVHF1001->GetXaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_VVHF1001->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetTitleOffset(1.4);
+   Graph_Graph_from_VVHF1001->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_from_VVHF1001->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_from_VVHF1001->GetZaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_VVHF1001->GetZaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_VVHF1001->GetZaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_VVHF1001->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_from_VVHF1001);
+   
+   gre->Draw("2");
+   
+   TH1F *noData10 = new TH1F("noData10","noData",15,-0.8,1);
+   noData10->SetBinContent(1,309);
+   noData10->SetBinContent(2,1085);
+   noData10->SetBinContent(3,2173);
+   noData10->SetBinContent(4,2775);
+   noData10->SetBinContent(5,2538);
+   noData10->SetBinContent(6,2066);
+   noData10->SetBinContent(7,1563);
+   noData10->SetBinContent(8,1191);
+   noData10->SetBinContent(9,1027);
+   noData10->SetBinContent(10,937);
+   noData10->SetBinContent(11,716);
+   noData10->SetBinContent(12,441);
+   noData10->SetBinContent(13,251);
+   noData10->SetBinContent(14,62);
+   noData10->SetBinContent(15,3);
+   noData10->SetBinError(1,17.5784);
+   noData10->SetBinError(2,32.93934);
+   noData10->SetBinError(3,46.61545);
+   noData10->SetBinError(4,52.67827);
+   noData10->SetBinError(5,50.37857);
+   noData10->SetBinError(6,45.45327);
+   noData10->SetBinError(7,39.53479);
+   noData10->SetBinError(8,34.51087);
+   noData10->SetBinError(9,32.04684);
+   noData10->SetBinError(10,30.61046);
+   noData10->SetBinError(11,26.75818);
+   noData10->SetBinError(12,21);
+   noData10->SetBinError(13,15.84298);
+   noData10->SetBinError(14,7.874008);
+   noData10->SetBinError(15,1.732051);
+   noData10->SetEntries(15);
+   noData10->SetDirectory(0);
+   noData10->SetFillColor(63);
+   noData10->SetLineStyle(0);
+   noData10->SetMarkerStyle(20);
+   noData10->SetMarkerSize(1.2);
+   noData10->GetXaxis()->SetLabelFont(42);
+   noData10->GetXaxis()->SetLabelOffset(0.007);
+   noData10->GetXaxis()->SetLabelSize(0.05);
+   noData10->GetXaxis()->SetTitleSize(0.05);
+   noData10->GetXaxis()->SetTitleFont(42);
+   noData10->GetYaxis()->SetLabelFont(42);
+   noData10->GetYaxis()->SetLabelOffset(0.007);
+   noData10->GetYaxis()->SetLabelSize(0.05);
+   noData10->GetYaxis()->SetTitleSize(0.05);
+   noData10->GetYaxis()->SetTitleOffset(1.4);
+   noData10->GetYaxis()->SetTitleFont(42);
+   noData10->GetZaxis()->SetLabelFont(42);
+   noData10->GetZaxis()->SetLabelOffset(0.007);
+   noData10->GetZaxis()->SetLabelSize(0.05);
+   noData10->GetZaxis()->SetTitleSize(0.05);
+   noData10->GetZaxis()->SetTitleFont(42);
+   noData10->Draw("E,same");
+   
+   TLegend *leg = new TLegend(0.45,0.6,0.75,0.92,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.035);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(2);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(4000);
+   TLegendEntry *entry=leg->AddEntry("noData","Data","P");
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(20);
+   entry->SetMarkerSize(1.2);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("VVHF","VVHF","F");
+
+   ci = TColor::GetColor("#cccccc");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("Zj2b","Z + b#bar{b}","F");
+   entry->SetFillColor(5);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("Zj1b","Z + b","F");
+   entry->SetFillColor(41);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("Zj0b","Z+udscg","F");
+
+   ci = TColor::GetColor("#cccc00");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("TT","t#bar{t}","F");
+
+   ci = TColor::GetColor("#3333ff");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   leg->Draw();
+   
+   leg = new TLegend(0.68,0.6,0.92,0.92,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.035);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(2);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(4000);
+   entry=leg->AddEntry("VVLF","VVLF","F");
+
+   ci = TColor::GetColor("#666666");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("ZH_hbb","ZH(b#bar{b}) 125","F");
+   entry->SetFillColor(2);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("ggZH_hbb","ggZH(b#bar{b}) 125","F");
+   entry->SetFillColor(46);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("s_Top","Single top","F");
+
+   ci = TColor::GetColor("#00ffcc");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(1001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("Graph_from_VVHF","MC uncert. (stat.)","fl");
+
+   ci = TColor::GetColor("#333333");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(3013);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   leg->Draw();
+   TLatex *   tex = new TLatex(0.17,0.88,"CMS Preliminary");
+tex->SetNDC();
+   tex->SetTextSize(0.04);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(0.17,0.83,"#sqrt{s} =  13TeV, L = 35.9 fb^{-1}");
+tex->SetNDC();
+   tex->SetTextSize(0.04);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(0.17,0.78,"2-lep (e)");
+tex->SetNDC();
+   tex->SetTextSize(0.04);
+   tex->SetLineWidth(2);
+   tex->Draw();
+      tex = new TLatex(0.17,0.73,"Low p_{T}(V)");
+tex->SetNDC();
+   tex->SetTextSize(0.04);
+   tex->SetLineWidth(2);
+   tex->Draw();
+   oben->Modified();
+   gg_plus_ZH125_low_Zpt->cd();
+  
+// ------------>Primitives in pad: unten
+   TPad *unten = new TPad("unten", "unten",0,0,1,0.29);
+   unten->Draw();
+   unten->cd();
+   unten->Range(-1.085366,-3.084615,1.109756,2.9);
+   unten->SetFillColor(0);
+   unten->SetFillStyle(4000);
+   unten->SetBorderMode(0);
+   unten->SetBorderSize(2);
+   unten->SetTickx(1);
+   unten->SetTicky(1);
+   unten->SetLeftMargin(0.13);
+   unten->SetRightMargin(0.05);
+   unten->SetTopMargin(0);
+   unten->SetBottomMargin(0.35);
+   unten->SetFrameFillStyle(1000);
+   unten->SetFrameBorderMode(0);
+   unten->SetFrameFillStyle(1000);
+   unten->SetFrameBorderMode(0);
+   Double_t xAxis1[16] = {-0.8, -0.68, -0.56, -0.44, -0.32, -0.2, -0.08, 0.04, 0.16, 0.28, 0.4, 0.52, 0.64, 0.76, 0.88, 1}; 
+   
+   TH1F *Ratio11 = new TH1F("Ratio11","",15, xAxis1);
+   Ratio11->SetBinContent(1,1.05595);
+   Ratio11->SetBinContent(2,1.010952);
+   Ratio11->SetBinContent(3,1.011214);
+   Ratio11->SetBinContent(4,1.002077);
+   Ratio11->SetBinContent(5,1.008874);
+   Ratio11->SetBinContent(6,0.9983491);
+   Ratio11->SetBinContent(7,0.9915885);
+   Ratio11->SetBinContent(8,1.011515);
+   Ratio11->SetBinContent(9,0.9804634);
+   Ratio11->SetBinContent(10,0.9905709);
+   Ratio11->SetBinContent(11,1.000655);
+   Ratio11->SetBinContent(12,0.9984431);
+   Ratio11->SetBinContent(13,0.9918277);
+   Ratio11->SetBinContent(14,0.9446301);
+   Ratio11->SetBinContent(15,1.785615);
+   Ratio11->SetBinError(1,0.06007089);
+   Ratio11->SetBinError(2,0.03069134);
+   Ratio11->SetBinError(3,0.02169268);
+   Ratio11->SetBinError(4,0.01902258);
+   Ratio11->SetBinError(5,0.02002585);
+   Ratio11->SetBinError(6,0.02196429);
+   Ratio11->SetBinError(7,0.02508141);
+   Ratio11->SetBinError(8,0.02931004);
+   Ratio11->SetBinError(9,0.0305947);
+   Ratio11->SetBinError(10,0.03236054);
+   Ratio11->SetBinError(11,0.03739624);
+   Ratio11->SetBinError(12,0.04754491);
+   Ratio11->SetBinError(13,0.06260361);
+   Ratio11->SetBinError(14,0.1199681);
+   Ratio11->SetBinError(15,1.030925);
+   Ratio11->SetMinimum(-0.99);
+   Ratio11->SetMaximum(2.9);
+   Ratio11->SetEntries(15);
+   Ratio11->SetDirectory(0);
+   Ratio11->SetStats(0);
+   Ratio11->SetFillColor(63);
+   Ratio11->SetLineStyle(0);
+   Ratio11->SetMarkerStyle(20);
+   Ratio11->GetXaxis()->SetTitle("BDT Output");
+   Ratio11->GetXaxis()->SetRange(1,15);
+   Ratio11->GetXaxis()->SetLabelFont(42);
+   Ratio11->GetXaxis()->SetLabelOffset(0.03);
+   Ratio11->GetXaxis()->SetLabelSize(0.09);
+   Ratio11->GetXaxis()->SetTitleSize(0.11);
+   Ratio11->GetXaxis()->SetTitleFont(42);
+   Ratio11->GetYaxis()->SetTitle("Data/MC");
+   Ratio11->GetYaxis()->CenterTitle(true);
+   Ratio11->GetYaxis()->SetNdivisions(505);
+   Ratio11->GetYaxis()->SetLabelFont(22);
+   Ratio11->GetYaxis()->SetLabelOffset(0.007);
+   Ratio11->GetYaxis()->SetLabelSize(0.07);
+   Ratio11->GetYaxis()->SetTitleSize(0.11);
+   Ratio11->GetYaxis()->SetTitleOffset(0.4);
+   Ratio11->GetYaxis()->SetTitleFont(22);
+   Ratio11->GetZaxis()->SetLabelFont(42);
+   Ratio11->GetZaxis()->SetLabelOffset(0.007);
+   Ratio11->GetZaxis()->SetLabelSize(0.05);
+   Ratio11->GetZaxis()->SetTitleSize(0.05);
+   Ratio11->GetZaxis()->SetTitleFont(42);
+   Ratio11->Draw("E1");
+   
+   Double_t Graph_from_ZH_hbb_postfit_fx3001[15] = {
+   -0.74,
+   -0.62,
+   -0.5,
+   -0.38,
+   -0.26,
+   -0.14,
+   -0.02,
+   0.1,
+   0.22,
+   0.34,
+   0.46,
+   0.58,
+   0.7,
+   0.82,
+   0.94};
+   Double_t Graph_from_ZH_hbb_postfit_fy3001[15] = {
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1};
+   Double_t Graph_from_ZH_hbb_postfit_felx3001[15] = {
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06};
+   Double_t Graph_from_ZH_hbb_postfit_fely3001[15] = {
+   0.09949001,
+   0.111132,
+   0.08730615,
+   0.09131346,
+   0.08333755,
+   0.06837955,
+   0.09410785,
+   0.0829197,
+   0.1263814,
+   0.1232407,
+   0.0901934,
+   0.1058787,
+   0.1148009,
+   0.1596598,
+   0.195515};
+   Double_t Graph_from_ZH_hbb_postfit_fehx3001[15] = {
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06};
+   Double_t Graph_from_ZH_hbb_postfit_fehy3001[15] = {
+   0.09949001,
+   0.111132,
+   0.08730615,
+   0.09131346,
+   0.08333755,
+   0.06837955,
+   0.09410785,
+   0.0829197,
+   0.1263814,
+   0.1232407,
+   0.0901934,
+   0.1058787,
+   0.1148009,
+   0.1596598,
+   0.195515};
+   TGraphAsymmErrors *grae = new TGraphAsymmErrors(15,Graph_from_ZH_hbb_postfit_fx3001,Graph_from_ZH_hbb_postfit_fy3001,Graph_from_ZH_hbb_postfit_felx3001,Graph_from_ZH_hbb_postfit_fehx3001,Graph_from_ZH_hbb_postfit_fely3001,Graph_from_ZH_hbb_postfit_fehy3001);
+   grae->SetName("Graph_from_ZH_hbb_postfit");
+   grae->SetTitle("ZH_hbb_postfit");
+   grae->SetFillColor(5);
+   grae->SetFillStyle(3001);
+   
+   TH1F *Graph_Graph_from_ZH_hbb_postfit3001 = new TH1F("Graph_Graph_from_ZH_hbb_postfit3001","ZH_hbb_postfit",100,-0.98,1.18);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetMinimum(0.765382);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetMaximum(1.234618);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetDirectory(0);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetStats(0);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetFillColor(63);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetLineStyle(0);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetMarkerStyle(20);
+   Graph_Graph_from_ZH_hbb_postfit3001->SetMarkerSize(1.2);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetXaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetXaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetXaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetTitleOffset(1.4);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetZaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetZaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetZaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_ZH_hbb_postfit3001->GetZaxis()->SetTitleFont(42);
+   grae->SetHistogram(Graph_Graph_from_ZH_hbb_postfit3001);
+   
+   grae->Draw("2");
+   
+   Double_t Graph_from_RefError_fx1002[15] = {
+   -0.74,
+   -0.62,
+   -0.5,
+   -0.38,
+   -0.26,
+   -0.14,
+   -0.02,
+   0.1,
+   0.22,
+   0.34,
+   0.46,
+   0.58,
+   0.7,
+   0.82,
+   0.94};
+   Double_t Graph_from_RefError_fy1002[15] = {
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1};
+   Double_t Graph_from_RefError_fex1002[15] = {
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06,
+   0.06};
+   Double_t Graph_from_RefError_fey1002[15] = {
+   0.0514626,
+   0.05104777,
+   0.04241632,
+   0.03203167,
+   0.03179419,
+   0.03200049,
+   0.03825901,
+   0.03941174,
+   0.04937823,
+   0.04233153,
+   0.03888073,
+   0.04754018,
+   0.05313981,
+   0.07708132,
+   0.1226414};
+   gre = new TGraphErrors(15,Graph_from_RefError_fx1002,Graph_from_RefError_fy1002,Graph_from_RefError_fex1002,Graph_from_RefError_fey1002);
+   gre->SetName("Graph_from_RefError");
+   gre->SetTitle("noData");
+
+   ci = TColor::GetColor("#333333");
+   gre->SetFillColor(ci);
+   gre->SetFillStyle(3013);
+   gre->SetLineStyle(0);
+   gre->SetMarkerStyle(20);
+   
+   TH1F *Graph_Graph_from_RefError1002 = new TH1F("Graph_Graph_from_RefError1002","noData",100,-0.98,1.18);
+   Graph_Graph_from_RefError1002->SetMinimum(0.8528303);
+   Graph_Graph_from_RefError1002->SetMaximum(1.14717);
+   Graph_Graph_from_RefError1002->SetDirectory(0);
+   Graph_Graph_from_RefError1002->SetStats(0);
+   Graph_Graph_from_RefError1002->SetFillColor(63);
+   Graph_Graph_from_RefError1002->SetLineStyle(0);
+   Graph_Graph_from_RefError1002->SetMarkerStyle(20);
+   Graph_Graph_from_RefError1002->SetMarkerSize(1.2);
+   Graph_Graph_from_RefError1002->GetXaxis()->SetLabelFont(42);
+   Graph_Graph_from_RefError1002->GetXaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_RefError1002->GetXaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_RefError1002->GetXaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_RefError1002->GetXaxis()->SetTitleFont(42);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetLabelFont(42);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetTitleOffset(1.4);
+   Graph_Graph_from_RefError1002->GetYaxis()->SetTitleFont(42);
+   Graph_Graph_from_RefError1002->GetZaxis()->SetLabelFont(42);
+   Graph_Graph_from_RefError1002->GetZaxis()->SetLabelOffset(0.007);
+   Graph_Graph_from_RefError1002->GetZaxis()->SetLabelSize(0.05);
+   Graph_Graph_from_RefError1002->GetZaxis()->SetTitleSize(0.05);
+   Graph_Graph_from_RefError1002->GetZaxis()->SetTitleFont(42);
+   gre->SetHistogram(Graph_Graph_from_RefError1002);
+   
+   gre->Draw("2");
+   Double_t xAxis2[16] = {-0.8, -0.68, -0.56, -0.44, -0.32, -0.2, -0.08, 0.04, 0.16, 0.28, 0.4, 0.52, 0.64, 0.76, 0.88, 1}; 
+   
+   TH1F *Ratio12 = new TH1F("Ratio12","",15, xAxis2);
+   Ratio12->SetBinContent(1,1.05595);
+   Ratio12->SetBinContent(2,1.010952);
+   Ratio12->SetBinContent(3,1.011214);
+   Ratio12->SetBinContent(4,1.002077);
+   Ratio12->SetBinContent(5,1.008874);
+   Ratio12->SetBinContent(6,0.9983491);
+   Ratio12->SetBinContent(7,0.9915885);
+   Ratio12->SetBinContent(8,1.011515);
+   Ratio12->SetBinContent(9,0.9804634);
+   Ratio12->SetBinContent(10,0.9905709);
+   Ratio12->SetBinContent(11,1.000655);
+   Ratio12->SetBinContent(12,0.9984431);
+   Ratio12->SetBinContent(13,0.9918277);
+   Ratio12->SetBinContent(14,0.9446301);
+   Ratio12->SetBinContent(15,1.785615);
+   Ratio12->SetBinError(1,0.06007089);
+   Ratio12->SetBinError(2,0.03069134);
+   Ratio12->SetBinError(3,0.02169268);
+   Ratio12->SetBinError(4,0.01902258);
+   Ratio12->SetBinError(5,0.02002585);
+   Ratio12->SetBinError(6,0.02196429);
+   Ratio12->SetBinError(7,0.02508141);
+   Ratio12->SetBinError(8,0.02931004);
+   Ratio12->SetBinError(9,0.0305947);
+   Ratio12->SetBinError(10,0.03236054);
+   Ratio12->SetBinError(11,0.03739624);
+   Ratio12->SetBinError(12,0.04754491);
+   Ratio12->SetBinError(13,0.06260361);
+   Ratio12->SetBinError(14,0.1199681);
+   Ratio12->SetBinError(15,1.030925);
+   Ratio12->SetMinimum(-0.99);
+   Ratio12->SetMaximum(2.9);
+   Ratio12->SetEntries(15);
+   Ratio12->SetDirectory(0);
+   Ratio12->SetStats(0);
+   Ratio12->SetFillColor(63);
+   Ratio12->SetLineStyle(0);
+   Ratio12->SetMarkerStyle(20);
+   Ratio12->GetXaxis()->SetTitle("BDT Output");
+   Ratio12->GetXaxis()->SetRange(1,15);
+   Ratio12->GetXaxis()->SetLabelFont(42);
+   Ratio12->GetXaxis()->SetLabelOffset(0.03);
+   Ratio12->GetXaxis()->SetLabelSize(0.09);
+   Ratio12->GetXaxis()->SetTitleSize(0.11);
+   Ratio12->GetXaxis()->SetTitleFont(42);
+   Ratio12->GetYaxis()->SetTitle("Data/MC");
+   Ratio12->GetYaxis()->CenterTitle(true);
+   Ratio12->GetYaxis()->SetNdivisions(505);
+   Ratio12->GetYaxis()->SetLabelFont(22);
+   Ratio12->GetYaxis()->SetLabelOffset(0.007);
+   Ratio12->GetYaxis()->SetLabelSize(0.07);
+   Ratio12->GetYaxis()->SetTitleSize(0.11);
+   Ratio12->GetYaxis()->SetTitleOffset(0.4);
+   Ratio12->GetYaxis()->SetTitleFont(22);
+   Ratio12->GetZaxis()->SetLabelFont(42);
+   Ratio12->GetZaxis()->SetLabelOffset(0.007);
+   Ratio12->GetZaxis()->SetLabelSize(0.05);
+   Ratio12->GetZaxis()->SetTitleSize(0.05);
+   Ratio12->GetZaxis()->SetTitleFont(42);
+   Ratio12->Draw("E1SAME");
+   
+   leg = new TLegend(0.3,0.85,0.93,0.97,NULL,"brNDC");
+   leg->SetBorderSize(0);
+   leg->SetTextFont(62);
+   leg->SetTextSize(0.075);
+   leg->SetLineColor(1);
+   leg->SetLineStyle(1);
+   leg->SetLineWidth(2);
+   leg->SetFillColor(0);
+   leg->SetFillStyle(4000);
+   entry=leg->AddEntry("Graph_from_ZH_hbb_postfit","MC(stat.+Postfit syst.)","f");
+   entry->SetFillColor(5);
+   entry->SetFillStyle(3001);
+   entry->SetLineColor(1);
+   entry->SetLineStyle(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   entry=leg->AddEntry("Graph_from_RefError","MC(stat.)","f");
+
+   ci = TColor::GetColor("#333333");
+   entry->SetFillColor(ci);
+   entry->SetFillStyle(3013);
+   entry->SetLineColor(1);
+   entry->SetLineWidth(1);
+   entry->SetMarkerColor(1);
+   entry->SetMarkerStyle(21);
+   entry->SetMarkerSize(1);
+   entry->SetTextFont(62);
+   leg->Draw();
+   TLine *line = new TLine(-0.8,1,1,1);
+   line->Draw();
+   unten->Modified();
+   gg_plus_ZH125_low_Zpt->cd();
+   gg_plus_ZH125_low_Zpt->Modified();
+   gg_plus_ZH125_low_Zpt->cd();
+   gg_plus_ZH125_low_Zpt->SetSelected(gg_plus_ZH125_low_Zpt);
+}
