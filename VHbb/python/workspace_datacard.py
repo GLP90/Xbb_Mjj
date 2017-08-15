@@ -61,6 +61,13 @@ var=opts.variable
 # Add external macros
 #ROOT.gSystem.CompileMacro("../plugins/PU.C")
 
+if os.path.exists("../interface/DrawFunctions_C.so"):
+    print 'ROOT.gROOT.LoadMacro("../interface/DrawFunctions_C.so")'
+    ROOT.gROOT.LoadMacro("../interface/DrawFunctions_C.so")
+if os.path.exists("../interface/VHbbNameSpace_h.so"):
+    print 'ROOT.gROOT.LoadMacro("../interface/VHbbNameSpace_h.so")'
+    ROOT.gROOT.LoadMacro("../interface/VHbbNameSpace_h.so")
+
 #--read variables from config---------------------------------------------------
 # 7 or 8TeV Analysis
 anaTag = config.get("Analysis","tag")
@@ -210,6 +217,11 @@ print '\n\nSYS affecting:', sys_affecting
 
 # weightF:
 weightF = config.get('Weights','weightF')
+#S/(S+B) weight for mjj plot
+SBweight = None
+if config.has_option('dc:%s'%var,'SBweight'):
+    SBweight = config.get('dc:%s'%var,'SBweight')
+    weightF ='('+weightF+')*('+SBweight+')'
 
 if doSYS == 'False':
     weightF_systematics = []
@@ -358,7 +370,7 @@ print '         Data        : ', data_sample_names
 
 optionsList=[]
 
-def appendList(): optionsList.append({'cut':copy(_cut),'var':copy(_treevar),'name':copy(_name),'nBins':nBins,'xMin':xMin,'xMax':xMax,'weight':copy(_weight),'blind':blind,'sys_cut':copy(_sys_cut)})
+def appendList(): optionsList.append({'cut':copy(_cut),'var':copy(_treevar),'name':copy(_name),'nBins':nBins,'xMin':xMin,'xMax':xMax,'weight':copy(_weight),'blind':blind,'sys_cut':copy(_sys_cut),'SBweight':copy(SBweight)})
 
 #nominal
 _cut = treecut
