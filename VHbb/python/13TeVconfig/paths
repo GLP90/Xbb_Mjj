@@ -40,6 +40,7 @@ scratch: /scratch/dcurry
     
 # The directory with the code
 vhbbpath: <!Directories|Wdir!><!Directories|Dname!>
+
     
 # specifies the .cfg files with the Samples information
 samplesinfo: <!Directories|vhbbpath!>/python/13TeVconfig/samples_nosplit.cfg
@@ -66,7 +67,8 @@ dcSamples   : <!Directories|MVAout!>
 
 plot_dc_path: <!Directories|vhbbpath!>/datacards/
 
-limits: <!Directories|vhbbpath!>/limits/
+#limits: <!Directories|vhbbpath!>/limits/
+limits: /afs/cern.ch/work/g/gaperrin/private/Xbb/CMSSW_7_4_7/src/VHbb/python
 
 # Where to take the raw samples and where to put the prepared trees:
 #PREPin : <!Directories|samplepath!><!Directories|version!>
