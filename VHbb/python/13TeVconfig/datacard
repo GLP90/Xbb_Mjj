@@ -20,7 +20,8 @@ addOverFlow: True
 Custom_BDT_bins: False
 
 # for Mjj in signal region
-BDTrange: 12, 60, 180
+#BDTrange: 12, 60, 180
+BDTrange: 17, 0, 255 
 
 BDToutname: v1
 
