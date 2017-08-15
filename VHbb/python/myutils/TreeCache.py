@@ -26,6 +26,7 @@ class TreeCache:
         self.__doCache = True
         if config.has_option('Directories','tmpSamples'):
             self.__tmpPath = config.get('Directories','tmpSamples')
+
         self.__hashDict = {}
         self.minCut = None
         self.__find_min_cut()
@@ -194,7 +195,7 @@ class TreeCache:
         print ('----> Getting Sample Scale...')
 
         # get the weights from the file,. not the tree
-        input = ROOT.TFile('%stmp_%s.root'%(self.__tmpPath,self.__hashDict[sample.name]),'read')
+        input = ROOT.TFile.Open('%stmp_%s.root'%(self.__tmpPath,self.__hashDict[sample.name]),'read')
         posWeight = input.Get('CountPosWeight')
         negWeight = input.Get('CountNegWeight')
         #print ('posWeight:',posWeight)
