@@ -890,6 +890,7 @@ type      : BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight(gg_plus_ZH125_highZpt.nominal,3)
 
 [dc:BDT_Zuu_high_Zpt_TightBDTcut]
 #var       : gg_plus_ZH125_highZpt.nominal
@@ -935,6 +936,7 @@ type      : BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight(gg_plus_ZH125_highZpt.nominal,4)
 
 
 [dc:BDT_Zee_low_Zpt]
@@ -951,6 +953,7 @@ type      : BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight(gg_plus_ZH125_lowZpt.nominal,1)
 
 [dc:BDT_Zuu_low_Zpt]
 #var       : gg_plus_ZH125_lowZpt.nominal
@@ -966,6 +969,7 @@ type      : BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight(gg_plus_ZH125_lowZpt.nominal,2)
 
 
 # VV BDT cross check
