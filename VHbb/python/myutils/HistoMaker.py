@@ -141,6 +141,9 @@ class HistoMaker:
                      print treeVar
                      print '\n\t!!!! JER/JEC Tree SYS Cut:', treeCut
 
+            SBweight = None
+            if 'SBweight' in options:
+                SBweight=options['SBweight']
 
             weightF = '%s'%(options['weight'])    
             
@@ -265,6 +268,12 @@ class HistoMaker:
                 
                 print '\n---->Drawing Tree for variable: ',treeVar
                 print '  with Cuts: ', treeCut
+
+                if not SBweight == None:
+                    treeCut = '('+treeCut+')*('+SBweight+')'
+                    print '\n---->Using S/(S+B) weights from data. Cut string string is: ', treeCut
+                else:
+                    treeCut = treeCut
                 
    
                 if 'gg_plus' in treeVar or 'VV' in treeVar:
