@@ -3,6 +3,7 @@
 #include "TVector2.h"
 #include "TMath.h"
 #include <iostream>
+#include <map>
 /*#if !defined(__CINT__) && !defined(__MAKECINT__)
   #include "CondFormats/JetMETObjects/interface/JetCorrectorParameters.h"
   #include "CondFormats/JetMETObjects/interface/JetCorrectionUncertainty.h"
@@ -13,25 +14,27 @@ namespace VHbb {
 double SoverSBWeight(double BDT, int channel) {
 
     //Check to which bin the BDT belongs to
-    int BDTbin = -1;
-    if (BDT <= -0.8)                    BDTbin = 0;
-    if (BDT > -0.8 && BDT <= -0.68)     BDTbin = 0;
-    if (BDT > -0.68 && BDT <= -0.56)    BDTbin = 1;
-    if (BDT > -0.56 && BDT <= -0.44)    BDTbin = 2;
-    if (BDT > -0.44 && BDT <= -0.32)    BDTbin = 3;
-    if (BDT > -0.32 && BDT <= -0.02)    BDTbin = 4;
-    if (BDT > -0.2 && BDT <= -0.08)     BDTbin = 5;
-    if (BDT > -0.08 && BDT <= 0.04)     BDTbin = 6;
-    if (BDT > 0.04 && BDT <= 0.16)      BDTbin = 7;
-    if (BDT > 0.16 && BDT <= 0.28)      BDTbin = 8;
-    if (BDT > 0.28 && BDT <= 0.4)       BDTbin = 9;
-    if (BDT > 0.4 && BDT <= 0.52)       BDTbin = 10;
-    if (BDT > 0.52 && BDT <= 0.64)      BDTbin = 11;
-    if (BDT > 0.64 && BDT <= 0.76)      BDTbin = 12;
-    if (BDT > 0.76 && BDT <= 0.88)      BDTbin = 13;
-    if (BDT > 0.88)                     BDTbin = 14;
+    const int nBins=15;
+    std::map<int, std::vector<double>> binBoundaries;
 
-    double SB_Zuu_low[15]={2.76737387847e-05,
+    binBoundaries.insert(std::pair<int, std::vector<double> > (1, {-0.8,-0.7874, -0.6704, -0.5534, -0.4364, -0.3194, -0.2024, -0.0854, 0.0316, 0.1486, 0.2656, 0.3826, 0.4996, 0.622, 0.739, 1.0} ));  //bins['zeelow']
+    binBoundaries.insert(std::pair<int, std::vector<double> > (2, {-0.8, -0.7964, -0.6776, -0.5588, -0.440, -0.3212, -0.2024, -0.0836, 0.0352, 0.154, 0.2728, 0.3916, 0.5104, 0.6292, 0.748, 1.0} ));  //bins['zuulow']
+    binBoundaries.insert(std::pair<int, std::vector<double> > (3, {-0.8, -0.7622, -0.656, -0.5498, -0.4436, -0.3374, -0.2312, -0.125, -0.0188, 0.0874, 0.1936, 0.2998, 0.406, 0.532, 0.6382, 1.0} ));  //bins['zeehigh'
+    binBoundaries.insert(std::pair<int, std::vector<double> > (4, {-0.8, -0.7712, -0.6614, -0.5516, -0.4418, -0.332, -0.2222, -0.1124, -0.0026, 0.1072, 0.217, 0.3268, 0.4366, 0.55, 0.6598, 1.0} ));  //bins['zuuhigh'
+
+    int BDTbin = -1;
+    for(int binNumber=0; binNumber<nBins; binNumber++){
+        if(BDT>=binBoundaries[channel][binNumber]){
+            BDTbin++;
+        } else {
+            break;
+        }
+    }
+
+    // if BDT<-0.8, this will break; maybe add if(BDT<binBoundaries[channel][0]) return 0; ?
+
+
+    double SB_Zuu_low[nBins]={2.76737387847e-05,
                            6.64750589345e-05,
                            0.000149447397438,
                            0.000364720697321,
@@ -48,7 +51,7 @@ double SoverSBWeight(double BDT, int channel) {
                            0.155709437265
     };
 
-    double SB_Zee_low[15]={4.38820281278e-05,
+    double SB_Zee_low[nBins]={4.38820281278e-05,
                            6.59406637058e-05,
                            0.000151812163876,
                            0.00037181791516,
@@ -65,7 +68,7 @@ double SoverSBWeight(double BDT, int channel) {
                            0.188193463981
     };
 
-    double SB_Zuu_high[15]={0.000150118338319,
+    double SB_Zuu_high[nBins]={0.000150118338319,
                             0.000177184418437,
                             0.000381785086736,
                             0.00081621546275,
@@ -82,7 +85,7 @@ double SoverSBWeight(double BDT, int channel) {
                             0.321478566847
     };
 
-    double SB_Zee_high[15]={7.252018604e-08,
+    double SB_Zee_high[nBins]={7.252018604e-08,
                             0.000204092490389,
                             0.00045852950862,
                             0.000812207870653,
