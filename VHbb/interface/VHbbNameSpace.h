@@ -109,6 +109,105 @@ double SoverSBWeight(double BDT, int channel) {
 
     }
 
+ double SoverSBWeight_VZ(double BDT, int channel) {
+
+    //Check to which bin the BDT belongs to
+    const int nBins=15;
+    std::map<int, std::vector<double>> binBoundaries;
+
+    binBoundaries.insert(std::pair<int, std::vector<double> > (1, {} ));  //bins['zeelow']
+    binBoundaries.insert(std::pair<int, std::vector<double> > (2, {} ));  //bins['zuulow']
+    binBoundaries.insert(std::pair<int, std::vector<double> > (3, {} ));  //bins['zeehigh'
+    binBoundaries.insert(std::pair<int, std::vector<double> > (4, {} ));  //bins['zuuhigh'
+
+    int BDTbin = -1;
+    for(int binNumber=0; binNumber<nBins; binNumber++){
+        if(BDT>=binBoundaries[channel][binNumber]){
+            BDTbin++;
+        } else {
+            break;
+        }
+    }
+
+    // if BDT<-0.8, this will break; maybe add if(BDT<binBoundaries[channel][0]) return 0; ?
+
+
+    double SB_Zuu_low[nBins]={2.76737387847e-05,
+                           6.64750589345e-05,
+                           0.000149447397438,
+                           0.000364720697321,
+                           0.000704082928445,
+                           0.00114156054762,
+                           0.00178676530053,
+                           0.00289993913949,
+                           0.00473330069259,
+                           0.00714558106403,
+                           0.0109339081032,
+                           0.0184934984159,
+                           0.0326417501844,
+                           0.0664331803746,
+                           0.155709437265
+    };
+
+    double SB_Zee_low[nBins]={4.38820281278e-05,
+                           6.59406637058e-05,
+                           0.000151812163876,
+                           0.00037181791516,
+                           0.000651510194471,
+                           0.00109292029164,
+                           0.00180371097475,
+                           0.00289255480983,
+                           0.00440456389377 ,
+                           0.00717194663279,
+                           0.011191506056,
+                           0.0192027774896,
+                           0.0313549416529,
+                           0.0627899701193,
+                           0.188193463981
+    };
+
+    double SB_Zuu_high[nBins]={0.000150118338319,
+                            0.000177184418437,
+                            0.000381785086736,
+                            0.00081621546275,
+                            0.00132284030661,
+                            0.00315465582298,
+                            0.00513913238438,
+                            0.00871858305194,
+                            0.014172742012,
+                            0.0265281704166,
+                            0.0408929588652,
+                            0.0762144976363,
+                            0.138083647382,
+                            0.204843885382,
+                            0.321478566847
+    };
+
+    double SB_Zee_high[nBins]={7.252018604e-08,
+                            0.000204092490389,
+                            0.00045852950862,
+                            0.000812207870653,
+                            0.00187548258053,
+                            0.00255126940987,
+                            0.00515682235312,
+                            0.00931094133369,
+                            0.0140552030406,
+                            0.0230148836113,
+                            0.0413999559234,
+                            0.0668556717614,
+                            0.131102613516,
+                            0.242663806491,
+                            0.331429498934
+    };
+
+    if (channel == 1) return SB_Zee_low[BDTbin];
+    if (channel == 2) return SB_Zuu_low[BDTbin];
+    if (channel == 3) return SB_Zee_high[BDTbin];
+    if (channel == 4) return SB_Zuu_high[BDTbin];
+
+    }
+
+
 
   double ttbar_reweight(double GenTop_pt1, double GenTop_pt2, int nGenTop) {
 
