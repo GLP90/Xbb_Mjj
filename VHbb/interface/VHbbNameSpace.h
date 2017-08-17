@@ -132,21 +132,7 @@ double SoverSBWeight(double BDT, int channel) {
     // if BDT<-0.8, this will break; maybe add if(BDT<binBoundaries[channel][0]) return 0; ?
 
 
-    double SB_Zuu_low[nBins]={2.76737387847e-05,
-                           6.64750589345e-05,
-                           0.000149447397438,
-                           0.000364720697321,
-                           0.000704082928445,
-                           0.00114156054762,
-                           0.00178676530053,
-                           0.00289993913949,
-                           0.00473330069259,
-                           0.00714558106403,
-                           0.0109339081032,
-                           0.0184934984159,
-                           0.0326417501844,
-                           0.0664331803746,
-                           0.155709437265
+    double SB_Zuu_low[nBins]={
     };
 
     double SB_Zee_low[nBins]={4.38820281278e-05,
