@@ -31,7 +31,7 @@ version: v25/
 samplepath: root://eoscms//eos/cms/store/user/dcurry/heppy/
 
 # tmp2.2.3 post-higgsreview
-t3Private: <!Directories|samplepath!>/files/tmp/
+t3Private: <!Directories|samplepath!>/files/tmp_VV/
 
    
 uftrig_storage: /exports/uftrig01a/dcurry/heppy/
@@ -68,7 +68,10 @@ dcSamples   : <!Directories|MVAout!>
 plot_dc_path: <!Directories|vhbbpath!>/datacards/
 
 #limits: <!Directories|vhbbpath!>/limits/
-limits: /afs/cern.ch/work/g/gaperrin/private/Xbb/CMSSW_7_4_7/src/VHbb/python
+#limits: /afs/cern.ch/work/g/gaperrin/private/Xbb/CMSSW_7_4_7/src/VHbb/python
+#limits: /afs/cern.ch/work/g/gaperrin/private/Xbb/CMSSW_7_4_7/src/VHbb/python
+#limits: /afs/cern.ch/work/g/gaperrin/public/ForSean/VH_DC_SoverSpBreweighted_15_08_17/
+limits: /afs/cern.ch/work/g/gaperrin/public/ForSean/VV_DC_SoverSpBreweighted_18_08_17/
 
 # Where to take the raw samples and where to put the prepared trees:
 #PREPin : <!Directories|samplepath!><!Directories|version!>

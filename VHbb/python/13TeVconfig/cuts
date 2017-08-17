@@ -179,9 +179,9 @@ lepton_barrel: (abs(<!ZHbb|vLeptons!>_eta[0]) <= 1.44 & abs(<!ZHbb|vLeptons!>_et
 lepton_eta_gap: (abs(<!ZHbb|vLeptons!>_eta[0]) >= 1.57 || abs(<!ZHbb|vLeptons!>_eta[0]) <= 1.44) & (abs(<!ZHbb|vLeptons!>_eta[1])>=1.57 || abs(<!ZHbb|vLeptons!>_eta[1])<=1.44) 
 
 
-#lepton_preselection: (((<!ZHbb|vtype!>==1) & <!ZHbb|lepton_Iso_ee!> & <!ZHbb|trigger_ee!> & <!ZHbb|lepton_eta_gap!>) || ((<!ZHbb|vtype!>==0) & <!ZHbb|lepton_Iso_uu!> & <!ZHbb|trigger_uu!>)) & <!ZHbb|vLeptons!>_pt[0] > 20 & <!ZHbb|vLeptons!>_pt[1] > 20
-
 lepton_preselection: (((<!ZHbb|vtype!>==1) & <!ZHbb|lepton_Iso_ee!> & <!ZHbb|trigger_ee!> & <!ZHbb|lepton_eta_gap!>) || ((<!ZHbb|vtype!>==0) & <!ZHbb|lepton_Iso_uu!> & <!ZHbb|trigger_uu!>)) & <!ZHbb|vLeptons!>_pt[0] > 20 & <!ZHbb|vLeptons!>_pt[1] > 20
+
+#lepton_preselection: (((<!ZHbb|vtype!>==1) & <!ZHbb|lepton_Iso_ee!> & <!ZHbb|trigger_ee!> & <!ZHbb|lepton_eta_gap!>) || ((<!ZHbb|vtype!>==0) & <!ZHbb|lepton_Iso_uu!> & <!ZHbb|trigger_uu!>)) & <!ZHbb|vLeptons!>_pt[0] > 20 & <!ZHbb|vLeptons!>_pt[1] > 20
  
 # Full Set (36/fb)
 preselection: <!ZHbb|jet_preselection!> & <!ZHbb|lepton_preselection!> & <!ZHbb|V_pt!>_pt > -25.0 

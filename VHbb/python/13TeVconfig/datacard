@@ -21,7 +21,8 @@ Custom_BDT_bins: False
 
 # for Mjj in signal region
 #BDTrange: 12, 60, 180
-BDTrange: 17, 0, 255 
+#BDTrange: 17, 0, 255 
+BDTrange: 34, 0, 255 
 
 BDToutname: v1
 
@@ -641,11 +642,13 @@ toy: False
 # --------------------------------------
 
 # Datacard samples setup (1st Signal, afterwards BKG)
+#setup: ['ZH', 'ggZH', 'DYlight']
 setup: ['ZH', 'ggZH', 'DYlight','DY1b', 'DY2b', 'TT', 'VVLF', 'VVHF', 'ST']
 #setup: ['VVHF', 'VVLF', 'ZH', 'ggZH', 'DYlight','DY1b', 'DY2b', 'TT', 'ST']
 
 # Lists from general config
 BKG: [<!Samples|allBKG!>]
+#BKG: ['ZudsgHT100to200']
 
 VV_BKG: [<!Samples|VV_BKG!>]
 
@@ -1032,6 +1035,7 @@ type      : VV_BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight_VZ(VV_bdt_lowZpt.nominal,1)
 
 [dc:VV_BDT_Zee_highZpt]
 #var       : <!Datacard|vv_bdt_high!>
@@ -1047,6 +1051,7 @@ type      : VV_BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight_VZ(VV_bdt_highZpt.nominal,3)
 
 [dc:VV_BDT_Zuu_lowZpt]
 #var       : <!Datacard|vv_bdt_low!>
@@ -1062,6 +1067,7 @@ type      : VV_BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
+SBweight  : VHbb::SoverSBWeight_VZ(VV_bdt_lowZpt.nominal,2)
 
 [dc:VV_BDT_Zuu_highZpt]
 #var       : <!Datacard|vv_bdt_high!>
@@ -1077,7 +1083,7 @@ type      : VV_BDT
 bdt_split : 0.6
 doSYS     : True
 doBin     : True
-
+SBweight  : VHbb::SoverSBWeight_VZ(VV_bdt_highZpt.nominal,4)
 
 
 ### Mjj ###
