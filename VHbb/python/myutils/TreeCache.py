@@ -73,7 +73,7 @@ class TreeCache:
             for line in fileinput.input("temp_file.txt", inplace=True):
                 tFile = line.replace('\n', '')
             print ('file line:',tFile)
-            fileName = eosPath.replace('/store/user/dcurry/heppy//files/tmp//','')
+            fileName = eosPath.replace('/store/user/dcurry/heppy//files/tmp_VV//','')
             print ('file name:',fileName)
 
             if tFile == fileName:
