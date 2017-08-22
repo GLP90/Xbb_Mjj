@@ -147,6 +147,8 @@ if 'mass' in treevar:
 # CHange setup for VV analysis
 if 'VV' in anType:
     setup = ['VVHF','VVLF','ZH','ggZH','DYlight','DY1b','DY2b','TT','ST']
+    #setup = ['VVHF','VVLF','DYlight']
+    #setup = ['VVHF','DYlight']
 
 
 # Turn off Systematics if selected
@@ -1080,6 +1082,7 @@ for DCtype in ['TH']:
 
     # datacard yields
     f.write('rate')
+    print '%final_histos[\'nominal\'] is', final_histos['nominal']
     for c in setup: 
         f.write('\t%s'%final_histos['nominal'][c].Integral())
     f.write('\n')
